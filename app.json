@@ -60,6 +60,12 @@
         "text": "我的",
         "iconPath": "images/common/mine.png",
         "selectedIconPath": "images/common/mine_on.png"
+      },
+      {
+        "pagePath": "pages/mine/mine/mine",
+        "text": "我的",
+        "iconPath": "images/common/mine.png",
+        "selectedIconPath": "images/common/mine_on.png"
       }
     ]
   },
