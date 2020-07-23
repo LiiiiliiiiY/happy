@@ -1,0 +1,18 @@
+<mp-navigation-bar color="#000000" background="#fff" title="手机号绑定"></mp-navigation-bar>
+<view class="container page">
+	<image class="account-icon" src="/images/mine/header.png"></image>
+	<view class="input-box">
+		<view class='item'>
+			<input class='tel' type='number' placeholder='请输入手机号码' bindinput="telInput" value="{{tel}}" maxlength='11'></input>
+		</view>
+		<view class='item'>
+			<input class='code' type='number' placeholder='请输入验证码' bindinput="codeInput" value="{{code}}" maxlength='6'></input>
+			<view wx-if="{{!send}}" class='send' bindtap='sendCode'>发送验证码</view>
+			<view wx-if="{{send}}" class='resend'>重新获取({{second}}s)</view>
+		</view>
+		<view class="submit" bindtap="submit">绑定手机号</view>
+		<view class="later">
+			<text bindtap="later">先逛逛，稍后绑定</text>
+		</view>
+	</view>
+</view>

@@ -1,0 +1,6 @@
+{
+  "usingComponents": {
+      "dialog": "/components/dialog/dialog"
+  },
+  "navigationBarTitleText": "个人信息"
+}

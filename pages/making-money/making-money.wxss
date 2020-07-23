@@ -1,0 +1,103 @@
+.rule {
+	position: relative;
+}
+.rule image {
+	display: block;
+	width: 100%;
+}
+.share {
+	position: absolute;
+	bottom: 575rpx;
+	left: 50%;
+	z-index: 10;
+	transform: translateX(-50%);
+	width: 280rpx;
+	height: 80rpx;
+}
+.contact {
+	position: absolute;
+	bottom: 40rpx;
+	left: 50%;
+	z-index: 10;
+	transform: translateX(-50%);
+	width: 480rpx!important;
+	height: 80rpx;
+	opacity: 0;
+}
+.share-wrap {
+	
+}
+.share-title {
+	padding: 20rpx 0;
+	text-align: center;
+	color: #000000;
+	font-size: 30rpx;
+	font-weight: bold;
+}
+.share-container {
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+}
+.share-item {
+	width: 110rpx!important;
+	padding: 0;
+	margin: 0!important;
+	
+	text-align: center;
+	color: #000000;
+	font-size: 23rpx;
+	font-weight: 500;
+	padding-bottom: 45rpx;
+	background-color: rgba(0,0,0,0);
+}
+.share-item image {
+	width: 88rpx;
+	margin-bottom: 10rpx;
+}
+.ad {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+.ad-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.get-infor {
+	width: 750rpx!important;
+	padding: 0;
+	margin: 0;
+	background-color: rgba(0,0,0,0);
+}
+.ad-container .ad-img {
+	width: 483rpx;
+}
+.ad-container .close {
+	position: absolute;
+	right: 20rpx;
+	top: 20rpx;
+	width: 37rpx;
+	transform: translateX(-50%);
+}
+.ad-container .share-poster {
+	position: absolute;
+	left: 50%;
+	bottom: -80rpx;
+	width: 200rpx;
+	height: 60rpx;
+	border-radius: 15rpx;
+	transform: translateX(-50%);
+	background-color: #FFFFFF;
+	color: #FD0000;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-weight: 500;
+}

@@ -1,0 +1,42 @@
+<mp-navigation-bar color="#000" background="#ffffff" title="添加地址" back="{{true}}"></mp-navigation-bar>
+
+<view class="container">
+
+    <!-- <view class="title" bindtap="onGetUserAddress">
+        <view>
+            <text class="iconfont iconweixin"></text>
+            <text>获取微信收货地址</text>
+        </view>
+        <text class="iconfont iconxiangyou"></text>
+    </view> -->
+
+    <mp-form id="add-form" rules="{{rules}}" models="{{addressInfo}}">
+        <mp-cells>
+            <mp-cell prop="user_name" title="收货人" ext-class="box">
+                <input class="weui-input" value="{{addressInfo.user_name}}" placeholder="请输入姓名" data-field="user_name" bindinput="onNameInput"/>
+            </mp-cell>
+            <mp-cell prop="phone" title="手机号码" ext-class="box">
+                <input class="weui-input" value="{{addressInfo.phone}}" placeholder="请输入联系电话" data-field="phone" bindinput="onTelInput"/>
+            </mp-cell>
+            <mp-cell prop="region" title="所在地区" ext-class="box">
+                <picker mode="region" value="{{addressInfo.region}}" data-field="region" bindchange="onRegionChange">
+                    <view class="picker region-box  {{addressInfo.region.length === 0 && 'text-gray'}}" >
+                        <text>{{addressInfo.region.length ? addressInfo.region : '请选择地区'}}</text>
+                        <text class="iconfont iconxiangyou"></text>
+                    </view>
+                </picker>
+            </mp-cell>
+            <mp-cell prop="desc" title="详细地址" ext-class="box">
+                <input class="weui-input" value="{{addressInfo.desc}}" placeholder="请填写具体地址" data-field="desc" bindinput="onPlaceInput"/>
+            </mp-cell>
+            <mp-cell prop="is_flag" title="设为默认地址" ext-class="box box-last">
+                <view slot="footer" class="addaddress-icon">
+                    <switch checked="{{ addressInfo.is_flag == 1 ? true : false }}" bindchange="onSwitchChange"/>
+                </view>
+            </mp-cell>
+        </mp-cells>
+    </mp-form>
+
+    <view class="btn btn-save" bindtap="onSubmitAddress">立即保存</view>
+    <!-- <view class="btn btn-del" wx-if="{{type === 'edit'}}" bindtap="onDeleteAddress">删除</view> -->
+</view>

@@ -1,0 +1,14 @@
+<!-- 提现 -->
+<mp-navigation-bar color="#000000" background="#fff" title="余额提现" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+    <view class="price">
+        <text class="title">提现金额</text>
+        <view class="input_">
+            <text>￥</text>
+            <input type="text" placeholder="0元" bindinput='priceInput' value='{{price}}'/>
+        </view>
+        <text class="des">当前可提现金额:{{balance}}元</text>
+        <text class="des">转出方式：转出到微信钱包，即刻到帐（余额满0.3时，才能提现）</text>
+    </view>
+    <button bindtap="toreward">提现</button>
+</view>

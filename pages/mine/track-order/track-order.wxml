@@ -1,0 +1,16 @@
+<mp-navigation-bar color="#000000" background="#fff" title="查看物流"></mp-navigation-bar>
+<view class="infor">
+	<image src="/images/mine/30.png" mode="widthFix"/>
+	<view>
+		<text>{{info.com}}</text>
+		<text>{{info.nu}}</text>
+	</view>
+	<image src="/images/mine/45.png" mode="widthFix"/>
+</view>
+<view class="list">
+	<text>物流详情</text>
+	<view class="list-item {{index == 0 ? 'list-item-on' : ''}}" wx:for="{{info.data}}" wx:key="index">
+		<text>{{item.time}}</text>
+        <text>{{item.context}}</text>                
+	</view>
+</view>

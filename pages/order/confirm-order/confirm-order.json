@@ -1,0 +1,5 @@
+{
+    "usingComponents": {
+		"pull-up-sheet": "/components/pull-up-sheet/pull-up-sheet"
+	}
+}

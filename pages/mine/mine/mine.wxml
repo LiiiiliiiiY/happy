@@ -1,0 +1,224 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="我的" back="{{false}}"></mp-navigation-bar>
+<button class="inforShade" wx:if="{{!infor}}" bindtap="adShowFn">
+</button>
+<!-- 广告 -->
+<view class="ad" wx:if="{{adShow}}">
+	<view class="ad-container">
+		<button class="get-infor" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
+		</button>
+		<image class="close" src="/images/index/close.png" mode="widthFix" catchtap="closeAd"></image>
+	</view>
+</view>
+<view class="con">
+	<view class="top">
+		<view wx:if="{{infor}}" class="left">
+			<image src="{{infor.avatar}}" mode="widthFix"/>
+			<text>{{infor.nickname}}</text>
+		</view>
+		<button wx:if="{{!infor}}" class="left" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			<image src="/images/mine/1.png" mode="widthFix"/>
+			<text>登陆/注册</text>
+		</button>
+		<view class="right">
+			<button class="contact" open-type="contact" bindcontact="handleContact">
+				<image src="/images/mine/2.png" mode="widthFix"/>
+			</button>
+			<image src="/images/mine/3.png" mode="widthFix" bindtap="setpage"/>
+		</view>
+	</view>
+	<view class="yue">
+		<view class="left">
+			<navigator class="title" url="/pages/mine/my-balance/my-balance" hover-class="none">
+				余额 (元)<image src="/images/mine/42.png" mode="widthFix"/>
+			</navigator>
+			<navigator class="text" url="/pages/mine/my-balance/my-balance" hover-class="none">
+				{{infor.balance}}
+			</navigator>
+			<navigator class="btn" url="/pages/mine/withdraw/withdraw?balance={{infor.balance}}" hover-class="none">
+				提现
+			</navigator>
+		</view>
+		<view class="right">
+			<navigator class="title" url="/pages/mine/current-reward/current-reward" hover-class="none">
+				当前奖励金 (元)<image src="/images/mine/42.png" mode="widthFix"/>
+			</navigator>
+			<navigator class="text" url="/pages/mine/current-reward/current-reward" hover-class="none">
+				{{infor.bounty}}
+			</navigator>
+			<navigator class="btn" url="/pages/mine/rewardToyue/rewardToyue" hover-class="none">
+				转余额
+			</navigator>
+		</view>
+	</view>
+	<view class="yaoqing">
+		<image src="/images/mine/4.png" mode="widthFix"/>
+		<text>我的邀请</text>
+		<view bindtap="yaoqing">邀请好友</view>
+	</view>
+	<view class="person">
+		<navigator class="view" url="/pages/mine/my-friend/my-friend" hover-class="none">
+			<text>{{infor.users}}</text>
+			<view>累积好友 (人)<image src="/images/mine/43.png" mode="widthFix"/></view>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-reward/my-reward" hover-class="none">
+			<text>{{infor.all_bounty}}</text>
+			<view>累积奖励金 (元)<image src="/images/mine/43.png" mode="widthFix"/></view>
+		</navigator>
+	</view>
+	<view class="order">
+		<view>
+			<image src="/images/mine/5.png" mode="widthFix"/>
+			<text>我的订单</text>
+		</view>
+		<navigator class="text" url="/pages/mine/my-order/my-order" hover-class="none">
+			查看更多 <image src="/images/mine/41.png" mode="widthFix"/>
+		</navigator>
+	</view>
+	<block wx:for="{{orderList}}" wx:key="index">
+		<view class="order-list">
+			<view class="order-title">
+				<text>订单号：{{item.order_no}}</text>
+				<text wx-if="{{item.status == 1}}">进行中</text>
+				<text wx-if="{{item.status == 2}}">待支付</text>
+				<text wx-if="{{item.status == 3}}">待发货</text>
+				<text wx-if="{{item.status == 4}}">待收货</text>
+				<text wx-if="{{item.status == 5 && item.user_has_get == 0}}">已完成 白拿金已到帐</text>
+				<text wx-if="{{item.status == 5 && item.user_has_get == 1}}">已完成 已拼中</text>
+				<text wx-if="{{item.status == 6}}">已取消</text>
+			</view>
+			<view class="order-content">
+				<image src="{{item.goods_imgs}}" mode="widthFix"/>
+				<navigator class="view" url="/pages/mine/my-order-detail/my-order-detail?id={{ item.order_id }}" hover-class="none">
+					<view class="first">
+						<text>{{item.goods_name}}</text>
+						<text>X{{item.goods_num}}</text>
+					</view>
+					<view class="second">
+						<text>{{item.create_time}}</text>
+						<view>
+							<text>实付：</text>
+							<text class="price">￥{{item.goods_price}}</text>
+						</view>
+					</view>
+				</navigator>
+			</view>
+			<view class="subtotal" wx-if="{{item.user_has_get == 0 && item.group_status == 2}}">
+				货款原路退还:        
+				<text>￥{{item.goods_price}}</text>
+				白拿金已入帐:        
+				<text>￥{{item.balance}}</text>
+			</view>
+			<view class="btn-box" wx-if="{{item.status == 1}}">
+				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					再次拼团
+				</navigator> 
+			</view>
+			<view class="btn-box" wx-if="{{item.status == 2}}">
+				<text class="white" bindtap="endorder" data-id="{{item.order_id}}">取消订单</text>
+				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					再次拼团
+				</navigator> 
+				<text class="red" bindtap="pay" data-id="{{item.order_id}}">去支付</text>
+			</view>
+			<view class="btn-box" wx-if="{{item.status == 3 || item.status == 6}}">
+				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					再次拼团
+				</navigator> 
+			</view>
+			<view class="btn-box" wx-if="{{item.status == 4}}">
+				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					再次拼团
+				</navigator> 
+				<text class="red" bindtap="confirmOrder" data-id="{{item.order_id}}">确认收货</text>
+			</view>
+			<view class="btn-box" wx-if="{{item.status == 5}}">
+				<navigator class="text white" url="/pages/mine/my-balance/my-balance" hover-class="none">
+					查看余额
+				</navigator>
+				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					再次拼团
+				</navigator> 
+			</view> 
+		</view>
+	</block>
+	
+	<view class="nav">
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=1" hover-class="none">
+			<image src="/images/mine/8.png" mode="widthFix"/>
+			<text>进行中</text>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=2" hover-class="none">
+			<image src="/images/mine/9.png" mode="widthFix"/>
+			<text>待支付</text>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=3" hover-class="none">
+			<image src="/images/mine/10.png" mode="widthFix"/>
+			<text>待发货</text>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=4" hover-class="none">
+			<image src="/images/mine/11.png" mode="widthFix"/>
+			<text>待收货</text>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=5" hover-class="none">
+			<image src="/images/mine/12.png" mode="widthFix"/>
+			<text>已完成</text>
+		</navigator>
+		<navigator class="view" url="/pages/mine/my-order/my-order?id=6" hover-class="none">
+			<image src="/images/mine/13.png" mode="widthFix"/>
+			<text>其他</text>
+		</navigator>
+	</view>
+	<view class="help">
+		<button class="view" wx:if="{{canIUse}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+			<text>授权手机号码</text>
+			<text></text>
+		</button>
+		<navigator class="view" url="/pages/mine/question/question" hover-class="none">
+			<text>常见问题</text>
+			<image src="/images/mine/41.png" mode="widthFix"/>
+		</navigator>
+		<button class="view" open-type='feedback' type='primary'>
+			<text>意见反馈</text>
+			<image src="/images/mine/41.png" mode="widthFix"/>
+		</button>
+		<navigator class="view" url="/pages/mine/my-address/my-address" hover-class="none">
+			<text>地址管理</text>
+			<image src="/images/mine/41.png" mode="widthFix"/>
+		</navigator>
+	</view>
+	<text class="recommend-title">为你推荐</text>
+	<view class="recommend">
+		<block wx:for="{{recommendList}}" wx:key="index">
+			<view class="recommend-list">
+				<navigator url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+					<image src="{{item.goods_imgs}}" mode="widthFix"/>
+				</navigator>
+				<view>
+					<navigator url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						<text>{{item.goods_name}}</text>
+						<view class="white">最高白拿{{item.white_price}}元</view>
+						<text>已有{{item.white_number}}人获白拿金</text>
+					</navigator>
+					<view class="price">
+						<text>￥{{item.spell_price}}</text>
+						<view>
+							<text class="view" data-item="{{ item }}" data-type="{{ item.if_akey == 1 ? 2 : 4 }}" bindtap="buy">发起拼团</text>
+							<text class="view" wx:if="{{ item.if_akey == 1 }}" data-item="{{ item }}" data-type="{{3}}" bindtap="buy">一键参团</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</block>
+	</view>
+</view>
+
+<view class="shade" wx-if="{{showquxiao}}" bindtap="closeDialog"></view>
+<view class="quxiaodialog" wx-if="{{showquxiao}}">
+	<image src="/images/mine/35.png" mode="widthFix" />
+	<text>您已取消订单</text>
+	<text>正在等待微信反馈</text>
+	<navigator class="view" url="/pages/goods/goods-list/goods-list" hover-class="none">
+        看看其他商品
+    </navigator> 
+</view>

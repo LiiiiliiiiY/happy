@@ -1,0 +1,4 @@
+<mp-navigation-bar color="#000000" background="#FFFFFF" title="拼团规则"></mp-navigation-bar>
+<view class="rule">
+	<image src="https://ztt.xinrytech.com/uploads/images/22.jpg" mode="widthFix"></image>
+</view>

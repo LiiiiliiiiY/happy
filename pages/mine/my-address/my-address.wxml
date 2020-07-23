@@ -1,0 +1,44 @@
+<mp-navigation-bar color="#000" background="#ffffff" title="地址管理" back="{{true}}"></mp-navigation-bar>
+
+<view class="container">
+    <image src="/images/mine/21.png" mode="widthFix"/>
+    <view class="addressList">
+        <view class="li" wx:for="{{addressList}}" wx:key="index" >
+            <view class="name" data-item="{{item}}" bindtap="changeOrderAddress">
+                <text>{{item.user_name}}</text>
+                <text>{{item.phone}}</text>
+            </view>
+            <text class="address" data-item="{{item}}" bindtap="changeOrderAddress">详细地址：{{item.city}}{{item.area}}{{item.desc}}</text>
+            <view class="btnBos">
+                <view class="moren" data-flag="{{item.is_flag}}" data-id="{{item.address_id}}"  bindtap="setMoren">
+                    <text class="{{ item.is_flag == 1 ? 'on' : '' }}"></text>
+                    <text>设为默认</text>
+                </view>
+                <view class="btn">
+                    <view data-item="{{item}}" bindtap="onEditAddress">
+                        <image src="/images/mine/22.png" mode="widthFix"/>
+                        <text>编辑</text>
+                    </view>
+                    <view data-id="{{item.address_id}}" bindtap="deleteAddress">
+                        <image src="/images/mine/23.png" mode="widthFix"/>
+                        <text>删除</text>
+                    </view>
+                </view>
+            </view>
+        </view>
+    </view>
+    <view class="none-wrap no-wrap" wx:if="{{addressList.length === 0}}">
+        <image src="/images/mine/20.png" mode="widthFix"/>
+        <text>抱歉，您还未添加地址哦~</text>
+    </view>
+
+</view>
+<navigator url="/pages/mine/my-add-address/my-add-address?type=create" hover-class="none" class="addbox">
+    <image src="/images/mine/50.png" mode="widthFix"/>
+    <view>添加新地址</view>
+</navigator>
+<view class="weixinadd" bindtap="onGetUserAddress">
+    <text class="iconfont iconweixin"></text>
+    <view>导入微信地址</view>
+</view>
+

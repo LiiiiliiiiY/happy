@@ -1,0 +1,67 @@
+.page {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	height: 100%;
+	padding-top: 210rpx;
+	background-color: #fff;
+	box-sizing: border-box;
+}
+image {
+	width: 380rpx;
+	margin-bottom: 110rpx;
+}
+.login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 600rpx!important;
+	height: 90rpx;
+	font-size: 34rpx;
+	font-weight: normal;
+	color: #ffffff;
+	background: linear-gradient(-90deg, rgba(18, 150, 17, 1) 0%, rgba(18, 150, 17, 1) 100%);
+	border-radius: 45rpx;
+}
+.iconweixin {
+	margin-right: 20rpx;
+	font-size: 44rpx;
+}
+.update {
+	font-size: 32rpx;
+}
+.code-login {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 600rpx!important;
+	height: 90rpx;
+	margin-top: 48rpx;
+	font-size: 34rpx;
+	font-weight: normal;
+	color: #FE2600;
+	background-color: #FFE9E5;
+	border: 2rpx solid #FE2600;
+	border-radius: 45rpx;
+	box-sizing: border-box;
+}
+.later {
+	margin-top: 80rpx;
+	text-align: center;
+}
+.later text {
+	padding-bottom: 5rpx;
+	border-bottom: 1rpx solid #999999;
+	font-size: 26rpx;
+	color: #999999;
+}
+.foot {
+	position: fixed;
+	bottom: 37rpx;
+	left: 155rpx;
+	font-size: 24rpx;
+	color: #999999;
+}
+.foot text {
+	color: #2B79C4;
+}

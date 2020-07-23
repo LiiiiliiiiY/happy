@@ -1,0 +1,186 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="订单确认" back="{{ false }}">
+	<view class="back" slot="left" bindtap="back">
+		<image src="/images/mine/41.png" mode="widthFix"></image>
+	</view>
+</mp-navigation-bar>
+<view class="address-infor">
+	<view wx:if="{{address}}" class="address-box" data-type="choose" bindtap="openAddress">
+		<view class="address-left">
+			<image class="left-icon" src="/images/order/e.png" mode="widthFix"></image>
+			<view class="left-infor">
+				<view>
+					<text class="name">{{ address.user_name }}</text>
+					<text class="tel">{{ address.phone }}</text>
+				</view>
+				<view class="address">{{ address.province }}{{ address.city }}{{ address.area }}{{ address.desc }}</view>
+			</view>
+		</view>
+		<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
+	</view>
+	<view wx:else class="add-address-box">
+		<view class="add-normal" data-type="add" bindtap="openAddress">
+			<view class="add-left">
+				<image src="/images/order/a.png" mode="widthFix"></image>
+				手动添加收货地址
+			</view>
+			<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
+		</view>
+		<view class="add-wechat" bindtap="getWechatAddress">
+			<view class="add-left">
+				<image src="/images/order/b.png" mode="widthFix"></image>
+				一键获取微信地址
+			</view>
+			<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
+		</view>
+	</view>
+</view>
+
+<view class="type-2" wx:if="{{ orderType == 2 }}">
+	<view class="small">
+		<view class="small-switch">
+			<view>{{ small ? '已开启小团' : '已关闭小团' }}</view>
+			<view>
+				<switch checked="{{small}}" bindchange="smallChange"/>
+			</view>
+		</view>
+		<picker wx:if="{{small}}" bindchange="pickerSelect" value="{{groupIndex}}" range="{{group}}" range-key="text">
+			<view class="small-infor">
+				<view class="small-infor-left">邀请人数范围（只能邀请好友参与）</view>
+				<view class="small-infor-right">
+					<text>2{{ groupType == '2' ? '' : '-' + groupType }}人团</text>
+					<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
+				</view>
+			</view>
+		</picker>
+		<view class="small-infor" wx:else>你正在参与30人大团，系统自动匹配成团</view>
+	</view>
+	<view class="sign sign-small" wx:if="{{small}}">
+		<image src="/images/order/d.png"></image>
+		<view class="sign-text">
+			<view class="sign-text1">2{{ groupType == '2' ? '' : '-' + groupType }}人团，仅1人拼中，其余人余额退款+白拿现金（即时提现），（最高{{ groupPercent }}机率白拿现金）</view>
+			<view>小团好处</view>
+			<view class="sign-text2">1.参团人数越少，白拿金越高;</view>
+			<view class="sign-text2">2.你邀请的好友参团未拼中商品赚的白拿金，你也将获得高额佣金，可即刻提现。</view>
+			<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">详细拼团规则></navigator>
+		</view>
+	</view>
+	<view class="sign" wx:else>
+		<image src="/images/order/d.png" mode="widthFix"></image>
+		<view class="sign-text">
+			<text>30人团，仅一人拼中，29人全额退款+白拿现金</text>
+			<text>(即时提现)，(最高96.6%几率白拿现金)</text>
+		</view>
+	</view>
+</view>
+
+<view class="type-3" wx:if="{{ orderType == 3 }}">
+	<view class="type-3-title">你正在参与30人大团，系统自动匹配成团</view>
+	<view class="sign">
+		<image src="/images/order/d.png" mode="widthFix"></image>
+		<view class="sign-text">
+			<text>30人团，仅一人拼中，29人全额退款+白拿现金</text>
+			<text>(即时提现)，(最高96.6%几率白拿现金)</text>
+		</view>
+	</view>
+</view>
+
+<view class="type-4" wx:if="{{ orderType == 4 }}">
+	<view class="sign">
+		<image src="/images/order/d.png" mode="widthFix"></image>
+		<view class="sign-text">
+			<text>4人团，仅1人拼中，3人全额退款+白拿现金</text>
+			<text>(即时提现)，(最高75%机率白拿现金)</text>
+		</view>
+	</view>
+</view>
+
+<view class="list {{ orderType == 1 ? 'list1' : '' }}">
+	<view class="list-item">
+		<view class="left">
+			<image class="left-img" src="{{ detail.goods_img || detail.goods_imgs }}" mode="widthFix"></image>
+		</view>
+		<view class="right">
+			<view class="right-title">{{ detail.goods_name }}</view>
+			<view class="right-des">{{ detail.goods_name }}</view>
+			<view class="right-sale">最高白拿{{ detail.white_price }}元</view>
+			<view class="get">
+				<view class="price">￥{{ goodsPrice }}</view>
+				<view class="num">已有{{ detail.white_number }}人获白拿金</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="num-box" wx:if="{{ orderType == 1 }}">
+	<view>已有{{ detail.book_num }}人拼团购买了该商品，<text>{{ detail.book_num }}</text>人白拿现金</view>
+	<view class="money" bindtap="join">￥{{ detail.spell_price }}参团购买</view>
+</view>
+<view class="use-money" bindtap="openMoneyDialog">
+	<view>{{ balanceFlag ? '使用余额抵扣（-￥' + withBalance + '）' : '不使用余额抵扣' }}</view>
+	<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
+</view>
+
+<view class="big" wx:if="{{ small && orderType == 2 }}">
+	<view>小团拼团玩法:</view>
+	<view>1.参团人数≥2人，且拼团等待时间超过10分钟，自动成团；</view>
+	<view>2.拼团等待时间在10分钟内，参团人数达到3人，立即成团；</view>
+	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高3.00元白拿金(随时提现)；</view>
+	<view>4.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
+	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
+</view>
+
+<view class="big" wx:if="{{ (!small)&&(orderType == 2) || orderType == 3 }}">
+	<view>大团拼团玩法:</view>
+	<view>1.10分钟内，达到30人，立即成团；</view>
+	<view>2.10分钟内，参团人数未达到30人，则拼团失败，所有参团人员可全额退款；</view>
+	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高3.00元白拿金(随时提现)。</view>
+	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
+</view>
+
+<view class="big" wx:if="{{ orderType == 4 }}">
+	<view>大团拼团玩法:</view>
+	<view>1.10分钟内，参团人数达到4人，立即成团；</view>
+	<view>2.10分钟内，参团人数未达到4人，则拼团失败，所有参团人员可全额退款；</view>
+	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高6.00元白拿金(随时提现)。</view>
+	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
+</view>
+
+<view class="btn-list">
+	<view class="btn-total">需支付: <text>￥</text><text>{{totalPrice}}</text><text>（免运费）</text></view>
+	<view class="settle" bindtap="settle">支付</view>
+</view>
+
+<pull-up-sheet show="{{moneyShow}}" title="产品参数">
+	<view class="money-wrap" slot="container">
+		<view class="money-warp-title">可用余额{{ balance }}元</view>
+		<view class="money-warp-container">
+			<view class="money-warp-item">
+				<view>不使用</view>
+				<view class="select">
+					<icon wx:if="{{!balanceFlag}}" type="success" color="#EF2400" size='18'/>
+					<icon wx:else type="circle" data-flag="{{false}}" size='18' bindtap="useBalance"/>
+				</view>
+			</view>
+			<view class="money-warp-item">
+				<view>使用余额抵扣（-￥{{ withBalance }}）</view>
+				<view class="select">
+					<icon wx:if="{{balanceFlag}}" type="success" color="#EF2400" size='18'/>
+					<icon wx:else type="circle" data-flag="{{true}}" size='18' bindtap="useBalance"/>
+				</view>
+			</view>
+		</view>
+		<view class="confirm" bindtap="closeMoneyDialog">完成</view>
+	</view>
+</pull-up-sheet>
+<!-- 广告 -->
+<view class="ad" wx:if="{{adShow}}" bindtap="closeAd">
+	<view class="ad-container">
+		<view class="get-infor">
+			<image class="ad-img" src="/images/order/ad.png" mode="widthFix"></image>
+			<text class="white-num">{{ detail.white_price }}</text>
+		</view>
+		<image class="close" src="/images/index/close.png" mode="widthFix" catchtap="closeAd"></image>
+	</view>
+</view>
+
+
+

@@ -1,0 +1,84 @@
+<mp-navigation-bar color="#000000" background="#FFFFFF" back="{{ false }}" title="{{ status ? '拼团成功' : '拼团失败' }} ">
+	<view class="left" slot="left">
+		<view class="home" bindtap="goHome">
+			<text class="iconfont iconshouye1"></text>
+		</view>
+	</view>
+</mp-navigation-bar>
+<view class="page">
+	<view class="title" wx:if="{{ status }}">你来晚了，人已满，拼团已结束！</view>
+	<view class="title" wx:else>手慢了，参团失败！</view>
+	<view class="person">
+		<view class="item {{ item.is_start ? 'item-leader' : '' }} {{ item.is_get ? 'win' : '' }}" wx:for="{{ memberPreview }}" wx:key="id">
+			<view class="leader" wx:if="{{ item.is_start }}">团长</view>
+			<image class="win-h" wx:if="{{ item.is_get }}" src="/images/mine/h.png" mode="widthFix"></image>
+			<image src="{{ item.avatar }}" mode="widthFix"></image>
+			<image src="/images/mine/31.png" mode="widthFix" wx:if="{{ !item.avatar }}"></image>
+			<view class="money" wx:if="{{ status && item.balance }}">{{ item.is_get ? '抢中' : '得' + item.balance + '元' }}</view>
+		</view>
+		<view class="item">
+			<image src="/images/order/circle.png" mode="widthFix" wx:if="{{ orderInfo.user.length > 4 }}" bindtap="openPersonDialog"></image>
+			<image src="/images/mine/31.png" mode="widthFix" wx:else></image>
+		</view>
+	</view>
+	<view class="list">
+		<view class="list-item">
+			<view class="left">
+				<image class="left-img" src="{{ orderInfo.goods_img }}" mode="widthFix"></image>
+			</view>
+			<view class="right">
+				<view class="right-title">{{ orderInfo.goods_name }}</view>
+				<view class="right-sale">白拿{{ orderInfo.white_price }}元</view>
+				<view class="get">
+					<view class="price">￥{{ orderInfo.goods_price }}</view>
+					<view class="right-num">已有{{ orderInfo.white_number }}人获白拿金</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="btn-list">
+		<view class="btn-item" bindtap="goHome">回首页</view>
+	</view>
+	<view class="hot-title">
+		<image src="/images/detail/wd.png" mode="widthFix"></image>
+		爆款团 ｜ 已有83186人未拼中白拿现金
+	</view>
+	<view class="list">
+		<view class="list-item" wx:for="{{hot}}" wx:key="goods_id" wx:for-item="sItem" data-id="{{sItem.goods_id}}" bindtap="checkDetail">
+			<view class="left" url="/pages/goods/goods-detail/goods-detail?id={{ sItem.goods_id }}" hover-class="none">
+				<image class="left-img" src="{{ sItem.goods_imgs }}" mode="widthFix"></image>
+			</view>
+			<view class="right">
+				<view class="right-title hot">{{ sItem.goods_name }}</view>
+				<view class="right-sale hot">最高白拿{{ sItem.white_price }}元</view>
+				<view class="right-num hot">已有{{ sItem.white_number }}人获白拿金</view>
+				<view class="get">
+					<view class="price">￥{{ sItem.if_akey == 1 ? sItem.akey_price : sItem.spell_price }}</view>
+					<view class="get-btn">
+						<text data-item="{{ sItem }}" data-type="{{ sItem.if_akey == 1 ? 2 : 4 }}" catchtap="buy">发起拼团</text>
+						<text wx:if="{{ sItem.if_akey == 1 }}" data-item="{{ sItem }}" data-type="{{3}}" catchtap="buy">一键参团</text>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+</view>
+
+<!-- 人员弹窗 -->
+<mp-dialog class="person-dialog" show="{{personShow}}">
+	<view class="person-title">
+		成员详情
+		<image src="/images/mine/x.png" mode="widthFix" bindtap="closePersonDialog"></image>
+	</view>
+	<view class="person-list-container">
+		<view class="person-list">
+			<view class="person-item {{ item.is_start ? 'item-leader' : '' }} {{ item.is_get ? 'got' : '' }}" wx:for="{{ orderInfo.user }}" wx:key="id">
+				<view class="person-leader" wx:if="{{ item.is_start }}">团长</view>
+				<image class="got-h" wx:if="{{ item.is_get }}" src="/images/mine/h.png" mode="widthFix"></image>
+				<image src="{{ item.avatar }}" mode="widthFix"></image>
+				<view class="person-money {{ item.is_get ? 'got' : '' }}" wx:if="{{ status }}">{{ item.is_get ? '抢中' : '得' + item.balance + '元' }}</view>
+			</view>
+		</view>
+	</view>
+	<view class="person-one-more" bindtap="oneMore">再拼一单</view>
+</mp-dialog>

@@ -1,0 +1,6 @@
+{
+    "usingComponents": {
+		"pull-up-sheet": "/components/pull-up-sheet/pull-up-sheet",
+		"mp-dialog": "/components/dialog/dialog"
+	}
+}

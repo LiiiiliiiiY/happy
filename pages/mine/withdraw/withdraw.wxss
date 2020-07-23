@@ -1,0 +1,49 @@
+page {
+	background-color: #F9F9F9;
+}
+.price{
+    width: 100%;
+    background-color: #fff;
+    padding-top: 20rpx;
+    box-sizing: border-box;
+	border-top: 16rpx solid #F9F9F9;
+}
+.title{
+	display: block;
+    font-size:29rpx;
+    font-weight:bold;
+    color:rgba(0,0,0,1);
+    padding: 30rpx 0 20rpx 28rpx;
+}
+.input_{
+    margin-top: 10rpx;
+    width: 100%;
+    border-bottom: 1px solid #999;
+    margin-bottom: 30rpx;
+    display: flex;
+    align-items: center;
+}
+.input_ text{
+    font-size:74rpx;
+    padding-left: 40rpx;
+    color:rgba(0,0,0,1);
+}
+.des{
+    display: block;
+    font-size:25rpx;
+    margin-bottom: 30rpx;
+    color:rgba(153,153,153,1);
+    padding: 0 85rpx 0 28rpx;
+}
+button{
+    display: block;
+    width:611rpx!important;
+    margin: 30rpx auto;
+    height:79rpx;
+    background:rgba(0,177,236,1);
+    border-radius:10rpx;
+    font-size:35rpx;
+    color:rgba(255,255,255,1);
+    font-weight: 400!important;
+    line-height: 1.2!important;
+}

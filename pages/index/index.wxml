@@ -1,0 +1,50 @@
+<mp-navigation-bar background="#ffffff" title="首页" back="{{false}}"></mp-navigation-bar>
+<view class="index-container">
+	<view class="banner">
+		<image class="banner-img" src="https://ztt.xinrytech.com/uploads/images/4.jpg" mode="widthFix"></image>
+		<div class="check" bindtap="go">
+			<image src="/images/index/4.png" mode="widthFix"></image>
+		</div>
+	</view>
+	<image class="middle" src="https://ztt.xinrytech.com/uploads/images/3.jpg" mode="widthFix"></image>
+	<view class="list">
+		<view class="list-item" wx:for="{{ home }}" wx:key="goods_id" data-id="{{item.goods_id}}" bindtap="checkDetail">
+			<view class="title">
+				<view>参团一次，最高白赚<text>白赚{{ item.white_price }}元！</text></view>
+				<image src="/images/index/c.png"></image>
+			</view>
+			<view class="content">
+				<view class="left">
+					<image class="left-img" src="{{ item.goods_imgs }}" mode="widthFix"></image>
+					<view class="sign">
+						<image src="/images/index/05.png" mode="widthFix"></image>
+						<text>某宝价格: ￥{{ item.white_price }}</text>
+					</view>
+				</view>
+				<view class="right">
+					<view class="right-title">{{ item.goods_name }}</view>
+					<view class="right-sale">{{ item.white_number }}人白赚现金  {{ item.get_number }}人买到商品</view>
+					<view class="get">
+						<view class="price">￥{{ item.if_akey == 1 ? item.akey_price : item.spell_price }}</view>
+						<view class="get-btn">
+							<text class="get-b" data-item="{{ item }}" data-type="{{ item.if_akey == 1 ? 2 : 4 }}" catchtap="buy">发起拼团</text>
+							<text class="get-b get-o" wx:if="{{ item.if_akey == 1 }}" data-item="{{ item }}" data-type="{{3}}" catchtap="buy">一键参团</text>
+						</view>
+					</view>
+				</view>
+			</view>
+		</view>
+	</view>
+	<navigator class="more" url="/pages/goods/goods-list/goods-list" hover-class="none">
+		<image src="/images/index/5.png" mode="widthFix"></image>
+	</navigator>
+</view>
+<!-- 授权 -->
+<view class="ad" wx:if="{{adShow}}">
+	<view class="ad-container">
+		<button class="get-infor" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
+		</button>
+		<image class="close" src="/images/index/close.png" mode="widthFix" catchtap="closeAd"></image>
+	</view>
+</view>

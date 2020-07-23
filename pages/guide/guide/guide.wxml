@@ -1,0 +1,13 @@
+<mp-navigation-bar color="#000000" background="#FFFFFF" title="ruufoo如弗"></mp-navigation-bar>
+<view class="page">
+	<image src="/images/mine/logo_3x.png" mode="widthFix"/>
+	<button class="login" wx:if="{{canIUse}}" open-type="getPhoneNumber" bindgetphonenumber="getPhoneNumber">
+		<text class="iconfont iconweixin"></text>微信一键登录
+	</button>
+	<view class="update" wx:else>请升级微信版本</view>
+	<view class="code-login" bindtap="codeLogin">短信验证码登录</view>
+	<view class="later"><text bindtap="later">我先逛逛</text></view>
+	<view class="foot">
+		注册/登录即代表同意<text>隐私条款</text>和<text>服务条款</text>
+	</view>
+</view>

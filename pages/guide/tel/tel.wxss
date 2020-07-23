@@ -1,0 +1,87 @@
+.page {
+	padding: 55rpx 24rpx;
+	background: url('https://360.zhaokuangyi.com/attachment/images/global/login_bg.png') no-repeat top center / 100% auto;
+}
+.account-icon {
+	display: block;
+	overflow: hidden;
+	width: 126rpx;
+	height: 126rpx;
+	margin-bottom: 54rpx;
+	border-radius: 50%;
+}
+.input-box {
+	width: 700rpx;
+	padding: 88rpx 50rpx;
+	background: #ffffff;
+	box-shadow: 16rpx 22rpx 22rpx 0rpx rgba(0, 0, 0, 0.05);
+	border-radius: 20rpx;
+	box-sizing: border-box;
+}
+input {
+	width: 600rpx;
+	height: 80rpx;
+	padding-left: 30rpx;
+	background: #F1F1F1;
+	border-radius: 40px;
+	box-sizing: border-box;
+}
+.item {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	margin-bottom: 45rpx;
+	font-size: 28rpx;
+	box-sizing: border-box;
+}
+
+.item .tel {
+	width: 608rpx;
+	font-size: 30rpx;
+	color: #999999;
+}
+.item .code {
+	width: 356rpx;
+}
+.send, .resend {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 227rpx;
+	height: 80rpx;
+	font-size: 28rpx;
+	color: #246CF4;
+	border: 2rpx solid #246CF4;
+	border-radius: 40rpx;
+	box-sizing: border-box;
+}
+.resend {
+	font-size: 24rpx;
+	color: #999999;
+	background-color: #F1F1F1;
+	border: 2rpx solid #F1F1F1;
+}
+.submit {
+	width: 100%;
+	height: 80rpx;
+	margin-top: 45rpx;
+	line-height: 80rpx;
+	text-align: center;
+	color: #ffffff;
+	font-size: 30rpx;
+	background: #000000;
+	border-radius: 40rpx;
+}
+.later {
+	display: flex;
+	align-items: center;
+	justify-content: flex-end;
+	margin-top: 40rpx;
+	font-size: 24rpx;
+	color: #999999;
+}
+.later text {
+	border-bottom: 1rpx solid #999999;
+}
+

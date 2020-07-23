@@ -1,0 +1,233 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="订单详情"></mp-navigation-bar>
+<view class="container">
+	<view class="wc-title fail-title" wx-if="{{orderInfo.group_status == 3}}">
+		<image src="/images/mine/30.png" mode="widthFix"/>
+		<view>
+			<text>拼团失败</text>
+			<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+		</view>
+		<image src="/images/mine/36.png" mode="widthFix"/>
+	</view>
+	<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 1}}">
+		<image src="/images/mine/30.png" mode="widthFix"/>
+		<view>
+			<text>拼团已完成</text>
+			<text>恭喜您拼中商品</text>
+		</view>
+		<image src="/images/mine/26.png" mode="widthFix"/>
+	</view>
+	<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 0}}">
+		<image src="/images/mine/30.png" mode="widthFix"/>
+		<view>
+			<text>拼团已完成</text>
+			<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+		</view>
+		<image src="/images/mine/26.png" mode="widthFix"/>
+	</view>
+	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1}}">
+		<image src="/images/mine/30.png" mode="widthFix"/>
+		<view>
+			<text>拼团还未成功</text>
+			<text>分享给小伙伴来拼单吧~</text>
+			<view>剩余<text>{{hou}}:{{min}}:{{sec}}</text>拼单结束</view>
+		</view>
+		<image src="/images/mine/32.png" mode="widthFix"/>
+	</view>
+	<view class="address">
+		<view class="add">
+			<image src="/images/mine/24.png" mode="widthFix"/>
+			<view class="content">
+				<view>
+					<text class="name">{{orderInfo.address_name}}</text>
+					<text>{{orderInfo.address_phone}}</text>
+				</view>
+				<text>{{orderInfo.address}}</text>
+			</view>
+		</view>
+		<navigator class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}" url="/pages/mine/track-order/track-order?id={{orderId}}" hover-class="none">
+			<image src="/images/mine/25.png" mode="widthFix"/>
+			<view class="content">
+				<view>
+					<text>您的快递已发货</text>
+				</view>
+				<text>快递单号:{{orderInfo.ship_num}}</text>
+			</view>
+		</navigator>
+		<view class="err" wx-if="{{orderInfo.group_status == 3}}">
+			<image src="/images/mine/46.png" mode="widthFix"/>
+			<text>很遗憾，本次拼团失败了</text>
+		</view>
+	</view>
+	<view class="pintuan-detail">
+		<view class="title">
+			<text wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15 && orderInfo.is_pay == 1}}">待分享，还差{{orderInfo.diff_num}}人</text>
+			<text wx-if="{{orderInfo.group_status == 3}}">拼团失败</text>
+			<text wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}">拼团成功，恭喜您拼中商品</text>
+			<text wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}">拼团成功，很遗憾您未拼中商品！</text>
+			<view class="zfcgh" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
+				<image class="hg" src="/images/mine/33.png" mode="widthFix"/>
+				<text>支付成功后查看拼团详情</text>
+			</view>
+			<view class="btnBox">
+				<navigator wx-if="{{orderInfo.is_pay == 1 && orderInfo.group_status == 1}}" class="view" url="/pages/order/group-booking/group-booking?id={{orderId}}" hover-class="none">
+					拼团详情
+				</navigator>
+				<navigator wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}" class="view" url="/pages/order/winning/winning?id={{orderId}}" hover-class="none">
+					拼团详情
+				</navigator>
+				<navigator wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}" class="view" url="/pages/order/failed/failed?id={{orderId}}" hover-class="none">
+					拼团详情
+				</navigator>
+				<button class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15}}" open-type="share">邀请好友拼团</button>
+				<!-- <view class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15}}" bindtap="share">邀请好友拼团</view> -->
+			</view>
+		</view>
+		<view class="content">
+			<block wx:for="{{user}}" wx:key="index">
+				<view class="person">
+					<image class="hg" wx-if="{{item.is_get == 1 && orderInfo.group_status == 2}}" src="/images/mine/27.png" mode="widthFix"/>
+					<view class="icon" wx-if="{{item.is_me == 1}}">我</view>
+					<view class="icon" wx-if="{{item.is_start == 1}}">团长</view>
+					<image src="{{item.avatar}}" mode="widthFix"/>
+					<view class="yellow" wx-if="{{item.is_get == 1 && orderInfo.group_status == 2}}">抢中</view>
+					<view wx-if="{{item.is_get == 0 && orderInfo.group_status == 2}}">得{{item.balance}}元</view>
+				</view>
+			</block>
+			<block wx-if="{{user.length < 6}}" wx:for="{{6 - user.length}}" wx:key="index">
+				<view class="person">
+					<image src="/images/mine/31.png" mode="widthFix"/>
+				</view>
+			</block>
+		</view>
+	</view>	
+	<view class="product">
+		<view>
+			<text>订单商品</text>
+			<!-- <text wx-if="{{item.status == 5}}">已收货</text> -->
+			<text wx-if="{{orderInfo.status == 6}}">订单已取消</text>
+			<text wx-if="{{orderInfo.status == 5}}">订单已完成</text>
+		</view>
+		<view class="view">
+			<image src="{{orderInfo.goods_img}}" mode="widthFix"/>
+			<view>
+				<view class="first">
+					<text>{{orderInfo.goods_name}}</text>
+					<text>￥{{orderInfo.goods_price}}</text>
+				</view>
+				<view class="second">
+					<text>拼不中可获得{{orderInfo.white_price}}元现金</text>
+					<text>×{{orderInfo.goods_num}}</text>
+				</view>
+			</view>
+		</view>
+	</view>
+	<view class="priceBox">
+		<view>
+			<text>商品总额：</text>
+			<text>￥{{orderInfo.goods_price}}</text>
+		</view>
+		<view>
+			<text>运费</text>
+			<text>￥{{orderInfo.freight_price}}</text>
+		</view>
+		<view>
+			<text>实付款：</text>
+			<text>￥{{orderInfo.payment_price}}</text>
+		</view>
+	</view>
+	<view class="order-info">
+		<view class="title">订单信息</view>
+		<view>
+			<text>订单号：{{orderInfo.order_no}}</text>
+			<text data-id="{{orderInfo.order_no}}" class="fuzhi" bindtap="copy">复制</text>
+		</view>
+		<text>下单日期：{{orderInfo.create_time}}</text>
+	</view>
+	<button class="contact" open-type="contact" bindcontact="handleContact">
+		<image src="/images/mine/2.png" mode="widthFix"/>
+		<text>联系客服</text>
+	</button>
+	<view class="btnBox">
+		<view class="positon" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
+			<text>没拼中商品可获得：</text>
+			<text>1.白拿金</text>
+			<text>2.货款原路返回</text>
+			<view class="jt"></view>
+		</view>
+		<!-- //拼团失败 -->
+		<view class="btncontent"  wx-if="{{orderInfo.group_status == 3}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+			<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{orderInfo.goods_id}}" hover-class="none">
+				去拼一单
+			</navigator> 
+		</view>
+		<!-- 订单待支付且拼团未开始 -->
+		<view class="btncontent"  wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
+			<view class="white" bindtap="endorder">
+				取消订单
+			</view>
+			<view class="red" bindtap="pay">
+				立即支付
+			</view> 
+		</view>
+		<!-- 拼团完成且拼中 -->
+		<view class="btncontent"  wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 1 && orderInfo.status == 4}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+			<view class="red" bindtap="confirmOrder">
+				确认收货
+			</view> 
+		</view>
+		<!-- 拼团完成且没拼中 -->
+		<view class="btncontent"  wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 0}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+			<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{orderInfo.goods_id}}" hover-class="none">
+				去拼一单
+			</navigator> 
+		</view>
+		<!-- 拼团完成且拼中且收货 -->
+		<view class="btncontent"  wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 1 && orderInfo.status == 5}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+		</view>
+	</view>
+</view>
+<view class="shade" wx-if="{{showquxiao}}" bindtap="closeDialog"></view>
+<view class="quxiaodialog" wx-if="{{showquxiao}}">
+	<image src="/images/mine/35.png" mode="widthFix" />
+	<text>您已取消订单</text>
+	<text>正在等待微信反馈</text>
+	<navigator class="view" url="/pages/goods/goods-list/goods-list" hover-class="none">
+        看看其他商品
+    </navigator> 
+</view>
+<!-- 分享弹窗 -->
+<pull-up-sheet show="{{shareShow}}">
+	<view class="share-wrap" slot="container">
+		<view class="share-title">分享至</view>
+		<view class="share-container">
+			<button class="share-item" open-type="share">
+				<image src="/images/common/wechat.png" mode="widthFix"></image>
+				<view>微信好友</view>
+			</button>
+			<view class="share-item" bindtap="shareToFriend">
+				<image src="/images/common/friend.png" mode="widthFix"></image>
+				<view>微信朋友圈</view>
+			</view>
+		</view>
+	</view>
+</pull-up-sheet>
+<!-- 分享到朋友圈 -->
+<view class="ad" wx:if="{{imgShow}}">
+	<view class="ad-container">
+		<image class="close" src="/images/common/close-w.png" mode="widthFix" catchtap="closeAd"></image>
+		<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
+		<view class="share-poster">分享海报</view>
+	</view>
+</view>

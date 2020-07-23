@@ -1,0 +1,43 @@
+<!-- 当前奖励金 -->
+<mp-navigation-bar color="#000000" background="#fff" title="我的奖励金" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+    <view class="first">
+        <text>当前奖励金（元）</text>
+        <text>{{data.all_bounty}}</text>
+        <text>昨日奖励金:{{data.bounty_yesterday}}元</text>
+        <view>
+            <text>可转奖励金:{{data.bounty_can_out}}元</text>
+            <image bindtap="onOpenNameDialog" src="/images/mine/16.png" mode="widthFix"/>
+        </view>
+        <navigator class="view" url="/pages/mine/rewardToyue/rewardToyue" hover-class="none">
+            转余额
+        </navigator> 
+    </view>
+    <view class="second">
+        <text>奖励金明细</text>
+        <scroll-view wx-if="{{list.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+            <block wx:for="{{list}}" wx:key="index">
+                <view class="list">
+                    <view class="inner">
+                        <image src="/images/mine/14.png" mode="widthFix"/>
+                        <view>
+                            <text>订单号:{{item.order_no}}</text>
+                            <text>{{item.create_time}}</text>
+                        </view>
+                        <text class="price" wx-if="{{item.sign == 1}}">+{{item.bounty_price}}元</text>
+                        <text class="price" wx-if="{{item.sign == 0}}">-{{item.bounty_price}}元</text>
+                    </view>
+                </view>
+            </block>
+            <text class="no" wx-if="{{noMore}}">~没有更多记录了~</text>
+        </scroll-view>
+        <text class="no" wx-if="{{list.length == 0}}">~没有记录~</text>
+    </view>
+</view>
+<dialog class="wenhaodialog" show="{{showNameInput}}" mask="{{ true }}" mask-closeable="{{ true }}" >
+    <view>白拿金</view>
+    <view>拼不中者平分拼团价29%现金</view>
+    <view>奖励金</view>
+    <view>邀请好友参与拼团，可得到未拼中好友获得的白拿金同等金额的50%奖励金</view>
+    <image src="/images/common/cha.png" bindtap="oncloseNameDialog" mode="widthFix"/>
+</dialog>

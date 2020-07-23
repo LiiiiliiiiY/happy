@@ -1,0 +1,39 @@
+<!-- 我的奖励金 -->
+<mp-navigation-bar color="#000000" background="#fff" title="我的奖励金" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+    <view class="first">
+        <view>
+            <text>{{data.all_bounty}}</text>
+            <text>累计奖励金(元)</text>
+        </view>
+        <view>
+            <view>
+                <text>{{data.bounty_today}}</text>
+                <text>今日奖励金(元)</text>
+            </view>
+            <view>
+                <text>{{data.bounty_week}}</text>
+                <text>近七日奖励金(元)</text>
+            </view>
+        </view>
+    </view>   
+    <view class="second">
+        <text>奖励金明细</text>
+        <scroll-view wx-if="{{list.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+            <block wx:for="{{list}}" wx:key="index">
+                <view class="list">
+                    <view class="inner">
+                        <image src="/images/mine/14.png" mode="widthFix"/>
+                        <view>
+                            <text>订单号:{{item.order_no}}</text>
+                            <text>{{item.create_time}}</text>
+                        </view>
+                        <text class="price">+{{item.bounty_price}}元</text>
+                    </view>
+                </view>
+            </block>
+            <text class="no" wx-if="{{noMore}}">~没有更多记录了~</text>
+        </scroll-view>
+        <text class="no" wx-if="{{list.length == 0}}">~没有记录~</text>
+    </view>
+</view>

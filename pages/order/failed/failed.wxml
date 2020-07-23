@@ -1,0 +1,76 @@
+<mp-navigation-bar color="#000000" background="#FFFFFF" title="拼团未中"></mp-navigation-bar>
+<view class="title">拼团成功，你未拼中商品，喜得白拿金！</view>
+<view class="money-text">
+	<text class="big">{{ orderInfo.payment_price }}</text>
+	<text>元</text>
+	<text class="big">+</text>
+	<text class="big">{{ orderInfo.balance }}</text>
+	<text>元</text>
+</view>
+<view class="sub-title">全款原路返回 白拿金已到余额</view>
+<view class="check-container">
+	<navigator class="check" url="/pages/mine/my-balance/my-balance">查看余额</navigator>
+</view>
+
+<view class="person">
+	<view class="item {{ item.is_start ? 'item-leader' : '' }} {{ item.is_get ? 'win' : '' }}" wx:for="{{ memberPreview }}" wx:key="id">
+		<view class="leader" wx:if="{{ item.is_start }}">团长</view>
+		<image class="win-h" wx:if="{{ item.is_get }}" src="/images/mine/h.png" mode="widthFix"></image>
+		<image src="{{ item.avatar }}" mode="widthFix"></image>
+		<image src="/images/mine/31.png" mode="widthFix" wx:if="{{ !item.avatar }}"></image>
+		<view class="money" wx:if="{{ item.balance }}">{{ item.is_get ? '抢中' : '得' + item.balance + '元' }}</view>
+	</view>
+	<view class="item">
+		<image src="/images/order/circle.png" mode="widthFix" wx:if="{{ orderInfo.user.length > 4 }}" bindtap="openPersonDialog"></image>
+		<image src="/images/mine/31.png" mode="widthFix" wx:else></image>
+	</view>
+</view>
+<view class="list">
+	<view class="list-item">
+		<view class="left">
+			<image class="left-img" src="{{ orderInfo.goods_img }}" mode="widthFix"></image>
+		</view>
+		<view class="right">
+			<view class="right-title">{{ orderInfo.goods_name }}</view>
+			<view class="right-sale">白拿{{ orderInfo.white_price }}元</view>
+			<view class="get">
+				<view class="price">￥{{ orderInfo.goods_price }}</view>
+			</view>
+		</view>
+	</view>
+</view>
+<view class="btn-list">
+	<view class="btn-item" bindtap="goHome">回首页</view>
+	<view class="btn-item one-more" bindtap="oneMore">
+		再拼一单
+		<view class="tip">邀请好友开小团更挣钱</view>
+	</view>
+</view>
+<view class="intro">
+	<image src="/images/order/d.png"></image>
+	<view class="intro-con">
+		<view>参与小团的好处:</view>
+		<view>1.参团人数越少，白拿金越高；</view>
+		<view>2.你邀请的好友参团未拼中商品赚的白拿金，也将获得高额佣金，可即刻提现。</view>
+	</view>
+</view>
+<view class="go" bindtap="launchSmall">发起小团</view>
+
+<!-- 人员弹窗 -->
+<mp-dialog class="person-dialog" show="{{personShow}}">
+	<view class="person-title">
+		成员详情
+		<image src="/images/mine/x.png" mode="widthFix" bindtap="closePersonDialog"></image>
+	</view>
+	<view class="person-list-container">
+		<view class="person-list">
+			<view class="person-item {{ item.is_start ? 'item-leader' : '' }} {{ item.is_get ? 'got' : '' }}" wx:for="{{ orderInfo.user }}" wx:key="id">
+				<view class="person-leader" wx:if="{{ item.is_start }}">团长</view>
+				<image class="got-h" wx:if="{{ item.is_get }}" src="/images/mine/h.png" mode="widthFix"></image>
+				<image src="{{ item.avatar }}" mode="widthFix"></image>
+				<view class="person-money {{ item.is_get ? 'got' : '' }}">{{ item.is_get ? '抢中' : '得' + item.balance + '元' }}</view>
+			</view>
+		</view>
+	</view>
+	<view class="person-one-more" bindtap="oneMore">再拼一单</view>
+</mp-dialog>

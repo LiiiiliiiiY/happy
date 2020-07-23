@@ -1,0 +1,80 @@
+<mp-navigation-bar color="{{color}}" background="#ffffff" title="个人信息" back="{{true}}"></mp-navigation-bar>
+
+<view class="container">
+
+	<view class="title">基本信息</view>
+
+	<view class="list">
+
+		<view class="box">
+			<view class="box-left">头像</view>
+			<view class="box-right" >
+				<image src="{{userInfo.avatarUrl}}"></image>
+				<!-- <text class="iconfont iconxiangyou"></text> -->
+			</view>
+		</view>
+
+		<view class="box">
+			<view class="box-left">手机号</view>
+			<view class="box-right">{{userInfo.mobile}}</view>
+		</view>
+
+		<view class="box">
+			<view class="box-left">姓名</view>
+			<view class="box-right" bindtap="onOpenNameDialog">
+				<text>{{userInfo.name.length ? userInfo.name : '请填写'}}</text>
+				<text class="iconfont iconxiangyou"></text>
+			</view>
+		</view>
+
+		<view class="box">
+			<view class="box-left">性别</view>
+			<view class="box-right">
+				<picker range="{{sexyList}}" range-key="name" bindchange="onSexyChange">
+					<view class="flex-box">
+						<view class="picker">{{userSexyName.length ? userSexyName : '请选择'}}</view>
+						<text class="iconfont iconxiangyou"></text>
+					</view>
+				</picker>
+			</view>
+		</view>
+
+		<view class="box">
+			<view class="box-left">生日</view>
+			<view class="box-right">
+				<picker mode="date" value="{{userInfo.birthday}}" start="1980-01-01" end="2020-12-31" bindchange="onBirthdayChange">
+					<view class="flex-box">
+						<view class="picker">{{userInfo.birthday.length ? userInfo.birthday : '请选择'}}</view>
+						<text class="iconfont iconxiangyou"></text>
+					</view>
+				</picker>
+			</view>
+		</view>
+
+		<view class="box">
+			<view class="box-left">地区</view>
+			<view class="box-right">
+				<picker mode="region" value="{{userInfo.region}}" bindchange="onRegionChange">
+					<view class="flex-box">
+						<view class="picker">{{userInfo.region.length ? userInfo.region : '请选择'}}</view>
+						<text class="iconfont iconxiangyou"></text>
+					</view>
+				</picker>
+			</view>
+		</view>
+
+		<navigator url="/pages/mine/my-address/my-address" hover-class="none">
+			<view class="box box-last">
+				<view class="box-left">收货地址</view>
+				<view class="box-right">
+					<text class="iconfont iconxiangyou"></text>
+				</view>
+			</view>
+		</navigator>
+
+  	</view>
+</view>
+<dialog show="{{showNameInput}}" buttons="{{ nameInputBtnList }}" title="输入姓名" mask="{{ true }}" mask-closeable="{{ true }}" 
+bindclose="onCloseNameDialog" bindbuttontap="onNameInputBtnClick">
+	<input class="weui-input" placeholder="点击输入" bindinput="onUserNameInput"/>
+</dialog>

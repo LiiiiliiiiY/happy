@@ -1,0 +1,7 @@
+<view wx:if="{{mask}}" class="sheet-mask {{show ? '' : 'sheet-mask-hidden'}}" bindtap="closeSheet" catchtouchmove="preventM"></view>
+<view class="sheet {{show ? 'toggle' : ''}}" catchtouchmove="preventM">
+	<image src="/images/common/cha.png" class="icon-action" data-type="{{iconType}}" bindtap="iconTap" mode="widthFix"></image>
+    <view class="sheet-container {{title ? '' : 'no-title'}}">
+		<slot name="container"></slot>
+    </view>
+</view>

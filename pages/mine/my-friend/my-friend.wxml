@@ -1,0 +1,54 @@
+<mp-navigation-bar color="#000000" background="#fff" title="我的好友" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+    <view class="first">
+        <view>
+            <text>{{data.users_all}}</text>
+            <text>累计好友（人）</text>
+        </view>
+        <view>
+            <view>
+                <text>{{data.users_today}}</text>
+                <text>今日新增（人）</text>
+            </view>
+            <view>
+                <text>{{data.user_week}}</text>
+                <text>近七日新增（人）</text>
+            </view>
+        </view>
+    </view>   
+    <!-- <view class="second">
+        <view>全部好友</view>
+        <view class="list">
+            <image src="/images/mine/header.png" mode="widthFix"/>
+            <view>
+                <text>云淡风轻</text>
+                <text>2020年07月07日</text>
+            </view>
+        </view>
+        <view class="list">
+            <image src="/images/mine/header.png" mode="widthFix"/>
+            <view>
+                <text>云淡风轻</text>
+                <text>2020年07月07日</text>
+            </view>
+        </view>
+    </view> -->
+    <view class="second">
+        <view>全部好友</view>
+        <scroll-view wx-if="{{list.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+            <block wx:for="{{list}}" wx:key="title">
+                <view class="list">
+                    <view class="content">
+                        <image src="{{item.avatar}}" mode="widthFix"/>
+                        <view>
+                            <text>{{item.nickname}}</text>
+                            <text>{{item.create_time}}</text>
+                        </view>
+                    </view>
+                </view>
+            </block>
+            <text class="no" wx-if="{{noMore}}">~没有更多记录了~</text>
+        </scroll-view>
+        <text class="no" wx-if="{{list.length == 0}}">~没有记录~</text>
+    </view>
+</view>

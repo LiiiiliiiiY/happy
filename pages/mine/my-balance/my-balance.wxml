@@ -1,0 +1,38 @@
+<!-- 我的余额 -->
+<mp-navigation-bar color="#000000" background="#fff" title="我的余额" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+    <view class="first">
+        <view>
+            <text>余额（元）</text>
+            <text>{{balance}}</text>
+        </view>
+        <navigator class="btn" url="/pages/mine/withdraw/withdraw" hover-class="none">
+            提现
+		</navigator>
+    </view>
+    <view class="second">
+        <text>余额明细</text>
+        <scroll-view wx-if="{{list.length > 0}}" class="main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+            <block wx:for="{{list}}" wx:key="title">
+                <view class="list">
+                    <image src="/images/mine/14.png" mode="widthFix"/>
+                    <view class="content">
+                        <text wx-if="{{item.sign == 1}}">白拿金</text>
+                        <text wx-if="{{item.sign == 2}}">奖励金</text>
+                        <text wx-if="{{item.sign == 3}}">余额支付</text>
+                        <text wx-if="{{item.sign == 4}}">退款</text>
+                        <text wx-if="{{item.sign == 0}}">余额转出</text>
+                        <view>
+                            <text>订单号:{{item.order_no}}</text>
+                            <text wx-if="{{item.sign == 1 || item.sign == 2 || item.sign == 4}}">+{{item.balance_price}}</text>
+                            <text wx-if="{{item.sign == 0 || item.sign == 3}}">-{{item.balance_price}}</text>
+                        </view>
+                        <text>{{item.create_time}}</text>
+                    </view>
+                </view>
+            </block>
+            <text class="no" wx-if="{{noMore}}">~没有更多记录了~</text>
+        </scroll-view>
+        <text class="no" wx-if="{{list.length == 0}}">~没有记录~</text>
+    </view>
+</view>

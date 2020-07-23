@@ -1,0 +1,35 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="全部商品" back="{{true}}"></mp-navigation-bar>
+<mp-tabs class="tabs" tabs="{{tabs}}" activeTab="{{activeTab}}" tab-class="tab-item" tab-underline-color="#FF1A36" tab-active-text-color="#FF1A36" swiperClass="weui-tabs-swiper" bindtabclick="onTabClick">
+    <block wx:for="{{tabs}}" wx:key="title">
+		<scroll-view class="tab-content" data-set="{{item}}" slot="tab-content-{{index}}" scroll-y="{{true}}" bindscrolltolower="loadMore">
+			<view class="list">
+				<view class="list-item" wx:for="{{item.data}}" wx:key="goods_id" wx:for-item="sItem" data-id="{{sItem.goods_id}}" bindtap="checkDetail">
+					<view class="left" url="/pages/goods/goods-detail/goods-detail?id={{ sItem.goods_id }}" hover-class="none">
+						<image class="left-img" src="{{ sItem.goods_imgs }}" mode="widthFix"></image>
+					</view>
+					<view class="right">
+						<view class="right-title">{{ sItem.goods_name }}</view>
+						<view class="right-sale">最高白拿{{ sItem.white_price }}元</view>
+						<view class="right-num">已有{{ sItem.white_number }}人获白拿金</view>
+						<view class="get">
+							<view class="price">￥{{ sItem.if_akey == 1 ? sItem.akey_price : sItem.spell_price }}</view>
+							<view class="get-btn">
+								<text data-item="{{ sItem }}" data-type="{{ sItem.if_akey == 1 ? 2 : 4 }}" catchtap="buy">发起拼团</text>
+								<text wx:if="{{ sItem.if_akey == 1 }}" data-item="{{ sItem }}" data-type="{{3}}" catchtap="buy">一键参团</text>
+							</view>
+						</view>
+					</view>
+				</view>
+			</view>
+		</scroll-view>
+    </block>
+</mp-tabs>
+<!-- 授权 -->
+<view class="ad" wx:if="{{adShow}}">
+	<view class="ad-container">
+		<button class="get-infor" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
+		</button>
+		<image class="close" src="/images/index/close.png" mode="widthFix" catchtap="closeAd"></image>
+	</view>
+</view>

@@ -1,0 +1,14 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="问题详情"></mp-navigation-bar>
+<view class="container">
+    <view wx:for="{{list}}" wx:key="index" class="title" data-item="{{1}}">
+        <view data-id="{{index}}" bindtap="showFn"><text>{{item.title}}</text>
+        <image class="{{ item.show == true ? 'on' : '' }}" src="/images/mine/40.png" mode="widthFix"/></view>
+        <view wx-if="{{item.show}}" class="content">
+            {{item.desc}}
+        </view>
+    </view>
+</view>
+<button class="connect" open-type="contact" bindcontact="handleContact">
+    <image src="/images/mine/44.png" mode="widthFix"/>
+    <text>联系客服</text>
+</button>

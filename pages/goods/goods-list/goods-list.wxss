@@ -1,0 +1,142 @@
+page {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	background-color: #F9F9F9;
+}
+.nav {
+	display: flex;
+}
+.weui-tabs-bar__content {
+	padding-bottom: 15rpx;
+}
+.weui-tabs-bar__item {
+	margin: 0 25rpx;
+	font-size: 24rpx;
+}
+.tab-item {
+	padding: 30rpx 0 15rpx;
+}
+.weui-tabs-bar__item:nth-child(1) {
+	margin: 0 25rpx 0 33rpx;
+}
+.tabs, .weui-tabs-swiper, .tab-content{
+	display: flex;
+	height: 100%;
+}
+.weui-tabs {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+.list {
+	width: 100%;
+	padding: 0 20rpx;
+	box-sizing: border-box;
+	border-top: 20rpx solid #F9F9F9;
+	background-color: #FFFFFF;
+}
+.list-item {
+	display: flex;
+	align-items: flex-start;
+	justify-content: space-between;
+	padding: 36rpx 13rpx;
+	border-bottom: 1rpx solid #F9F9F9;
+	box-sizing: border-box;
+}
+.list-item .left {
+	position: relative;
+}
+.list-item .left-img {
+	width: 214rpx;
+}
+.list-item .right {
+	width: 450rpx;
+}
+.right-title {
+	overflow: hidden;
+	margin-bottom: 15rpx;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #3F3F3F;
+}
+.right-sale {
+	display: inline-block;
+	margin-bottom: 8rpx;
+	padding: 7rpx 22rpx;
+	border-radius: 25rpx;
+	font-size: 28rpx;
+	color: #FFFFFF;
+	background-color: #FF0000;
+}
+.right-num {
+	margin-bottom: 15rpx;
+	font-size: 26rpx;
+	color: #999999;
+}
+.get {
+	display: flex;
+	align-items: flex-end;
+	justify-content: space-between;
+}
+.get .price {
+	font-size: 28rpx;
+	font-weight: bold;
+	color: #FF1A36;
+}
+.get .get-btn {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+.get .get-btn text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 150rpx;
+	height: 46rpx;
+	border: 1rpx solid #ec1314;
+	border-radius: 10rpx;
+	box-sizing: border-box;
+	font-size: 30rpx;
+	font-weight: bold;
+	color: #FF1A36;
+}
+.get .get-btn text:nth-child(2) {
+	margin-left: 10rpx;
+	color: #ffffff;
+	background-color: #ec1314;
+}
+.ad {
+	position: fixed;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	z-index: 100;
+	background-color: rgba(0, 0, 0, 0.75);
+}
+.ad-container {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
+.get-infor {
+	width: 750rpx!important;
+	padding: 0;
+	margin: 0;
+	background-color: rgba(0,0,0,0);
+}
+.ad-container .ad-img {
+	width: 750rpx;
+}
+.ad-container .close {
+	position: absolute;
+	left: 50%;
+	bottom: -90rpx;
+	width: 110rpx;
+	transform: translateX(-50%);
+}
