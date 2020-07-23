@@ -1,0 +1,104 @@
+page{
+    background-color: #FBF8FB;
+}
+.head{
+    position: relative;
+}
+.banner{
+    width: 100%;
+}
+.tiao{
+    position: absolute;
+    width: 738rpx;
+    left: 6rpx;
+    bottom: -65rpx;
+    z-index: 10;
+}
+.text{
+    position: absolute;
+    left: 55rpx;
+    bottom: -7rpx;
+    font-size:28rpx;
+    color:rgba(51,51,51,1);
+    z-index: 10;
+}
+.list{
+    margin: 80rpx 0;
+}
+.list-item{
+    display: flex;
+    margin: 20rpx auto 0;
+    width:691rpx;
+    padding: 30rpx 20rpx;
+    box-sizing: border-box;
+    background:rgba(255,255,255,1);
+    border-radius:10rpx;
+}
+.list-item > image{
+    width:209rpx;
+    height:209rpx;
+    border-radius:10rpx;
+    margin-right: 20rpx;
+}
+.content{
+    width: 425rpx;
+    display: flex;
+    flex-direction: column;
+}
+.content > text:nth-child(1){
+    width: 400rpx;
+    font-size:28rpx;
+    font-weight:bold;
+    color:rgba(51,51,51,1);
+    overflow: hidden; 
+	text-overflow: ellipsis;
+	white-space: nowrap; 
+}
+.content > text:nth-child(2){
+    font-size:24rpx;
+    color:rgba(153,153,153,1);
+    margin-top: 20rpx;
+    margin-bottom: 25rpx;
+}
+.price{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.price > view:nth-child(1) text{
+    font-size:40rpx;
+    font-weight:bold;
+    color:rgba(247,41,35,1);
+}
+.price > view:nth-child(1) > text:nth-child(2){
+    font-size:28rpx;
+}
+.price > view:nth-child(2){
+    width:182rpx;
+    height:58rpx;
+    text-align: center;
+    line-height: 58rpx;
+    background:rgba(247,41,35,1);
+    border-radius:29rpx;
+    font-size:28rpx;
+    font-weight:bold;
+    color:rgba(255,255,255,1);
+}
+.progress{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20rpx;
+}
+.progress text:nth-child(1){
+    font-size:24rpx;
+    color:rgba(153,153,153,1);
+}
+.progress progress:nth-child(2){
+    width: 240rpx;
+    border-radius:7rpx;
+}
+.progress text:nth-child(3){
+    font-size:20rpx;
+    color:rgba(153,153,153,1);
+}

@@ -1,0 +1,32 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="我的夺宝" back="{{true}}"></mp-navigation-bar>
+<view class="container">
+	<view class="type-list">
+		<view wx:for="{{ allOrderTypeList }}" wx:key="index" data-value="{{ item.value }}" catchtap="onSelectOrderType">
+			<view class="{{ item.value == orderType ? 'type-sel' : '' }}">{{ item.name }}</view>
+		</view>
+	</view>
+	<scroll-view class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+		<block>
+			<view class="order-list">
+                <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+                <view class="content">
+                    <text>Apple/苹果 iPhone 11 Pro Max</text>
+                    <text>市场价：¥9999.00</text>
+                    <view class="price">
+                        <view>
+                            x10份
+                        </view>
+                        <view class="colorq">等待开奖</view>
+                        <!-- <view class="colora">已中奖</view>
+                        <view class="colorz">未中奖</view> -->
+                    </view>
+                </view>
+			</view>
+		</block>
+		<!-- <text class="no" wx-if="{{noMore}}">~没有更多记录了~</text> -->
+	</scroll-view>
+	<!-- <view class="nodata" wx-if="{{orderList.length == 0}}">
+		<image src="/images/mine/15.png" mode="widthFix"/>
+		<view bindtap="backindex">回首页</view>
+	</view> -->
+</view>

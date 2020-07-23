@@ -1,0 +1,65 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="一元夺宝" back="{{false}}"></mp-navigation-bar>
+<view class="head">
+    <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+    <image class="tiao" src="/images/yiyuan/2.png" mode="widthFix"></image>
+    <text class="text">159****5326在115分钟前参与夺宝</text>
+</view>
+<view class="list">
+    <view class="list-item">
+        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+        <view class="content">
+            <text>Apple/苹果 iPhone 11 Pro Max</text>
+            <text>市场价：¥9999.00</text>
+            <view class="progress">
+                <text>夺宝进度</text>
+                <progress percent="60" color="#F72923" />
+                <text>60%</text>
+            </view>
+            <view class="price">
+                <view>
+                    <text>¥1.00</text>
+                    <text>/份</text>
+                </view>
+                <view>立即夺宝</view>
+            </view>
+        </view>
+    </view>
+    <view class="list-item">
+        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+        <view class="content">
+            <text>Apple/苹果 iPhone 11 Pro Max</text>
+            <text>市场价：¥9999.00</text>
+            <view class="progress">
+                <text>夺宝进度</text>
+                <progress percent="60" color="#F72923" />
+                <text>60%</text>
+            </view>
+            <view class="price">
+                <view>
+                    <text>¥1.00</text>
+                    <text>/份</text>
+                </view>
+                <view>立即夺宝</view>
+            </view>
+        </view>
+    </view>
+    <view class="list-item">
+        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+        <view class="content">
+            <text>Apple/苹果 iPhone 11 Pro Max</text>
+            <text>市场价：¥9999.00</text>
+            <view class="progress">
+                <text>夺宝进度</text>
+                <progress percent="60" color="#F72923" />
+                <text>60%</text>
+            </view>
+            <view class="price">
+                <view>
+                    <text>¥1.00</text>
+                    <text>/份</text>
+                </view>
+                <view>立即夺宝</view>
+            </view>
+        </view>
+    </view>
+</view>

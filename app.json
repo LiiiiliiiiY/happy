@@ -1,74 +1,76 @@
 {
-  "usingComponents": {
-    "mp-navigation-bar": "/components/navigation-bar/navigation-bar"
-  },
-  "pages": [
-    "pages/index/index",
-    "pages/mine/mine/mine",
-    "pages/mine/withdraw/withdraw",
-    "pages/mine/rewardToyue/rewardToyue",
-    "pages/mine/my-order/my-order",
-    "pages/mine/track-order/track-order",
-    "pages/order/failed/failed",
-    "pages/order/winning/winning",
-    "pages/order/group-booking/group-booking",
-    "pages/mine/my-order-detail/my-order-detail",
-    "pages/mine/my-address/my-address",
-    "pages/goods/goods-detail/goods-detail",
-    "pages/order/confirm-order/confirm-order",
-    "pages/making-money/making-money",
-    "pages/goods/rule/rule",
-    "pages/mine/my-friend/my-friend",
-    "pages/mine/current-reward/current-reward",
-    "pages/mine/my-reward/my-reward",
-    "pages/mine/question/question",
-    "pages/mine/my-balance/my-balance",
-    "pages/goods/goods-list/goods-list",
-    "pages/guide/guide/guide",
-    "pages/guide/tel/tel",
-    "pages/mine/my-info/my-info",
-    "pages/mine/my-add-address/my-add-address",
-    "pages/order/share-failed/share-failed"
-  ],
-  "window": {
-    "backgroundTextStyle": "light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle": "black",
-    "navigationStyle": "custom"
-  },
-  "tabBar": {
-    "color": "#333333",
-    "selectedColor": "#F62500",
-    "backgroundColor": "#fff",
-    "borderStyle": "black",
-    "list": [
-      {
-        "pagePath": "pages/index/index",
-        "text": "首页",
-        "iconPath": "images/common/home.png",
-        "selectedIconPath": "images/common/home_on.png"
-      },
-      {
-        "pagePath": "pages/making-money/making-money",
-        "text": "赚钱",
-        "iconPath": "images/common/buy.png",
-        "selectedIconPath": "images/common/buy_on.png"
-      },
-      {
-        "pagePath": "pages/mine/mine/mine",
-        "text": "我的",
-        "iconPath": "images/common/mine.png",
-        "selectedIconPath": "images/common/mine_on.png"
-      },
-      {
-        "pagePath": "pages/mine/mine/mine",
-        "text": "我的",
-        "iconPath": "images/common/mine.png",
-        "selectedIconPath": "images/common/mine_on.png"
-      }
-    ]
-  },
-  "style": "v2",
-  "sitemapLocation": "sitemap.json"
+    "usingComponents": {
+        "mp-navigation-bar": "/components/navigation-bar/navigation-bar"
+    },
+    "pages": [
+        "pages/oneyuan/myyiyuan/myyiyuan",
+        "pages/oneyuan/oneyuan/oneyuan",
+        "pages/index/index",
+        "pages/mine/mine/mine",
+        "pages/mine/withdraw/withdraw",
+        "pages/mine/rewardToyue/rewardToyue",
+        "pages/mine/my-order/my-order",
+        "pages/mine/track-order/track-order",
+        "pages/order/failed/failed",
+        "pages/order/winning/winning",
+        "pages/order/group-booking/group-booking",
+        "pages/mine/my-order-detail/my-order-detail",
+        "pages/mine/my-address/my-address",
+        "pages/goods/goods-detail/goods-detail",
+        "pages/order/confirm-order/confirm-order",
+        "pages/making-money/making-money",
+        "pages/goods/rule/rule",
+        "pages/mine/my-friend/my-friend",
+        "pages/mine/current-reward/current-reward",
+        "pages/mine/my-reward/my-reward",
+        "pages/mine/question/question",
+        "pages/mine/my-balance/my-balance",
+        "pages/goods/goods-list/goods-list",
+        "pages/guide/guide/guide",
+        "pages/guide/tel/tel",
+        "pages/mine/my-info/my-info",
+        "pages/mine/my-add-address/my-add-address",
+        "pages/order/share-failed/share-failed"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "WeChat",
+        "navigationBarTextStyle": "black",
+        "navigationStyle": "custom"
+    },
+    "tabBar": {
+        "color": "#333333",
+        "selectedColor": "#F62500",
+        "backgroundColor": "#fff",
+        "borderStyle": "black",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "text": "首页",
+                "iconPath": "images/common/home.png",
+                "selectedIconPath": "images/common/home_on.png"
+            },
+            {
+                "pagePath": "pages/making-money/making-money",
+                "text": "赚钱",
+                "iconPath": "images/common/buy.png",
+                "selectedIconPath": "images/common/buy_on.png"
+            },
+            {
+                "pagePath": "pages/oneyuan/oneyuan/oneyuan",
+                "text": "一元夺宝",
+                "iconPath": "images/common/zuanshi_.png",
+                "selectedIconPath": "images/common/zuanshi.png"
+            },
+            {
+                "pagePath": "pages/mine/mine/mine",
+                "text": "我的",
+                "iconPath": "images/common/mine.png",
+                "selectedIconPath": "images/common/mine_on.png"
+            }
+        ]
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
 }
