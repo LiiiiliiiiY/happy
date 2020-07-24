@@ -3,6 +3,7 @@
         "mp-navigation-bar": "/components/navigation-bar/navigation-bar"
     },
     "pages": [
+        "pages/oneyuan/detail/detail",
         "pages/oneyuan/myyiyuan/myyiyuan",
         "pages/oneyuan/oneyuan/oneyuan",
         "pages/index/index",

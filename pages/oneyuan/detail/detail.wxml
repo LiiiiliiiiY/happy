@@ -1,0 +1,27 @@
+<mp-navigation-bar color="#000000" background="#ffffff" title="详情" back="{{true}}"></mp-navigation-bar>
+<image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+<view class="info">
+    <image class="banner" src="/images/yiyuan/3.png" mode="widthFix"></image>
+    <view>
+        <text>Apple/苹果 iPhone 11 Pro Max</text>
+        <text>市场价：¥9999.00</text>
+    </view>
+    <view>
+        <text>夺宝</text>
+        <text>¥1.00/次</text>
+    </view>
+</view>
+<view class="progressBox">
+    <text class="title">一元夺宝第184期（苹果 iPhone 11 pro max）</text>
+    <view class="duobaoing">
+        <text>夺宝中</text>
+        <text>据结束：20 天 11 时 30 分 58 秒</text>
+    </view>
+    <progress percent="60" color="#F72923" />
+    <text class="gong">共需400份，剩余253份，开奖进度36.73%</text>
+</view>
+<view class="shangqi">
+    <image class="banner" src="/images/yiyuan/4.png" mode="widthFix"></image>
+    <text>上期中奖用户：159****2699，请及时...</text>
+</view>
+

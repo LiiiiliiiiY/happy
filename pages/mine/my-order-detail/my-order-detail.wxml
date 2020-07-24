@@ -60,7 +60,7 @@
 	</view>
 	<view class="pintuan-detail">
 		<view class="title">
-			<text wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15 && orderInfo.is_pay == 1}}">待分享，还差{{orderInfo.diff_num}}人</text>
+			<text wx-if="{{orderInfo.group_status == 1 && orderInfo.diff_num > 0 && orderInfo.is_pay == 1}}">待分享，还差{{orderInfo.diff_num}}人</text>
 			<text wx-if="{{orderInfo.group_status == 3}}">拼团失败</text>
 			<text wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}">拼团成功，恭喜您拼中商品</text>
 			<text wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}">拼团成功，很遗憾您未拼中商品！</text>
