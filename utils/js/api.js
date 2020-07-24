@@ -241,6 +241,10 @@ const api = {
 	groupBooking(data, showError) {
 		return request('/api/order/detail', data, true, showError)
 	},
+	//一元夺宝
+	Lootgoods(data, showError) {
+		return request('/api/Lootgoods/index', data, true, showError)
+	},
 }
 
 export default api

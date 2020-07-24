@@ -24,4 +24,49 @@
     <image class="banner" src="/images/yiyuan/4.png" mode="widthFix"></image>
     <text>上期中奖用户：159****2699，请及时...</text>
 </view>
-
+<view class="list">
+    <text class="title">夺宝名单</text>
+    <block>
+        <view class="content">
+            <view class="left">
+                <text>138****5623</text>
+                <text>2020-07-19 22:45:36</text>
+            </view>
+            <view class="right">
+                夺宝
+                <text>10份</text>
+            </view>
+        </view>
+        <view class="content">
+            <view class="left">
+                <text>138****5623</text>
+                <text>2020-07-19 22:45:36</text>
+            </view>
+            <view class="right">
+                夺宝
+                <text>10份</text>
+            </view>
+        </view>
+        <view class="content">
+            <view class="left">
+                <text>138****5623</text>
+                <text>2020-07-19 22:45:36</text>
+            </view>
+            <view class="right">
+                夺宝
+                <text>10份</text>
+            </view>
+        </view>
+    </block>
+</view>
+<view class="footer" bindtap="openMoneyDialog">开始夺宝</view>
+<pull-up-sheet show="{{moneyShow}}" title="产品参数">
+	<view class="money-wrap" slot="container">
+		<view class="money-warp-title">选择购买份数</view>
+		<view class="money-warp-container">
+            <input class="weui-input" value="{{fen}}" placeholder="份数" bindinput="feninput"/>
+            <view>份</view>
+		</view>
+		<view class="confirm" bindtap="closeMoneyDialog">确定</view>
+	</view>
+</pull-up-sheet>

@@ -5,7 +5,8 @@ Page({
      * 页面的初始数据
      */
     data: {
-
+        moneyShow: false,
+        fen: ''
     },
 
     /**
@@ -15,6 +16,21 @@ Page({
 
     },
 
+	openMoneyDialog() {
+        console.log(111)
+		this.setData({
+			moneyShow: true
+		})
+	},
+	closeMoneyDialog() {
+		this.setData({
+			moneyShow: false
+		})
+    },
+    
+    feninput(){
+
+    },
     /**
      * 生命周期函数--监听页面初次渲染完成
      */
