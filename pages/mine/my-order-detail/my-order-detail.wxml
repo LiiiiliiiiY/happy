@@ -44,13 +44,22 @@
 				<text>{{orderInfo.address}}</text>
 			</view>
 		</view>
-		<navigator class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}" url="/pages/mine/track-order/track-order?id={{orderId}}" hover-class="none">
+		<navigator class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2 && ship_num}}" url="/pages/mine/track-order/track-order?id={{orderId}}" hover-class="none">
 			<image src="/images/mine/25.png" mode="widthFix"/>
 			<view class="content">
 				<view>
 					<text>您的快递已发货</text>
 				</view>
 				<text>快递单号:{{orderInfo.ship_num}}</text>
+			</view>
+		</navigator>
+		<navigator class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2 && !ship_num}}" url="/pages/mine/track-order/track-order?id={{orderId}}" hover-class="none">
+			<image src="/images/mine/25.png" mode="widthFix"/>
+			<view class="content">
+				<view>
+					<text>未发货</text>
+				</view>
+				<text></text>
 			</view>
 		</navigator>
 		<view class="err" wx-if="{{orderInfo.group_status == 3}}">

@@ -29,8 +29,6 @@ Page({
         this.setData({
             orderId: options.id ? options.id : options
         })
-        this.getOrderInfo()
-        console.log('loading')
     },
     onHide(){
         clearInterval(setInterva)
@@ -39,6 +37,7 @@ Page({
         clearInterval(setInterva)
     },
     onShow() {
+        this.getOrderInfo()
     },
     //倒计时
     countDown:function(){
