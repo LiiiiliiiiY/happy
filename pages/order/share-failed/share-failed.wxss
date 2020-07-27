@@ -282,7 +282,6 @@ page {
 .person-list {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
 	flex-wrap: wrap;
 	padding: 40rpx 20rpx 0;
 	background-color: #FFFFFF;
@@ -294,7 +293,11 @@ page {
 	justify-content: center;
 	width: 118rpx;
 	margin-bottom: 35rpx;
+	margin-right: 15rpx;
 	position: relative;
+}
+.person-item:nth-child(5n) {
+	margin-right: 0;
 }
 .person-money.got {
 	color: #000000;

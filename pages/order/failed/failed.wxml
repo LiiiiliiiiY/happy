@@ -4,7 +4,7 @@
 	<text class="big">{{ orderInfo.payment_price }}</text>
 	<text>元</text>
 	<text class="big">+</text>
-	<text class="big">{{ orderInfo.balance }}</text>
+	<text class="big">{{ orderInfo.get_white_price }}</text>
 	<text>元</text>
 </view>
 <view class="sub-title">全款原路返回 白拿金已到余额</view>

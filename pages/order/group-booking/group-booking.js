@@ -141,7 +141,7 @@ Page({
 						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=1&fromId=' + this.data.fromId
 					})
 				} else {
-					wx.navigateTo({
+					wx.reLaunch({
 						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
 					})
 				}
@@ -151,7 +151,7 @@ Page({
 						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=0&fromId=' + this.data.fromId
 					})
 				} else {
-					wx.navigateTo({
+					wx.reLaunch({
 						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
 					})
 				}
