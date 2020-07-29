@@ -1,64 +1,40 @@
 <mp-navigation-bar color="#000000" background="#ffffff" title="一元夺宝" back="{{false}}"></mp-navigation-bar>
 <view class="head">
     <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
-    <image class="tiao" src="/images/yiyuan/2.png" mode="widthFix"></image>
-    <text class="text">159****5326在115分钟前参与夺宝</text>
+    <navigator class="view" url="/pages/oneyuan/myyiyuan/myyiyuan" hover-class="none">
+        <image class="tiao" src="/images/yiyuan/2.png" mode="widthFix"></image>
+    </navigator>
+    <!-- <text class="text">159****5326在115分钟前参与夺宝</text> -->
+    <view class="text">
+        <swiper class="swiper_container" vertical="true" autoplay="true" circular="true" interval="2000">
+            <block wx:for="{{rollArr}}" wx:key="index">
+                <swiper-item>
+                <view class="swiper_item">{{item.message}}</view>
+                </swiper-item>
+            </block>
+        </swiper>
+    </view>
 </view>
 <view class="list">
-    <view class="list-item">
-        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+    <view class="list-item" wx:for="{{ infor }}" wx:key="index">
+        <image src="{{item.goods_imgs}}" mode="widthFix"></image>
         <view class="content">
-            <text>Apple/苹果 iPhone 11 Pro Max</text>
-            <text>市场价：¥9999.00</text>
+            <text>{{item.goods_name}}</text>
+            <text>市场价：¥{{item.market_price}}</text>
             <view class="progress">
                 <text>夺宝进度</text>
-                <progress percent="60" color="#F72923" />
-                <text>60%</text>
+                <progress percent="{{item.progress_bar}}" color="#F72923" />
+                <text>{{item.progress_bar}}%</text>
             </view>
             <view class="price">
                 <view>
-                    <text>¥1.00</text>
+                    <text>¥{{item.every_price}}</text>
                     <text>/份</text>
                 </view>
-                <view>立即夺宝</view>
-            </view>
-        </view>
-    </view>
-    <view class="list-item">
-        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
-        <view class="content">
-            <text>Apple/苹果 iPhone 11 Pro Max</text>
-            <text>市场价：¥9999.00</text>
-            <view class="progress">
-                <text>夺宝进度</text>
-                <progress percent="60" color="#F72923" />
-                <text>60%</text>
-            </view>
-            <view class="price">
-                <view>
-                    <text>¥1.00</text>
-                    <text>/份</text>
-                </view>
-                <view>立即夺宝</view>
-            </view>
-        </view>
-    </view>
-    <view class="list-item">
-        <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
-        <view class="content">
-            <text>Apple/苹果 iPhone 11 Pro Max</text>
-            <text>市场价：¥9999.00</text>
-            <view class="progress">
-                <text>夺宝进度</text>
-                <progress percent="60" color="#F72923" />
-                <text>60%</text>
-            </view>
-            <view class="price">
-                <view>
-                    <text>¥1.00</text>
-                    <text>/份</text>
-                </view>
-                <view>立即夺宝</view>
+                <navigator class="view" url="/pages/oneyuan/detail/detail?id={{item.loot_id}}" hover-class="none">
+                    立即夺宝
+                </navigator>
+                <!-- <view>立即夺宝</view> -->
             </view>
         </view>
     </view>

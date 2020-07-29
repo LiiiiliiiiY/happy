@@ -1,5 +1,6 @@
 .banner{
     width: 100%;
+    height: 700rpx;
     display:block;
 }
 .info{
@@ -32,6 +33,10 @@
     align-items: center;
 }
 .info view:nth-child(2) text:nth-child(1){
+    width: 550rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     font-size:32rpx;
     font-weight:bold;
     margin-bottom: 10rpx;
@@ -92,6 +97,10 @@ color:rgba(153,153,153,1);
     z-index: -1;
 }
 .shangqi text{
+    width: 540rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
     position: absolute;
     top: 35rpx;
     left: 160rpx;
@@ -220,4 +229,16 @@ color:rgba(153,153,153,1);
     text-align: center;
     line-height: 88rpx;
     letter-spacing: 25rpx;
+}
+.u-wrp-bnr {
+  width: 100%;
+  height: 200rpx;
+  display: block;
+  position: relative;
+  top: 100rpx;
+  background: #f0f0f0;
+}
+.u-img-slide {
+  width: 100%;
+  height: inherit;
 }

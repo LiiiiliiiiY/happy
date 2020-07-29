@@ -46,7 +46,7 @@ Page({
 		})
 	},
 	getOrderList() {
-		wx.$api.orders({
+		wx.$api.my_loot({
 			page: this.data.page,
 			limit: 10,
 			type: this.data.orderType

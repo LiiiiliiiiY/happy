@@ -30,14 +30,14 @@ Page({
             orderId: options.id ? options.id : options
         })
     },
+    onShow() {
+        this.getOrderInfo()
+    },
     onHide(){
         clearInterval(setInterva)
     },
     onUnload(){
         clearInterval(setInterva)
-    },
-    onShow() {
-        this.getOrderInfo()
     },
     //倒计时
     countDown:function(){
@@ -60,7 +60,6 @@ Page({
           min: that.timeFormat(min),
           sec: that.timeFormat(sec)
         })
-        console.log(time <= 0)
         // 每1000ms刷新一次
         if (time <= 0) {
             console.log(time)
@@ -69,13 +68,6 @@ Page({
                 this.onLoad(this.data.orderId)
             }, 1500);
         }
-        // if (time>0){
-        //     setTimeout(this.countDown, 1000);
-        // }else{
-        //     setTimeout(() => {
-        //         this.onLoad(this.data.orderId)
-        //     }, 1500);
-        // }
     },
       //小于10的格式化函数（2变成02）
     timeFormat(param) {

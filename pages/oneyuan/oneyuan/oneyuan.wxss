@@ -15,12 +15,16 @@ page{
     z-index: 10;
 }
 .text{
+    width: 450rpx;
     position: absolute;
     left: 55rpx;
-    bottom: -7rpx;
+    bottom: -28rpx;
     font-size:28rpx;
     color:rgba(51,51,51,1);
     z-index: 10;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 .list{
     margin: 80rpx 0;
@@ -73,7 +77,7 @@ page{
 .price > view:nth-child(1) > text:nth-child(2){
     font-size:28rpx;
 }
-.price > view:nth-child(2){
+.price > .view{
     width:182rpx;
     height:58rpx;
     text-align: center;
@@ -101,4 +105,17 @@ page{
 .progress text:nth-child(3){
     font-size:20rpx;
     color:rgba(153,153,153,1);
+}
+.swiper_container {
+    height: 55rpx;
+    width: 80vw;
+}
+  
+.swiper_item {
+    width: 450rpx;
+    font-size: 25rpx;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    letter-spacing: 2px;
 }

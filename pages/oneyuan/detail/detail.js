@@ -1,4 +1,4 @@
-// pages/oneyuan/detail/detail.js
+var setInterva
 Page({
 
     /**
@@ -6,16 +6,93 @@ Page({
      */
     data: {
         moneyShow: false,
-        fen: ''
+        fen: '',
+        lootId: '',
+        infor: '',
+        endTime: '',
+        dataTime: '',
+        day: '',
+        hou: '',
+        min: '',
+        sec: '',
+        timeend:false
     },
 
     /**
      * 生命周期函数--监听页面加载
      */
     onLoad: function (options) {
-
+        this.setData({
+            lootId: options.id ? options.id : options
+        })
     },
-
+    onShow() {
+        this.getduoInfo()
+    },
+    //获取夺宝信息
+    getduoInfo() {
+        wx.$api.LootDetail({
+            loot_id: this.data.lootId
+        }).then(res => {
+			this.setData({
+                infor: res
+            })
+            setInterva = setInterval(() => {
+                this.countDown()
+            },1000)
+		}).catch(res => {})
+    },
+    onHide(){
+        clearInterval(setInterva)
+    },
+    onUnload(){
+        clearInterval(setInterva)
+    },
+    //倒计时
+    countDown:function(){
+        var that = this;
+        var nowTime = new Date().getTime();//现在时间（时间戳）
+        var endTime =  this.data.infor.end_time * 1000
+        // var endTime =  1596002350000
+        var time = (endTime-nowTime)/1000;//距离结束的毫秒数
+        // 获取天、时、分、秒
+        let day = parseInt(time / (60 * 60 * 24));
+        let hou = parseInt(time % (60 * 60 * 24) / 3600);
+        let min = parseInt(time % (60 * 60 * 24) % 3600 / 60);
+        let sec = parseInt(time % (60 * 60 * 24) % 3600 % 60);
+        day = that.timeFormin(day),
+        hou = that.timeFormin(hou),
+        min = that.timeFormin(min),
+        sec = that.timeFormin(sec)
+        that.setData({
+          day: that.timeFormat(day),
+          hou: that.timeFormat(hou),
+          min: that.timeFormat(min),
+          sec: that.timeFormat(sec)
+        })
+        // 每1000ms刷新一次
+        if (time <= 0) {
+            that.setData({
+                timeend: true
+            })
+            wx.showToast({
+                title: '夺宝结束啦！',
+                icon:"none"
+            })
+            clearInterval(setInterva)
+            setTimeout(() => {
+                this.onLoad(this.data.lootId)
+            }, 1500);
+        }
+    },
+      //小于10的格式化函数（2变成02）
+    timeFormat(param) {
+        return param < 10 ? '0' + param : param;
+    },
+      //小于0的格式化函数（不会出现负数）
+    timeFormin(param) {
+        return param < 0 ? 0: param;
+    },
 	openMoneyDialog() {
         console.log(111)
 		this.setData({
@@ -31,52 +108,5 @@ Page({
     feninput(){
 
     },
-    /**
-     * 生命周期函数--监听页面初次渲染完成
-     */
-    onReady: function () {
 
-    },
-
-    /**
-     * 生命周期函数--监听页面显示
-     */
-    onShow: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面隐藏
-     */
-    onHide: function () {
-
-    },
-
-    /**
-     * 生命周期函数--监听页面卸载
-     */
-    onUnload: function () {
-
-    },
-
-    /**
-     * 页面相关事件处理函数--监听用户下拉动作
-     */
-    onPullDownRefresh: function () {
-
-    },
-
-    /**
-     * 页面上拉触底事件的处理函数
-     */
-    onReachBottom: function () {
-
-    },
-
-    /**
-     * 用户点击右上角分享
-     */
-    onShareAppMessage: function () {
-
-    }
 })

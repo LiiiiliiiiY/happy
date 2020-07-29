@@ -1,3 +1,3 @@
 export default {
-	requestPath: "https://ztt.xinrytech.com"
+	requestPath: "http://148.70.37.154"
 }
