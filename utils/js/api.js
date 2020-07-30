@@ -243,24 +243,24 @@ const api = {
 	},
 	//一元夺宝
 	Lootgoods(data, showError) {
-		return request('/api/Lootgoods/index', data, true, showError)
+		return request('/api/Lootgoods/index', mergeParam(data), true, showError)
 	},
 	//滚动消息
 	roll(data, showError) {
-		return request('/api/Lootgoods/roll_message', data, true, showError)
+		return request('/api/Lootgoods/roll_message', mergeParam(data), true, showError)
 	},
 	//夺宝详情页
 	LootDetail(data, showError) {
-		return request('/api/Lootgoods/goods_desc', data, true, showError)
+		return request('/api/Lootgoods/goods_desc', mergeParam(data), true, showError)
 	},
 	//添加夺宝
 	add_order(data, showError) {
-		return request('/api/Lootgoods/add_order', data, true, showError)
+		return request('/api/Lootgoods/add_order', mergeParam(data), true, showError)
 	},
 	//我的夺宝列表
 	my_loot(data, showError) {
-		return request('/api/Lootgoods/my_loot', data, true, showError)
-	}
+		return request('/api/Lootgoods/my_loot', mergeParam(data), true, showError)
+	},
 }
 
 export default api

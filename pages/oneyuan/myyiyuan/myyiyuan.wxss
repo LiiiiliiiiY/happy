@@ -193,3 +193,11 @@ color:rgba(153,153,153,1);
     font-size:35rpx;
     color:rgba(255,255,255,1);
 }
+.no{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 90rpx;
+    font-size:23rpx;
+    color:rgba(0,0,0,1);
+}

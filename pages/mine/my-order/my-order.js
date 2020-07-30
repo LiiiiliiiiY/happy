@@ -13,7 +13,8 @@ Page({
 		],
 		orderList: [],
 		page: 1,
-		pageCount: 1
+		pageCount: 1,
+		noMore:false
 	},
 	/**
 	 * 生命周期函数--监听页面加载
@@ -54,6 +55,11 @@ Page({
 			limit: 10,
 			type: this.data.orderType
 		}, true).then(res => {
+			if (res.last_page == this.data.page || !res.last_page) {
+				this.setData({
+					noMore: true
+				})
+			}
 			this.setData({
 				pageCount: res.last_page,
 				orderList: this.data.page == 1 ? res.data : this.data.orderList.concat(res.data)

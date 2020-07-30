@@ -48,14 +48,37 @@ Page({
 	getOrderList() {
 		wx.$api.my_loot({
 			page: this.data.page,
-			limit: 10,
+			limit: 8,
 			type: this.data.orderType
 		}, true).then(res => {
+			if (res.last_page == this.data.page || !res.last_page) {
+				this.setData({
+					noMore: true
+				})
+			}
 			this.setData({
 				pageCount: res.last_page,
 				orderList: this.data.page == 1 ? res.data : this.data.orderList.concat(res.data)
 			})
 		})
+	},
+	/**
+	 * 页面上拉触底事件的处理函数
+	 */
+	loadMore() {
+		console.log(this.data.pageCount)
+		if(this.data.page < this.data.pageCount) {
+			this.setData({
+				page: this.data.page + 1
+			})
+			this.getOrderList()
+		}
+	},
+	//回到首页
+	backindex(){
+		wx.switchTab({
+            url: '/pages/index/index'
+        })
 	},
 	onSelectOrderType(ev) {
 		if(this.data.orderType == ev.currentTarget.dataset.value) return
