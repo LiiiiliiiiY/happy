@@ -13,6 +13,7 @@
 	transform: translateX(-50%);
 	width: 280rpx;
 	height: 80rpx;
+	opacity: 0;
 }
 .contact {
 	position: absolute;

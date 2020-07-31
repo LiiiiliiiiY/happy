@@ -1,30 +1,6 @@
 <mp-navigation-bar color="#000000" background="#FFFFFF" title="团赚赚规则" back="{{false}}"></mp-navigation-bar>
 <view class="rule">
-	<image src="https://ztt.xinrytech.com/uploads/images/21.jpg" mode="widthFix"></image>
-	<view class="share" bindtap="share"></view>
+	<image src="https://hihuanlepintuan.cn/assets/img/mm.png" mode="widthFix"></image>
+	<button class="share" open-type="share"></button>
 	<button class="contact" open-type="contact" bindcontact="handleContact"></button>
-</view>
-<!-- 分享弹窗 -->
-<pull-up-sheet show="{{shareShow}}">
-	<view class="share-wrap" slot="container">
-		<view class="share-title">分享至</view>
-		<view class="share-container">
-			<button class="share-item" open-type="share">
-				<image src="/images/common/wechat.png" mode="widthFix"></image>
-				<view>微信好友</view>
-			</button>
-			<view class="share-item" bindtap="shareToFriend">
-				<image src="/images/common/friend.png" mode="widthFix"></image>
-				<view>微信朋友圈</view>
-			</view>
-		</view>
-	</view>
-</pull-up-sheet>
-<!-- 分享到朋友圈 -->
-<view class="ad" wx:if="{{imgShow}}">
-	<view class="ad-container">
-		<image class="close" src="/images/common/close-w.png" mode="widthFix" catchtap="closeAd"></image>
-		<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
-		<view class="share-poster">分享海报</view>
-	</view>
 </view>

@@ -29,11 +29,9 @@
 			<image src="{{item}}" class="slide-image" mode="widthFix" bindtap="imgShow" data-src="{{item}}" bindload="imageLoad"/>
 		</swiper-item>
 	</swiper>
-	<view class="share" bindtap="share">
+	<button class="share" open-type="share">
 		<image src="/images/detail/b.png" mode="widthFix"></image>
-		<text>生成海报</text>
-		<text>分享赚钱</text>
-	</view>
+	</button>
 	<view class="price">
 		<image src="/images/detail/c.png" mode="widthFix"></image>
 		<view class="price-box">
@@ -116,21 +114,9 @@
 				<image src="/images/common/wechat.png" mode="widthFix"></image>
 				<view>微信好友</view>
 			</button>
-			<view class="share-item" bindtap="shareToFriend">
-				<image src="/images/common/friend.png" mode="widthFix"></image>
-				<view>微信朋友圈</view>
-			</view>
 		</view>
 	</view>
 </pull-up-sheet>
-<!-- 分享到朋友圈 -->
-<view class="ad" wx:if="{{imgShow}}">
-	<view class="ad-container">
-		<image class="close" src="/images/common/close-w.png" mode="widthFix" catchtap="closeAd"></image>
-		<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
-		<view class="share-poster">分享海报</view>
-	</view>
-</view>
 <!-- 授权 -->
 <view class="ad" wx:if="{{adShow}}">
 	<view class="login-container">

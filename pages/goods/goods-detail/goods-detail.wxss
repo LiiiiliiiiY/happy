@@ -53,10 +53,13 @@ page {
 	z-index: 10;
 	color: #FFFFFF;
 	font-size: 20rpx;
-	width: 112rpx;
-	height: 112rpx;
+	width: 60rpx!important;
+	height: 60rpx;
+	margin-left: 0;
+	margin-right: 0;
+	padding: 0;
+	background-color: rgba(0,0,0,0);
 	border-radius: 10rpx;
-	background-color: #EC1314;
 }
 .share image {
 	display: block;
