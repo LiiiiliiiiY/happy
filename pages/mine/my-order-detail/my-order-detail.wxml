@@ -1,4 +1,10 @@
-<mp-navigation-bar color="#000000" background="#ffffff" title="订单详情"></mp-navigation-bar>
+<mp-navigation-bar color="#000000" background="#ffffff" title="订单详情" back="{{backFlag}}">
+	<view class="left" slot="left" wx:if="{{!backFlag}}">
+		<view class="home" bindtap="goHome">
+			<text class="iconfont iconshouye1"></text>
+		</view>
+	</view>
+</mp-navigation-bar>
 <view class="container">
 	<view class="wc-title fail-title" wx-if="{{orderInfo.group_status == 3}}">
 		<image src="/images/mine/30.png" mode="widthFix"/>
@@ -24,7 +30,16 @@
 		</view>
 		<image src="/images/mine/26.png" mode="widthFix"/>
 	</view>
-	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1}}">
+	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
+		<image src="/images/mine/30.png" mode="widthFix"/>
+		<view>
+			<text>订单待支付</text>
+			<text>已有754513人未拼中，最高获得白拿金72元</text>
+			<view>请在<text>{{hou}}:{{min}}:{{sec}}</text>内完成支付</view>
+		</view>
+		<image src="/images/mine/32.png" mode="widthFix"/>
+	</view>
+	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 1}}">
 		<image src="/images/mine/30.png" mode="widthFix"/>
 		<view>
 			<text>拼团还未成功</text>
@@ -87,7 +102,7 @@
 				<navigator wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}" class="view" url="/pages/order/failed/failed?id={{orderId}}" hover-class="none">
 					拼团详情
 				</navigator>
-				<button class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15}}" open-type="share">邀请好友拼团</button>
+				<button class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 1 && orderInfo.diff_num > 0}}" open-type="share">邀请好友拼团</button>
 				<!-- <view class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.user.length < 15}}" bindtap="share">邀请好友拼团</view> -->
 			</view>
 		</view>
