@@ -91,7 +91,7 @@ Page({
 			user_id: wx.getStorageSync('userId')
 		}).then(res => {
 			this.setData({
-				address: res.length ? res.filter((item) => item.is_flag)[0] : null
+				address: res.length ? (res.filter((item) => item.is_flag).length ? res.filter((item) => item.is_flag)[0] : res[0]) : null
 			})
 		})
 	},
@@ -212,13 +212,6 @@ Page({
 	},
 	// 提交订单
 	settle() {
-		if (!this.data.balanceFlag) {
-			wx.showToast({
-				icon: 'none',
-				title: '暂时仅支持余额支付'
-			})
-			return
-		}
 		if (!this.data.address) {
 			wx.showToast({
 				icon: 'none',
@@ -238,12 +231,32 @@ Page({
 			address_id: this.data.address.address_id,
 			invite_group_id: this.data.inviteId
 		}).then(res => {
-			wx.$api.confirm_payment({
+			wx.$api.wcPay({
 				order_id: res.order_id
 			}).then(data => {
-				wx.redirectTo({
-					url: '/pages/mine/my-order-detail/my-order-detail?id=' + res.order_id
-				})
+				if (data && data.timeStamp) {
+					wx.requestPayment({
+						timeStamp: data.timeStamp,
+						nonceStr: data.nonceStr,
+						package: data.package,
+						signType: data.signType,
+						paySign: data.paySign,
+						success: (response) => {
+							wx.reLaunch({
+								url: '/pages/mine/my-order-detail/my-order-detail?id=' + res.order_id
+							})
+						},
+						fail: (response) => {
+							wx.reLaunch({
+								url: '/pages/mine/my-order-detail/my-order-detail?id=' + res.order_id
+							})
+						}
+					})
+				} else {
+					wx.reLaunch({
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + res.order_id
+					})
+				}
 			})
 		})
 	},

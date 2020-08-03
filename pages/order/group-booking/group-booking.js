@@ -42,6 +42,12 @@ Page({
 			personShow: false
 		})
 	},
+	// 再拼一单
+	oneMore() {
+		wx.navigateTo({
+			url: '/pages/goods/goods-detail/goods-detail?id=' + this.data.orderInfo.goods_id
+		})
+	},
 	goHome() {
 		wx.switchTab({
 			url: '/pages/index/index'
@@ -172,7 +178,7 @@ Page({
 	},
 	onShareAppMessage() {
 		return {
-			title: '快来参团',
+			title: '快来一起拼团，抢全网最低……',
 			imageUrl: this.data.orderInfo.goods_img,
 			path: '/pages/order/group-booking/group-booking?from=friend&id=' + this.data.orderId + '&group_id=' + this.data.orderInfo.group_id + '&from_id=' + wx.getStorageSync('userId'),
 		}
