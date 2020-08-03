@@ -109,37 +109,74 @@
 				白拿金已入帐:        
 				<text>￥{{item.balance}}</text>
 			</view>
-			<view class="btn-box" wx-if="{{item.status == 1}}">
-				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
-					再次拼团
-				</navigator> 
-			</view>
-			<view class="btn-box" wx-if="{{item.status == 2}}">
-				<text class="white" bindtap="endorder" data-id="{{item.order_id}}">取消订单</text>
-				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
-					再次拼团
-				</navigator> 
-				<text class="red" bindtap="pay" data-id="{{item.order_id}}">去支付</text>
-			</view>
-			<view class="btn-box" wx-if="{{item.status == 3 || item.status == 6}}">
-				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
-					再次拼团
-				</navigator> 
-			</view>
-			<view class="btn-box" wx-if="{{item.status == 4}}">
-				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
-					再次拼团
-				</navigator> 
-				<text class="red" bindtap="confirmOrder" data-id="{{item.order_id}}">确认收货</text>
-			</view>
-			<view class="btn-box" wx-if="{{item.status == 5}}">
-				<navigator class="text white" url="/pages/mine/my-balance/my-balance" hover-class="none">
-					查看余额
-				</navigator>
-				<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
-					再次拼团
-				</navigator> 
-			</view> 
+			<!-- 直接购买 -->
+			<block wx-if="{{item.group_type == 1}}">
+				<view class="btn-box" wx-if="{{item.status == 1}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次购买
+					</navigator> 
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 2}}">
+					<text class="white" bindtap="endorder" data-id="{{item.order_id}}">取消订单</text>
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次购买
+					</navigator> 
+					<text class="red" bindtap="pay" data-id="{{item.order_id}}">去支付</text>
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 3 || item.status == 6}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次购买
+					</navigator> 
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 4}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次购买
+					</navigator> 
+					<text class="red" bindtap="confirmOrder" data-id="{{item.order_id}}">确认收货</text>
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 5}}">
+					<navigator class="text white" url="/pages/mine/my-balance/my-balance" hover-class="none">
+						查看余额
+					</navigator>
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次购买
+					</navigator> 
+				</view> 
+			</block>
+			<!-- 拼团 -->
+			<block wx-if="{{item.group_type != 1}}">
+				<view class="btn-box" wx-if="{{item.status == 1}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次拼团
+					</navigator> 
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 2}}">
+					<text class="white" bindtap="endorder" data-id="{{item.order_id}}">取消订单</text>
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次拼团
+					</navigator> 
+					<text class="red" bindtap="pay" data-id="{{item.order_id}}">去支付</text>
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 3 || item.status == 6}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次拼团
+					</navigator> 
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 4}}">
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次拼团
+					</navigator> 
+					<text class="red" bindtap="confirmOrder" data-id="{{item.order_id}}">确认收货</text>
+				</view>
+				<view class="btn-box" wx-if="{{item.status == 5}}">
+					<navigator class="text white" url="/pages/mine/my-balance/my-balance" hover-class="none">
+						查看余额
+					</navigator>
+					<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
+						再次拼团
+					</navigator> 
+				</view> 
+			</block>
 		</view>
 	</block>
 	

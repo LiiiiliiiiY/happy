@@ -6,48 +6,72 @@
 	</view>
 </mp-navigation-bar>
 <view class="container">
-	<view class="wc-title fail-title" wx-if="{{orderInfo.group_status == 3}}">
-		<image src="/images/mine/30.png" mode="widthFix"/>
-		<view>
-			<text>拼团失败</text>
-			<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+	<block wx-if="{{orderInfo.group_type != 1}}">
+		<view class="wc-title fail-title" wx-if="{{orderInfo.group_status == 3}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>拼团失败</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+			</view>
+			<image src="/images/mine/36.png" mode="widthFix"/>
 		</view>
-		<image src="/images/mine/36.png" mode="widthFix"/>
-	</view>
-	<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 1}}">
-		<image src="/images/mine/30.png" mode="widthFix"/>
-		<view>
-			<text>拼团已完成</text>
-			<text>恭喜您拼中商品</text>
+		<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 1}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>拼团已完成</text>
+				<text>恭喜您拼中商品</text>
+			</view>
+			<image src="/images/mine/26.png" mode="widthFix"/>
 		</view>
-		<image src="/images/mine/26.png" mode="widthFix"/>
-	</view>
-	<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 0}}">
-		<image src="/images/mine/30.png" mode="widthFix"/>
-		<view>
-			<text>拼团已完成</text>
-			<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+		<view class="wc-title" wx-if="{{orderInfo.group_status == 2 && orderInfo.user_has_get == 0}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>拼团已完成</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+			</view>
+			<image src="/images/mine/26.png" mode="widthFix"/>
 		</view>
-		<image src="/images/mine/26.png" mode="widthFix"/>
-	</view>
-	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
-		<image src="/images/mine/30.png" mode="widthFix"/>
-		<view>
-			<text>订单待支付</text>
-			<text>已有754513人未拼中，最高获得白拿金72元</text>
-			<view>请在<text>{{hou}}:{{min}}:{{sec}}</text>内完成支付</view>
+		<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>订单待支付</text>
+				<text>已有754513人未拼中，最高获得白拿金72元</text>
+				<view>请在<text>{{hou}}:{{min}}:{{sec}}</text>内完成支付</view>
+			</view>
+			<image src="/images/mine/32.png" mode="widthFix"/>
 		</view>
-		<image src="/images/mine/32.png" mode="widthFix"/>
-	</view>
-	<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 1}}">
-		<image src="/images/mine/30.png" mode="widthFix"/>
-		<view>
-			<text>拼团还未成功</text>
-			<text>分享给小伙伴来拼单吧~</text>
-			<view>剩余<text>{{hou}}:{{min}}:{{sec}}</text>拼单结束</view>
+		<view class="wwc-title" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 1}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>拼团还未成功</text>
+				<text>分享给小伙伴来拼单吧~</text>
+				<view>剩余<text>{{hou}}:{{min}}:{{sec}}</text>拼单结束</view>
+			</view>
+			<image src="/images/mine/32.png" mode="widthFix"/>
 		</view>
-		<image src="/images/mine/32.png" mode="widthFix"/>
-	</view>
+	</block>
+	<block wx-if="{{orderInfo.group_type == 1}}">
+		<!-- 订单未取消 -->
+		<view class="wc-title" wx-if="{{orderInfo.status != 6}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text wx-if="{{orderInfo.is_pay == 1}}">支付成功</text>
+				<text wx-if="{{orderInfo.is_pay == 0}}">待支付</text>
+				<text wx-if="{{!orderInfo.ship_num && orderInfo.is_pay == 1}}">待发货</text>
+				<text wx-if="{{orderInfo.ship_num && orderInfo.is_pay == 1}}">您的快递已发货</text>
+			</view>
+			<image wx-if="{{orderInfo.is_pay == 1}}" src="/images/mine/26.png" mode="widthFix"/>
+			<image wx-if="{{orderInfo.is_pay == 0}}" src="/images/mine/32.png" mode="widthFix"/>
+		</view>
+		<!-- 订单已取消 -->
+		<view class="wc-title" wx-if="{{orderInfo.status == 6}}">
+			<image src="/images/mine/30.png" mode="widthFix"/>
+			<view>
+				<text>订单已取消</text>
+			</view>
+			<image src="/images/mine/36.png" mode="widthFix"/>
+		</view>
+	</block>
 	<view class="address">
 		<view class="add">
 			<image src="/images/mine/24.png" mode="widthFix"/>
@@ -77,12 +101,12 @@
 				<text></text>
 			</view>
 		</navigator>
-		<view class="err" wx-if="{{orderInfo.group_status == 3}}">
+		<view class="err" wx-if="{{orderInfo.group_status == 3 && orderInfo.group_type != 1}}">
 			<image src="/images/mine/46.png" mode="widthFix"/>
 			<text>很遗憾，本次拼团失败了</text>
 		</view>
 	</view>
-	<view class="pintuan-detail">
+	<view class="pintuan-detail" wx-if="{{orderInfo.group_type != 1}}">
 		<view class="title">
 			<text wx-if="{{orderInfo.group_status == 1 && orderInfo.diff_num > 0 && orderInfo.is_pay == 1}}">待分享，还差{{orderInfo.diff_num}}人</text>
 			<text wx-if="{{orderInfo.group_status == 3}}">拼团失败</text>
@@ -171,7 +195,35 @@
 		<image src="/images/mine/2.png" mode="widthFix"/>
 		<text>联系客服</text>
 	</button>
-	<view class="btnBox">
+	<!-- 单独购买 -->
+	<view class="btnBox" wx-if="{{orderInfo.group_type == 1}}">
+		<!-- 待支付 -->
+		<view class="btncontent" wx-if="{{orderInfo.is_pay == 0 && orderInfo.status != 6}}">
+			<view class="white" bindtap="endorder">
+				取消订单
+			</view>
+			<view class="red" bindtap="pay">
+				立即支付
+			</view> 
+		</view>
+		<!-- 已支付 -->
+		<view class="btncontent" wx-if="{{orderInfo.is_pay == 1 && orderInfo.status != 6}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+		</view>
+		<!-- 订单已取消 -->
+		<view class="btncontent"  wx-if="{{orderInfo.status == 6}}">
+			<view class="white" bindtap="goIndex">
+				返回首页
+			</view>
+			<navigator class="red" url="/pages/goods/goods-detail/goods-detail?id={{orderInfo.goods_id}}" hover-class="none">
+				再次购买
+			</navigator> 
+		</view>
+	</view>
+	<!-- 拼团 -->
+	<view class="btnBox" wx-if="{{orderInfo.group_type != 1}}">
 		<view class="positon" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
 			<text>没拼中商品可获得：</text>
 			<text>1.白拿金</text>
