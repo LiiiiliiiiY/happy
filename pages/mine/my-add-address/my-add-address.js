@@ -11,7 +11,7 @@ Page({
             phone: '',
             region: '',
             desc: '',
-            is_flag: 0
+            is_flag: 1
         },
         rules: [{
             name: 'user_name',
