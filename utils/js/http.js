@@ -4,7 +4,7 @@ function showError(msg) {
     wx.showToast({
         title: msg,
         icon: 'none',
-        duration: 2000
+        duration: 5000
     })
 }
 // wx API 仅提供单文件上传
