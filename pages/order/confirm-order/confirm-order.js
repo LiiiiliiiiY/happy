@@ -186,7 +186,7 @@ Page({
 		switch (type) {
 			case 1:
 				g = '1',
-				p = this.data.detail.direct_price.toFixed(2)
+				p = parseFloat(this.data.detail.direct_price).toFixed(2)
 				break;
 			case 2:
 				g = this.data.small ? '15' : '30',

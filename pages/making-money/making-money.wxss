@@ -7,7 +7,7 @@
 }
 .share {
 	position: absolute;
-	bottom: 575rpx;
+	bottom: 1190rpx;
 	left: 50%;
 	z-index: 10;
 	transform: translateX(-50%);
@@ -17,7 +17,7 @@
 }
 .contact {
 	position: absolute;
-	bottom: 40rpx;
+	bottom: 80rpx;
 	left: 50%;
 	z-index: 10;
 	transform: translateX(-50%);
