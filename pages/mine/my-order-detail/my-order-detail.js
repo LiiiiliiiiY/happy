@@ -109,6 +109,7 @@ Page({
 		this.setData({
 			showquxiao: false
 		})
+        this.onLoad(this.data.orderId)
 	},
     //确认收货
     confirmOrder(){

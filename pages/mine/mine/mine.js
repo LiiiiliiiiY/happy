@@ -96,6 +96,7 @@ Page({
 		this.setData({
 			showquxiao: false
 		})
+		this.onShow()
 	},
 	//关闭没授权的弹窗
 	closeAd() {

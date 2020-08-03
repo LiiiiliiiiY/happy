@@ -48,6 +48,7 @@ Page({
 		this.setData({
 			showquxiao: false
 		})
+		this.onShow()
 	},
 	getOrderList() {
 		wx.$api.orders({
