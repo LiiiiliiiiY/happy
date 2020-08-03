@@ -18,7 +18,7 @@
 					<image class="left-img" src="{{ item.goods_imgs }}" mode="widthFix"></image>
 					<view class="sign">
 						<image src="/images/index/05.png" mode="widthFix"></image>
-						<text>某宝价格: ￥{{ item.white_price }}</text>
+						<text>某宝价格: ￥{{ item.original_price }}</text>
 					</view>
 				</view>
 				<view class="right">
