@@ -14,8 +14,7 @@
 						<view class="get">
 							<view class="price">￥{{ sItem.if_akey == 1 ? sItem.akey_price : sItem.spell_price }}</view>
 							<view class="get-btn">
-								<text data-item="{{ sItem }}" data-type="{{ sItem.if_akey == 1 ? 2 : 4 }}" catchtap="buy">发起拼团</text>
-								<text wx:if="{{ sItem.if_akey == 1 }}" data-item="{{ sItem }}" data-type="{{3}}" catchtap="buy">一键参团</text>
+								<text data-item="{{ sItem }}" data-type="{{3}}" catchtap="buy">一键参团</text>
 							</view>
 						</view>
 					</view>

@@ -52,7 +52,7 @@
 				</view>
 			</view>
 		</picker>
-		<view class="small-infor" wx:else>你正在参与30人大团，系统自动匹配成团</view>
+		<view class="small-infor" wx:else>你正在参与2-5人团，系统自动匹配成团</view>
 	</view>
 	<view class="sign sign-small" wx:if="{{small}}">
 		<image src="/images/order/d.png"></image>
@@ -67,19 +67,19 @@
 	<view class="sign" wx:else>
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>30人团，仅一人拼中，29人全额退款+白拿现金</text>
-			<text>(即时提现)，(最高96.6%几率白拿现金)</text>
+			<text>2-5人团，仅一人拼中，4人全额退款+白拿现金</text>
+			<text>(即时提现)，(最高80%几率白拿现金)</text>
 		</view>
 	</view>
 </view>
 
 <view class="type-3" wx:if="{{ orderType == 3 }}">
-	<view class="type-3-title">你正在参与30人大团，系统自动匹配成团</view>
+	<view class="type-3-title">你正在参与2-5人团，系统自动匹配成团</view>
 	<view class="sign">
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>30人团，仅一人拼中，29人全额退款+白拿现金</text>
-			<text>(即时提现)，(最高96.6%几率白拿现金)</text>
+			<text>2-5人团，仅一人拼中，4人全额退款+白拿现金</text>
+			<text>(即时提现)，(最高80%几率白拿现金)</text>
 		</view>
 	</view>
 </view>
@@ -119,28 +119,12 @@
 	<image class="right-arrow" src="/images/order/c.png" mode="widthFix"></image>
 </view>
 
-<view class="big" wx:if="{{ small && orderType == 2 }}">
-	<view>小团拼团玩法:</view>
+<view class="big">
+	<view>2-5团拼团玩法:</view>
 	<view>1.参团人数≥2人，且拼团等待时间超过10分钟，自动成团；</view>
-	<view>2.拼团等待时间在10分钟内，参团人数达到3人，立即成团；</view>
+	<view>2.拼团等待时间在10分钟内，参团人数达到5人，立即成团；</view>
 	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元白拿金(随时提现)；</view>
 	<view>4.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
-	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
-</view>
-
-<view class="big" wx:if="{{ (!small)&&(orderType == 2) || orderType == 3 }}">
-	<view>大团拼团玩法:</view>
-	<view>1.10分钟内，达到30人，立即成团；</view>
-	<view>2.10分钟内，参团人数未达到30人，则拼团失败，所有参团人员可全额退款；</view>
-	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元白拿金(随时提现)。</view>
-	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
-</view>
-
-<view class="big" wx:if="{{ orderType == 4 }}">
-	<view>大团拼团玩法:</view>
-	<view>1.10分钟内，参团人数达到4人，立即成团；</view>
-	<view>2.10分钟内，参团人数未达到4人，则拼团失败，所有参团人员可全额退款；</view>
-	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元白拿金(随时提现)。</view>
 	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
 </view>
 

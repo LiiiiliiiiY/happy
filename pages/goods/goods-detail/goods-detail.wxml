@@ -1,25 +1,11 @@
 <mp-navigation-bar color="#000000" background="#fff" title="商品详情"></mp-navigation-bar>
-<view class="banner">
-	<image src="/images/detail/a.jpg" mode="widthFix"></image>
-	<view class="text">
-		<view class="text-left">发起拼团</view>
-		<view class="text-right" wx:if="{{ detail.if_akey == 1 }}">
-			<text>2-15人团, 1人拼中, 其余人全额退款+白拿现金</text>
-			<text>即时提现, 最高93%几率白拿现金</text>
-		</view>
-		<view class="text-right" wx:else>
-			<text>4人团, 1人拼中, 3人全额退款+白拿现金</text>
-			<text>即时提现, 最高75%几率白拿现金</text>
-		</view>
-	</view>
-</view>
-<view class="banner banner2" wx:if="{{ detail.if_akey == 1 }}">
+<view class="banner banner2">
 	<image src="/images/detail/q.png" mode="widthFix"></image>
 	<view class="text">
 		<view class="text-left">一键拼团</view>
 		<view class="text-right">
-			<text>30人团, 1人拼中, 其余人全额退款+白拿现金</text>
-			<text>即时提现, 最高93%几率白拿现金</text>
+			<text>2-5人团, 1人拼中, 其余人全额退款+白拿现金</text>
+			<text>即时提现, 最高80%几率白拿现金</text>
 		</view>
 	</view>
 </view>
@@ -73,28 +59,14 @@
 		<image src="/images/mine/2.png" mode="widthFix"></image>
 		<text>客服</text>
 	</button>
-	<view class="btn-right" wx:if="{{ detail.if_akey == 1 }}">
+	<view class="btn-right">
 		<view class="buy-now" data-type="{{1}}" bindtap="addToCart">
 			<text>￥{{ detail.direct_price }}</text>
 			<text>直接购买</text>
-		</view>
-		<view class="add-col" data-type="{{2}}" bindtap="addToCart">
-			<text>￥{{ detail.spell_price }}</text>
-			<text>发起拼团</text>
 		</view>
 		<view class="add" data-type="{{3}}" bindtap="addToCart">
 			<text>￥{{ detail.akey_price }}</text>
 			<text>一键参团</text>
-		</view>
-	</view>
-	<view class="btn-right" wx:else>
-		<view class="buy-now" data-type="{{1}}" bindtap="addToCart">
-			<text>￥{{ detail.direct_price }}</text>
-			<text>直接购买</text>
-		</view>
-		<view class="add" data-type="{{4}}" bindtap="addToCart">
-			<text>￥{{ detail.spell_price }}</text>
-			<text>发起拼团</text>
 		</view>
 	</view>
 </view>

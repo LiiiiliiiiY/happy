@@ -103,8 +103,8 @@
 	<view class="rule" wx:else>
 		<view class="rule-title">拼团须知:</view>
 		<view>1.参团人数≥2人，且拼团等待时间超过10分钟，自动成团；</view>
-		<view>2.拼团等待时间在10分钟内，参团人数达到15人，立即成团；</view>
-		<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高3.00元白拿金(随时提现)；</view>
+		<view>2.拼团等待时间在10分钟内，参团人数达到5人，立即成团；</view>
+		<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高{{ orderInfo.white_price }}元白拿金(随时提现)；</view>
 		<view>4.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
 		<navigator class="rule-link" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
 	</view>
