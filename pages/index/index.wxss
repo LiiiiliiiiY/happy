@@ -3,7 +3,7 @@ page {
 	flex-direction: column;
 	height: 100%;
 	font-size: 28rpx;
-	background: #EB0000;
+	background: #f55b17;
 }
 .index-container {
 	position: relative;
@@ -20,7 +20,9 @@ page {
 .banner .check {
 	position: absolute;
 	left: 50%;
-	bottom: 55rpx;
+	bottom: 120rpx;
+	width: 200rpx;
+	height: 80rpx;
 	transform: translateX(-50%);
 }
 .banner .check image {
@@ -28,6 +30,7 @@ page {
 }
 .middle {
 	width: 100%;
+	margin-bottom: 20rpx;
 }
 .list {
 	width: 100%;
