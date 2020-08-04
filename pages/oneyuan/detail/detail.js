@@ -116,7 +116,7 @@ Page({
                     signType: data.signType,
                     paySign: data.paySign,
                     success: (response) => {
-                        wx.reLaunch({
+                        wx.navigateTo({
                             url: '/pages/oneyuan/myyiyuan/myyiyuan'
                         })
                     },
