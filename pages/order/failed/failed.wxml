@@ -46,15 +46,6 @@
 		<view class="tip">邀请好友开小团更挣钱</view>
 	</view>
 </view>
-<view class="intro">
-	<image src="/images/order/d.png"></image>
-	<view class="intro-con">
-		<view>参与小团的好处:</view>
-		<view>1.参团人数越少，白拿金越高；</view>
-		<view>2.你邀请的好友参团未拼中商品赚的白拿金，也将获得高额佣金，可即刻提现。</view>
-	</view>
-</view>
-<view class="go" bindtap="launchSmall">发起小团</view>
 
 <!-- 人员弹窗 -->
 <mp-dialog class="person-dialog" show="{{personShow}}">
