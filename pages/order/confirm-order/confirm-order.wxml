@@ -52,7 +52,7 @@
 				</view>
 			</view>
 		</picker>
-		<view class="small-infor" wx:else>你正在参与2-5人团，系统自动匹配成团</view>
+		<view class="small-infor" wx:else>你正在参与5人团，系统自动匹配成团</view>
 	</view>
 	<view class="sign sign-small" wx:if="{{small}}">
 		<image src="/images/order/d.png"></image>
@@ -67,18 +67,18 @@
 	<view class="sign" wx:else>
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>2-5人团，仅一人拼中，4人全额退款+白拿现金</text>
+			<text>5人团，仅一人拼中，4人全额退款+白拿现金</text>
 			<text>(即时提现)，(最高80%几率白拿现金)</text>
 		</view>
 	</view>
 </view>
 
 <view class="type-3" wx:if="{{ orderType == 3 }}">
-	<view class="type-3-title">你正在参与2-5人团，系统自动匹配成团</view>
+	<view class="type-3-title">你正在参与5人团，系统自动匹配成团</view>
 	<view class="sign">
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>2-5人团，仅一人拼中，4人全额退款+白拿现金</text>
+			<text>5人团，仅一人拼中，4人全额退款+白拿现金</text>
 			<text>(即时提现)，(最高80%几率白拿现金)</text>
 		</view>
 	</view>
@@ -120,8 +120,8 @@
 </view>
 
 <view class="big">
-	<view>2-5团拼团玩法:</view>
-	<view>1.参团人数≥2人，且拼团等待时间超过10分钟，自动成团；</view>
+	<view>5人团拼团玩法:</view>
+	<view>1.参团人数为5人，且拼团等待时间超过10分钟，自动成团；</view>
 	<view>2.拼团等待时间在10分钟内，参团人数达到5人，立即成团；</view>
 	<view>3.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元白拿金(随时提现)；</view>
 	<view>4.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
