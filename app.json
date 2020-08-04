@@ -31,7 +31,8 @@
         "pages/guide/tel/tel",
         "pages/mine/my-info/my-info",
         "pages/mine/my-add-address/my-add-address",
-        "pages/order/share-failed/share-failed"
+        "pages/order/share-failed/share-failed",
+        "pages/oneyuan/role/role"
     ],
     "window": {
         "backgroundTextStyle": "light",

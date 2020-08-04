@@ -1,0 +1,12 @@
+/* pages/oneyuan/role/role.wxss */
+page{
+    padding: 35rpx;
+    box-sizing: border-box;
+}
+view{
+    font-size:33rpx;
+font-family:PingFang SC;
+font-weight:400;
+line-height:46rpx;
+color:rgba(112,112,112,1);
+}

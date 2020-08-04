@@ -1,5 +1,8 @@
 <mp-navigation-bar color="#000000" background="#ffffff" title="一元夺宝" back="{{false}}"></mp-navigation-bar>
 <view class="head">
+    <navigator class="role" url="/pages/oneyuan/role/role" hover-class="none">
+        活动规则
+    </navigator>
     <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
     <navigator class="view" url="/pages/oneyuan/myyiyuan/myyiyuan" hover-class="none">
         <image class="tiao" src="/images/yiyuan/2.png" mode="widthFix"></image>
