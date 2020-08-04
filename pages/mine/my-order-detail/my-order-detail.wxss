@@ -2,6 +2,19 @@
 page {
 	background-color: #FFFFFF;
 }
+.home {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 70rpx;
+	height: 70rpx;
+	border-radius: 50%;
+	border: 2rpx solid #DDDDDD;
+	box-sizing: border-box;
+}
+.home .iconfont {
+	font-size: 37rpx;
+}
 .container{
 	background-color: #FFFFFF;
 }
