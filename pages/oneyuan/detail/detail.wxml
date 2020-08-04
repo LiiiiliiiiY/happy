@@ -22,7 +22,7 @@
     <text class="title">一元夺宝第{{infor.loot_id}}期（{{infor.goods_name}}）</text>
     <view class="duobaoing" wx-if="{{!timeend && infor.if_buy == 0}}">
         <text>夺宝中</text>
-        <text>据结束：{{day}} 天 {{hou}} 时 {{min}} 分 {{sec}} 秒</text>
+        <text>距结束：{{day}} 天 {{hou}} 时 {{min}} 分 {{sec}} 秒</text>
     </view>
     <view class="duobaoing" wx-if="{{timeend & infor.if_buy == 0}}">
         <text>夺宝结束</text>
