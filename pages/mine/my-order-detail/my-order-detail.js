@@ -79,6 +79,7 @@ Page({
             clearInterval(setInterva)
             setTimeout(() => {
                 this.onLoad(this.data.orderId)
+                this.onShow()
             }, 1500);
         }
         // if (time>0){

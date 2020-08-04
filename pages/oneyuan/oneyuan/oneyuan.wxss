@@ -6,6 +6,7 @@ page{
 }
 .banner{
     width: 100%;
+    position: relative;
 }
 .tiao{
     position: absolute;
@@ -118,4 +119,14 @@ page{
     text-overflow: ellipsis;
     white-space: nowrap;
     letter-spacing: 2px;
+}
+.role{
+    position: absolute;
+    font-size:32rpx;
+    font-family:PingFang SC;
+    font-weight:500;
+    color:rgba(255,255,255,1);
+    top: 36rpx;
+    right: 39rpx;
+    z-index: 90;
 }

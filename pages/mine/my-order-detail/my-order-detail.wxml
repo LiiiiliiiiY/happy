@@ -141,7 +141,7 @@
 					<view wx-if="{{item.is_get == 0 && orderInfo.group_status == 2}}">得{{item.balance}}元</view>
 				</view>
 			</block>
-			<block wx-if="{{user.length < 6}}" wx:for="{{6 - user.length}}" wx:key="index">
+			<block wx-if="{{user.length < 5}}" wx:for="{{5 - user.length}}" wx:key="index">
 				<view class="person">
 					<image src="/images/mine/31.png" mode="widthFix"/>
 				</view>
