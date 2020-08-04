@@ -117,22 +117,15 @@ Page({
                     paySign: data.paySign,
                     success: (response) => {
                         wx.reLaunch({
-                            url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+                            url: '/pages/oneyuan/myyiyuan/myyiyuan'
                         })
                     },
                     fail: (response) => {
-                        wx.reLaunch({
-                            url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
-                        })
+                        
                     }
                 })
             })
 		}).catch(res => {})
-
-
-		// this.setData({
-		// 	moneyShow: false
-		// })
     },
     
     feninput(){
