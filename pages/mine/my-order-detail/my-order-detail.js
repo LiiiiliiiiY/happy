@@ -177,7 +177,7 @@ Page({
     },
     onShareAppMessage() {
         return {
-			title: '快来一起拼团，抢全网最低……',
+			title: '快来参加欢乐拼团……',
 			imageUrl: this.data.orderInfo.goods_img,
 			path: '/pages/order/group-booking/group-booking?from=friend&id=' + this.data.orderId + '&group_id=' + this.data.orderInfo.group_id + '&from_id=' + wx.getStorageSync('userId'),
         }
