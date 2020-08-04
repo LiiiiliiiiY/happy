@@ -5,7 +5,7 @@
 			<view class="{{ item.value == orderType ? 'type-sel' : '' }}">{{ item.name }}</view>
 		</view>
 	</view>
-	<scroll-view class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+	<scroll-view wx-if="{{orderList.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
 		<block wx:for="{{orderList}}" wx:key="index">
 			<view class="order-list">
                 <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>

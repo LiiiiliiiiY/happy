@@ -6,7 +6,7 @@ Page({
      */
     data: {
         moneyShow: false,
-        fen: '',
+        fen: 1,
         lootId: '',
         infor: '',
         endTime: '',
@@ -100,9 +100,39 @@ Page({
 		})
 	},
 	closeMoneyDialog() {
-		this.setData({
-			moneyShow: false
-		})
+        wx.$api.add_order({
+            loot_id: this.data.lootId,
+            buy_num: this.data.fen
+        }).then(res => {
+            console.log(res)
+            wx.$api.lootPay({
+                order_id: res.order_id,
+                loot_id: this.data.lootId
+            }).then(data => {
+                wx.requestPayment({
+                    timeStamp: data.timeStamp,
+                    nonceStr: data.nonceStr,
+                    package: data.package,
+                    signType: data.signType,
+                    paySign: data.paySign,
+                    success: (response) => {
+                        wx.reLaunch({
+                            url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+                        })
+                    },
+                    fail: (response) => {
+                        wx.reLaunch({
+                            url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+                        })
+                    }
+                })
+            })
+		}).catch(res => {})
+
+
+		// this.setData({
+		// 	moneyShow: false
+		// })
     },
     
     feninput(){

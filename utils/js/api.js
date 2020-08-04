@@ -136,6 +136,9 @@ const api = {
 	//我的夺宝列表
 	my_loot(data, showError) {
 		return request('/api/Lootgoods/my_loot', mergeParam(data), true, showError)
+	},
+	lootPay(data, showError) {
+		return request('/api/Newpay/lootPay', mergeParam(data), true, showError)
 	}
 }
 
