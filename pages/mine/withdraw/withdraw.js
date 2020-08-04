@@ -33,13 +33,6 @@ Page({
             })
             return
         }
-        if (this.data.price <= 0.3) {
-            wx.showToast({
-                title: '提现金额需要大于0.3哦',
-                icon: "none"
-            })
-            return
-        }
         wx.$api.paytoBalance({
             balance: this.data.price
         }, true).then(res => {
