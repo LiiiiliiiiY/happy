@@ -125,11 +125,18 @@ Page({
                     }
                 })
             })
-		}).catch(res => {})
+		}).catch(res => {
+            wx.showToast({
+                title: res.msg,
+                icon: "none"
+            })
+        })
     },
     
-    feninput(){
-
+    feninput(e){
+        this.setData({
+            fen: e.detail.value
+        })
     },
 
 })
