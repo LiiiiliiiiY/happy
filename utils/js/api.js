@@ -99,7 +99,7 @@ const api = {
 	},
 	//提现
 	paytoBalance(data) {
-		return request('/api/pay/toBalance', mergeParam(data), true)
+		return request('/api/newpay/toBalance', mergeParam(data), true)
 	},
 	//提现
 	getShip(data) {

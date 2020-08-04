@@ -9,6 +9,7 @@ Page({
 		imgShow: false,
         endTime: '',
         dataTime: '',
+		backFlag: true,
         day: '',
         hou: '',
         min: '',
@@ -30,15 +31,26 @@ Page({
             orderId: options.id ? options.id : options
         })
     },
-    onShow() {
-        this.getOrderInfo()
-    },
     onHide(){
         clearInterval(setInterva)
     },
     onUnload(){
         clearInterval(setInterva)
     },
+    onShow() {
+        this.getOrderInfo()
+		let pages = getCurrentPages()
+		if (pages.length == 1) {
+			this.setData({
+				backFlag: false
+			})
+		}
+    },
+	goHome() {
+		wx.switchTab({
+			url: '/pages/index/index'
+		})
+	},
     //倒计时
     countDown:function(){
         var that = this;
@@ -60,6 +72,7 @@ Page({
           min: that.timeFormat(min),
           sec: that.timeFormat(sec)
         })
+        console.log(time <= 0)
         // 每1000ms刷新一次
         if (time <= 0) {
             console.log(time)
@@ -68,6 +81,13 @@ Page({
                 this.onLoad(this.data.orderId)
             }, 1500);
         }
+        // if (time>0){
+        //     setTimeout(this.countDown, 1000);
+        // }else{
+        //     setTimeout(() => {
+        //         this.onLoad(this.data.orderId)
+        //     }, 1500);
+        // }
     },
       //小于10的格式化函数（2变成02）
     timeFormat(param) {
@@ -108,7 +128,7 @@ Page({
 	closeDialog(){
 		this.setData({
 			showquxiao: false
-		})
+        })
         this.onShow()
 	},
     //确认收货
@@ -157,7 +177,7 @@ Page({
     },
     onShareAppMessage() {
         return {
-			title: '快来参团',
+			title: '快来一起拼团，抢全网最低……',
 			imageUrl: this.data.orderInfo.goods_img,
 			path: '/pages/order/group-booking/group-booking?from=friend&id=' + this.data.orderId + '&group_id=' + this.data.orderInfo.group_id + '&from_id=' + wx.getStorageSync('userId'),
         }
@@ -174,89 +194,26 @@ Page({
 		})
     },
     pay() {
-        wx.$api.confirm_payment({
+        wx.$api.wcPay({
             order_id: this.data.orderId
-        }, true).then(res => {
-            wx.showToast({
-                title: '支付成功',
-                icon: 'success',
-                duration: 2000
-            })
-            setTimeout(() => {
-                wx.navigateTo({
-                    url: '/pages/mine/my-order/my-order'
-                })
-            },2100)
-        }).catch(data => {
-            wx.showToast({
-                title: data.msg,
-                icon: 'none',
-                duration: 2000
+        }).then(data => {
+            wx.requestPayment({
+                timeStamp: data.timeStamp,
+                nonceStr: data.nonceStr,
+                package: data.package,
+                signType: data.signType,
+                paySign: data.paySign,
+                success: (response) => {
+                    wx.reLaunch({
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+                    })
+                },
+                fail: (response) => {
+                    wx.reLaunch({
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+                    })
+                }
             })
         })
-		// let goods = [], list = this.data.list
-		// for (let i = 0; i < list.length; i++) {
-		// 	goods.push({
-		// 		goodsid: list[i].goodsid,
-		// 		optionid: list[i].optionid,
-		// 		total: list[i].total,
-		// 		cartid: list[i].id,
-		// 		lens_id: list[i].lens_id
-		// 	})
-		// }
-		// if (this.data.address) {
-		// 	wx.$api.submitOrder({
-		// 		addressid: this.data.address.id,
-		// 		couponid: this.data.coupon.id ? this.data.coupon.id : 0,
-		// 		freight: this.data.postage ? this.data.postage : 0,
-		// 		goods_cost: this.data.totalPrice,
-		// 		pay_cost: this.data.grandTotal,
-		// 		remark: this.data.remark,
-		// 		goods: JSON.stringify(goods)
-		// 	}).then(res => {
-		// 		wx.$api.pay({
-		// 			orderid: res.orderid
-		// 		}).then(data => {
-		// 			wx.requestPayment({
-		// 				timeStamp: data.payinfo.timeStamp,
-		// 				nonceStr: data.payinfo.nonceStr,
-		// 				package: data.payinfo.package,
-		// 				signType: data.payinfo.signType,
-		// 				paySign: data.payinfo.paySign,
-		// 				success: (response) => {
-		// 					wx.$api.paymentSuccessCallback({
-		// 						orderid: res.orderid
-		// 					})
-		// 					wx.redirectTo({
-		// 						url: '/pages/cart/order/payment-success/payment-success?orderId=' + res.orderid
-		// 					})
-		// 				},
-		// 				fail: (response) => {
-		// 					wx.redirectTo({
-		// 						url: '/pages/cart/order/payment-failed/payment-failed?orderId=' + res.orderid
-		// 					})
-		// 				}
-		// 			})
-		// 		}).catch(data => {
-		// 			wx.showToast({
-		// 				title: data.message,
-		// 				icon: 'none',
-		// 				duration: 2000
-		// 			})
-		// 		})
-		// 	}).catch(res => {
-		// 		wx.showToast({
-		// 			title: res.message,
-		// 			icon: 'none',
-		// 			duration: 2000
-		// 		})
-		// 	})
-		// } else {
-		// 	wx.showToast({
-		// 		title: '请选择收货地址',
-		// 		icon: 'none',
-		// 		duration: 2000
-		// 	})
-		// }
 	},
 })

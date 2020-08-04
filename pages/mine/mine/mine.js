@@ -62,6 +62,7 @@ Page({
 							father_id: wx.getStorageSync('fatherId') || '',
 							...e.detail.userInfo
 						}).then(response => {
+							console.log(response)
 							wx.setStorageSync("userId", response.user_id)
 							that.setData({
 								adShow: false
@@ -117,26 +118,27 @@ Page({
 	},
 	//支付
 	pay(e) {
-		wx.$api.confirm_payment({
+        wx.$api.wcPay({
             order_id: e.currentTarget.dataset.id
-        }, true).then(res => {
-            wx.showToast({
-                title: '支付成功',
-                icon: 'success',
-                duration: 2000
+        }).then(data => {
+            wx.requestPayment({
+                timeStamp: data.timeStamp,
+                nonceStr: data.nonceStr,
+                package: data.package,
+                signType: data.signType,
+                paySign: data.paySign,
+                success: (response) => {
+                    wx.reLaunch({
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + e.currentTarget.dataset.id
+                    })
+                },
+                fail: (response) => {
+                    wx.reLaunch({
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + e.currentTarget.dataset.id
+                    })
+                }
             })
-            setTimeout(() => {
-                wx.navigateTo({
-                    url: '/pages/mine/my-order/my-order'
-                })
-            },2100)
-		}).catch(data => {
-            wx.showToast({
-                title: data.msg,
-                icon: 'none',
-                duration: 2000
-            })
-        })
+		})
 	},
 	//邀请好友
 	yaoqing(){
