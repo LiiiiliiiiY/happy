@@ -8,7 +8,7 @@
 	<view class="list">
 		<view class="list-item" wx:for="{{ home }}" wx:key="goods_id" data-id="{{item.goods_id}}" bindtap="checkDetail">
 			<view class="title">
-				<view>参团一次，最高白赚<text>白赚{{ item.white_price }}元！</text></view>
+				<view>参团一次，最高<text>白赚{{ item.white_price }}元！</text></view>
 				<image src="/images/index/c.png"></image>
 			</view>
 			<view class="content">
