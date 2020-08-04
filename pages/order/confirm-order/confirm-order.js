@@ -166,19 +166,11 @@ Page({
 	},
 	// 参团
 	join() {
-		let type
-		if (this.data.detail.if_akey == 1) {
-			type = 2
-			this.setData({
-				small: true
-			})
-		} else {
-			type = 4
-		}
 		this.setData({
-			orderType: type
+			orderType: 3,
+			small: false
 		})
-		this.init(type)
+		this.init(3)
 	},
 	// 初始化
 	init(type) {
