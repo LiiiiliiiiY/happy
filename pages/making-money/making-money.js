@@ -27,7 +27,7 @@ Page({
 	},
 	onShareAppMessage() {
 		return {
-			title: '团赚赚规则',
+			title: '欢乐拼团规则',
 			path: '/pages/index/index' + (wx.getStorageSync('userId') ? ('?father_id=' + wx.getStorageSync('userId')) : '')
 		}
 	}
