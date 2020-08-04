@@ -240,7 +240,7 @@
 					<view class="price">
 						<text>￥{{item.spell_price}}</text>
 						<view>
-							<text class="view" data-item="{{ item }}" data-type="{{ item.if_akey == 1 ? 2 : 4 }}" bindtap="buy">发起拼团</text>
+							<!-- <text class="view" data-item="{{ item }}" data-type="{{ item.if_akey == 1 ? 2 : 4 }}" bindtap="buy">发起拼团</text> -->
 							<text class="view" wx:if="{{ item.if_akey == 1 }}" data-item="{{ item }}" data-type="{{3}}" bindtap="buy">一键参团</text>
 						</view>
 					</view>
