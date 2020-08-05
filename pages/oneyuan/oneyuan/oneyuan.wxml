@@ -1,4 +1,15 @@
 <mp-navigation-bar color="#000000" background="#ffffff" title="一元夺宝" back="{{false}}"></mp-navigation-bar>
+<button class="inforShade" wx:if="{{shadeShow}}" bindtap="adShowFn">
+</button>
+<!-- 广告 -->
+<view class="ad" wx:if="{{adShow}}">
+	<view class="ad-container">
+		<button class="get-infor" open-type="getUserInfo" bindgetuserinfo="bindGetUserInfo">
+			<image class="ad-img" src="/images/index/ad.png" mode="widthFix"></image>
+		</button>
+		<image class="close" src="/images/index/close.png" mode="widthFix" catchtap="closeAd"></image>
+	</view>
+</view>
 <view class="head">
     <navigator class="role" url="/pages/oneyuan/role/role" hover-class="none">
         活动规则
