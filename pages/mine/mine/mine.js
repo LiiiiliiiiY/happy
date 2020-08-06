@@ -148,13 +148,21 @@ Page({
 	},
 	getPhoneNumber(e) {
 		if (e.detail.encryptedData) {
-			wx.$api.bindPhone({
-				phone: e.detail.encryptedData
-			}, true).then(res => {
-				wx.showToast({
-					title: '绑定成功',
-					icon:"none"
-				})
+			wx.login({
+				success (res) {
+					if(res.code) {
+						wx.$api.bindPhone({
+							code: res.code,
+							iv: e.detail.iv,
+							encryptedData: e.detail.encryptedData
+						}, true).then(res => {
+							wx.showToast({
+								title: '绑定成功',
+								icon:"none"
+							})
+						})
+					}
+				}
 			})
 		}
 	}

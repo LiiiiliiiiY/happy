@@ -141,7 +141,7 @@ const api = {
 		return request('/api/Newpay/lootPay', mergeParam(data), true, showError)
 	},
 	bindPhone(data, showError) {
-		return request('/api/Home/bindPhone', mergeParam(data), true, showError)
+		return request('/api/wechat/getPhone', mergeParam(data), true, showError)
 	}
 	
 }
