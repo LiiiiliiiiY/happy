@@ -1,4 +1,5 @@
 var setInterva
+var setInterva_
 Page({
     data: {
         orderId: 0,
@@ -32,10 +33,12 @@ Page({
         })
     },
     onHide(){
-        clearInterval(setInterva)
+        // clearInterval(setInterva)
+        // clearInterval(setInterva_)
     },
     onUnload(){
         clearInterval(setInterva)
+        clearInterval(setInterva_)
     },
     onShow() {
         this.getOrderInfo()
@@ -77,6 +80,7 @@ Page({
         if (time <= 0) {
             console.log(time)
             clearInterval(setInterva)
+            clearInterval(setInterva_)
             setTimeout(() => {
                 this.onLoad(this.data.orderId)
                 this.onShow()
@@ -160,6 +164,9 @@ Page({
                 setInterva = setInterval(() => {
                     this.countDown()
                 },1000)
+                setInterva_ = setInterval(() => {
+                    this.onShow()
+                },5000)
                 // setInterva = setInterval(this.countDown(), 1000);
             }
         })
