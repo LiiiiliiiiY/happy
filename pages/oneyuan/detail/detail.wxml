@@ -30,7 +30,7 @@
     </view>
     <view class="duobaoing" wx-if="{{infor.if_buy == 1}}">
         <text>您已经参加过夺宝了</text>
-        <text>{{infor.prize_time}}</text>
+        <text>距结束：{{day}} 天 {{hou}} 时 {{min}} 分 {{sec}} 秒</text>
     </view>
     <progress percent="{{infor.progress_bar}}" color="#F72923" />
     <text class="gong">共需{{infor.total_num}}份，剩余{{infor.residue_num}}份，开奖进度{{infor.progress_bar}}%</text>
