@@ -148,35 +148,13 @@ Page({
 	},
 	getPhoneNumber(e) {
 		if (e.detail.encryptedData) {
-			wx.login({
-				success (res) {
-					if(res.code) {
-						wx.$api.getOpenId({
-							code: res.code
-						}).then(response => {
-							wx.$api.quickLogin({
-								session_key: response.session_key,
-								encryptedData: e.detail.encryptedData,
-								iv: e.detail.iv,
-								real_openid: response.real_openid,
-								nickName: app.globalData.userInfo.nickName,
-								avatarUrl: app.globalData.userInfo.avatarUrl,
-								gender: app.globalData.userInfo.gender
-							}).then(data => {
-								wx.setStorageSync("userId", response.openid)
-								// wx.setStorageSync("ruufooChecked", 1)
-								wx.reLaunch({
-									url: '/' + app.globalData.tempRoute,
-									success: () => {
-										app.globalData.tempRoute = null
-									}
-								})
-							}).catch((res) => {
-								// wx.setStorageSync("ruufooChecked", 0)
-							})
-						})
-					}
-				}
+			wx.$api.bindPhone({
+				phone: e.detail.encryptedData
+			}, true).then(res => {
+				wx.showToast({
+					title: '绑定成功',
+					icon:"none"
+				})
 			})
 		}
 	}

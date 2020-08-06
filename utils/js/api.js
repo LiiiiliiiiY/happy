@@ -139,7 +139,11 @@ const api = {
 	},
 	lootPay(data, showError) {
 		return request('/api/Newpay/lootPay', mergeParam(data), true, showError)
+	},
+	bindPhone(data, showError) {
+		return request('/api/Home/bindPhone', mergeParam(data), true, showError)
 	}
+	
 }
 
 export default api
