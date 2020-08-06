@@ -94,7 +94,6 @@ Page({
         return param < 0 ? 0: param;
     },
 	openMoneyDialog() {
-        console.log(111)
 		this.setData({
 			moneyShow: true
 		})
