@@ -21,17 +21,7 @@ Page({
             adShow: true,
             shadeShow: true
 		})
-        wx.$api.Lootgoods().then(res => {
-			this.setData({
-				infor: res
-			})
-        }).catch(res => {})
-        wx.$api.roll().then(res => {
-            console.log(res)
-			this.setData({
-				rollArr: res
-			})
-        }).catch(res => {})
+       
     },
    
     /**
@@ -89,7 +79,17 @@ Page({
      * 生命周期函数--监听页面显示
      */
     onShow: function () {
-
+        wx.$api.Lootgoods().then(res => {
+			this.setData({
+				infor: res
+			})
+        }).catch(res => {})
+        wx.$api.roll().then(res => {
+            console.log(res)
+			this.setData({
+				rollArr: res
+			})
+        }).catch(res => {})
     },
 
     /**
