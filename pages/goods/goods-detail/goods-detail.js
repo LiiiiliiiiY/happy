@@ -49,7 +49,7 @@ Page({
 		}).then(res => {
 			let content = res.goods_desc
 			content = content.replace(/\<p/gi, '<p style="width:100%;max-width:100%;box-sizing:border-box;" ')
-							 .replace(/\<img/gi, '<img class="detail-img" style="display:block;max-width:100%;width:50%;height:auto" ')
+							 .replace(/\<img/gi, '<img class="detail-img" style="display:block;max-width:100%;width:100%;height:auto" ')
 			res.goods_desc = content
 			this.setData({
 				detail: res

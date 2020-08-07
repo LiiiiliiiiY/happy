@@ -25,7 +25,7 @@
 				<text>￥</text>
 				<text>{{ detail.direct_price }}</text>
 			</view>
-			<text class="origin">￥{{ detail.original_price }}</text>
+			<text class="origin" wx:if="{{ detail.original_price != '0.00' }}">￥{{ detail.original_price }}</text>
 		</view>
 	</view>
 </view>
