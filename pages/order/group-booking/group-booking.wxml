@@ -7,7 +7,7 @@
 </mp-navigation-bar>
 <view class="page {{ fromShare ? 'page-share' : '' }}">
 	<view class="title" wx:if="{{ !fromShare }}">
-		<text>你邀请的好友参团未拼中商品赚的白拿金</text>
+		<text>你邀请的好友参团未拼中商品赚的帮助津贴</text>
 		<text>你也将获得高额拥金，可即刻提现。</text>
 	</view>
 	<view class="friend-title" wx:else>
@@ -52,10 +52,10 @@
 		</view>
 		<view class="right">
 			<view class="right-title">{{ orderInfo.goods_name }}</view>
-			<view class="right-sale">白拿{{ orderInfo.white_price }}元</view>
+			<view class="right-sale">津贴{{ orderInfo.white_price }}元</view>
 			<view class="get">
 				<view class="price">￥{{ orderInfo.goods_price }}</view>
-				<view class="right-num">已有{{ orderInfo.white_number }}人获白拿金</view>
+				<view class="right-num">已有{{ orderInfo.white_number }}人获帮助津贴</view>
 			</view>
 		</view>
 	</view>
@@ -88,7 +88,7 @@
 				<text class="line-item-num">5</text>
 				<view class="line-item-text">
 					<view>拼中得商品</view>
-					<view>拼不中白拿现金</view>
+					<view>不中得帮助津贴</view>
 				</view>
 			</view>
 		</view>
@@ -97,13 +97,13 @@
 	<view class="rule" wx:if="{{ !fromShare }}">
 		<view class="rule-title">拼团需知:</view>
 		<view>1.参团人数为5人，拼团等待10分钟内，参团人数达到5人，立即成团。</view>
-		<view>2.1人拼中商品，其他人获得白拿金，货款原路返回。余额可随时提现，不高最低提现额。</view>
+		<view>2.1人拼中商品，其他人获得帮助津贴，货款原路返回。余额可随时提现，不高最低提现额。</view>
 		<view>3.抢中商品，非质量问题不支持退款退货，24小时内发货。</view>
 	</view>
 	<view class="rule" wx:else>
 		<view class="rule-title">拼团须知:</view>
 		<view>1.参团人数为5人，拼团等待10分钟内，参团人数达到5人，立即成团。</view>
-		<view>2.拼团成功，未抢中商品者即刻获得货款返还+最高{{ orderInfo.white_price }}元白拿金(随时提现)；</view>
+		<view>2.拼团成功，未抢中商品者即刻获得货款返还+最高{{ orderInfo.white_price }}元帮助津贴(随时提现)；</view>
 		<view>3.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
 		<navigator class="rule-link" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
 	</view>
