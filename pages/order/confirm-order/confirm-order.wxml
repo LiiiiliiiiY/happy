@@ -57,18 +57,18 @@
 	<view class="sign sign-small" wx:if="{{small}}">
 		<image src="/images/order/d.png"></image>
 		<view class="sign-text">
-			<view class="sign-text1">2{{ groupType == '2' ? '' : '-' + groupType }}人团，仅1人拼中，其余人余额退款+帮助津贴（即时提现），（最高{{ groupPercent }}机率白拿现金）</view>
+			<view class="sign-text1">2{{ groupType == '2' ? '' : '-' + groupType }}人团，仅1人拼中，其余人余额退款+帮忙津贴（即时提现），（最高{{ groupPercent }}机率获得帮忙津贴）</view>
 			<view>小团好处</view>
-			<view class="sign-text2">1.参团人数越少，帮助津贴越高;</view>
-			<view class="sign-text2">2.你邀请的好友参团未拼中商品赚的帮助津贴，你也将获得高额佣金，可即刻提现。</view>
+			<view class="sign-text2">1.参团人数越少，帮忙津贴越高;</view>
+			<view class="sign-text2">2.你邀请的好友参团未拼中商品赚的帮忙津贴，你也将获得高额佣金，可即刻提现。</view>
 			<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">详细拼团规则></navigator>
 		</view>
 	</view>
 	<view class="sign" wx:else>
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>5人团，仅一人拼中，4人全额退款+帮助津贴</text>
-			<text>(即时提现)，(最高80%几率帮助津贴)</text>
+			<text>5人团，仅一人拼中，4人全额退款+帮忙津贴</text>
+			<text>(即时提现)，(最高80%几率帮忙津贴)</text>
 		</view>
 	</view>
 </view>
@@ -78,8 +78,8 @@
 	<view class="sign">
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>5人团，仅一人拼中，4人全额退款+帮助津贴</text>
-			<text>(即时提现)，(最高80%几率帮助津贴)</text>
+			<text>5人团，仅一人拼中，4人全额退款+帮忙津贴</text>
+			<text>(即时提现)，(最高80%几率帮忙津贴)</text>
 		</view>
 	</view>
 </view>
@@ -88,8 +88,8 @@
 	<view class="sign">
 		<image src="/images/order/d.png" mode="widthFix"></image>
 		<view class="sign-text">
-			<text>4人团，仅1人拼中，3人全额退款+帮助津贴</text>
-			<text>(即时提现)，(最高75%机率帮助津贴)</text>
+			<text>4人团，仅1人拼中，3人全额退款+帮忙津贴</text>
+			<text>(即时提现)，(最高75%机率帮忙津贴)</text>
 		</view>
 	</view>
 </view>
@@ -105,13 +105,13 @@
 			<view class="right-sale">最高得津贴{{ detail.white_price }}元</view>
 			<view class="get">
 				<view class="price">￥{{ goodsPrice }}</view>
-				<view class="num">已有{{ detail.white_number }}人获帮助津贴</view>
+				<view class="num">已有{{ detail.white_number }}人获帮忙津贴</view>
 			</view>
 		</view>
 	</view>
 </view>
 <view class="num-box" wx:if="{{ orderType == 1 }}">
-	<view>已有{{ detail.book_num }}人拼团购买了该商品，<text>{{ detail.book_num }}</text>人得帮助津贴</view>
+	<view>已有{{ detail.book_num }}人拼团购买了该商品，<text>{{ detail.book_num }}</text>人得帮忙津贴</view>
 	<view class="money" bindtap="join">￥{{ detail.spell_price }}参团购买</view>
 </view>
 <view class="use-money" bindtap="openMoneyDialog">
@@ -122,7 +122,7 @@
 <view class="big">
 	<view>5人团拼团玩法:</view>
 	<view>1.参团人数为5人，拼团等待10分钟内，参团人数达到5人，立即成团；</view>
-	<view>2.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元帮助津贴(随时提现)；</view>
+	<view>2.拼团成功，未抢中商品者即刻获得货款返还+最高{{ detail.white_price }}元帮忙津贴(随时提现)；</view>
 	<view>3.拼团等待时间超过10分钟，参团人数仅有1人则拼团失败。</view>
 	<navigator class="sign-text3" url="/pages/goods/rule/rule" hover-class="none">查看详细规则></navigator>
 </view>

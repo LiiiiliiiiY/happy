@@ -1,5 +1,5 @@
 <mp-navigation-bar color="#000000" background="#FFFFFF" title="拼团未中"></mp-navigation-bar>
-<view class="title">拼团成功，你未拼中商品，喜得帮助津贴！</view>
+<view class="title">拼团成功，你未拼中商品，喜得帮忙津贴！</view>
 <view class="money-text">
 	<text class="big">{{ orderInfo.payment_price }}</text>
 	<text>元</text>
@@ -7,7 +7,7 @@
 	<text class="big">{{ orderInfo.get_white_price }}</text>
 	<text>元</text>
 </view>
-<view class="sub-title">全款原路返回 帮助津贴已到余额</view>
+<view class="sub-title">全款原路返回 帮忙津贴已到余额</view>
 <view class="check-container">
 	<navigator class="check" url="/pages/mine/my-balance/my-balance">查看余额</navigator>
 </view>

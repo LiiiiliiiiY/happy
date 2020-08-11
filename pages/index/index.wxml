@@ -21,7 +21,7 @@
 				</view>
 				<view class="right">
 					<view class="right-title">{{ item.goods_name }}</view>
-					<view class="right-sale">{{ item.white_number }}人得帮助津贴  {{ item.get_number }}人买到商品</view>
+					<view class="right-sale">{{ item.white_number }}人得帮忙津贴  {{ item.get_number }}人买到商品</view>
 					<view class="get">
 						<view class="price">￥{{ item.if_akey == 1 ? item.akey_price : item.spell_price }}</view>
 						<view class="get-btn">

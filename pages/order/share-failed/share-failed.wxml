@@ -31,7 +31,7 @@
 				<view class="right-sale">津贴{{ orderInfo.white_price }}元</view>
 				<view class="get">
 					<view class="price">￥{{ orderInfo.goods_price }}</view>
-					<view class="right-num">已有{{ orderInfo.white_number }}人获帮助津贴</view>
+					<view class="right-num">已有{{ orderInfo.white_number }}人获帮忙津贴</view>
 				</view>
 			</view>
 		</view>
@@ -41,7 +41,7 @@
 	</view>
 	<view class="hot-title">
 		<image src="/images/detail/wd.png" mode="widthFix"></image>
-		爆款团 ｜ 已有83186人未拼中得帮助津贴
+		爆款团 ｜ 已有83186人未拼中得帮忙津贴
 	</view>
 	<view class="list">
 		<view class="list-item" wx:for="{{hot}}" wx:key="goods_id" wx:for-item="sItem" data-id="{{sItem.goods_id}}" bindtap="checkDetail">
@@ -51,7 +51,7 @@
 			<view class="right">
 				<view class="right-title hot">{{ sItem.goods_name }}</view>
 				<view class="right-sale hot">最高得津贴{{ sItem.white_price }}元</view>
-				<view class="right-num hot">已有{{ sItem.white_number }}人获帮助津贴</view>
+				<view class="right-num hot">已有{{ sItem.white_number }}人获帮忙津贴</view>
 				<view class="get">
 					<view class="price">￥{{ sItem.if_akey == 1 ? sItem.akey_price : sItem.spell_price }}</view>
 					<view class="get-btn">

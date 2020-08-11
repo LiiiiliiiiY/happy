@@ -10,7 +10,7 @@
 					<view class="right">
 						<view class="right-title">{{ sItem.goods_name }}</view>
 						<view class="right-sale">最高得津贴{{ sItem.white_price }}元</view>
-						<view class="right-num">已有{{ sItem.white_number }}人获帮助津贴</view>
+						<view class="right-num">已有{{ sItem.white_number }}人获帮忙津贴</view>
 						<view class="get">
 							<view class="price">￥{{ sItem.if_akey == 1 ? sItem.akey_price : sItem.spell_price }}</view>
 							<view class="get-btn">
