@@ -35,9 +35,9 @@
     </view>
 </view>
 <dialog class="wenhaodialog" show="{{showNameInput}}" mask="{{ true }}" mask-closeable="{{ true }}" >
-    <view>帮助津贴</view>
+    <view>帮忙津贴</view>
     <view>拼不中者平分拼团价29%现金</view>
     <view>奖励金</view>
-    <view>邀请好友参与拼团，可得到未拼中好友获得的帮助津贴同等金额的50%奖励金</view>
+    <view>邀请好友参与拼团，可得到未拼中好友获得的帮忙津贴同等金额的50%奖励金</view>
     <image src="/images/common/cha.png" bindtap="oncloseNameDialog" mode="widthFix"/>
 </dialog>

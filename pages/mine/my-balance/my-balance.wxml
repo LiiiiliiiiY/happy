@@ -17,7 +17,7 @@
                 <view class="list">
                     <image src="/images/mine/14.png" mode="widthFix"/>
                     <view class="content">
-                        <text wx-if="{{item.sign == 1}}">帮助津贴</text>
+                        <text wx-if="{{item.sign == 1}}">帮忙津贴</text>
                         <text wx-if="{{item.sign == 2}}">奖励金</text>
                         <text wx-if="{{item.sign == 3}}">余额支付</text>
                         <text wx-if="{{item.sign == 4}}">退款</text>

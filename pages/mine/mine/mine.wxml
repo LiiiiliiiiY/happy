@@ -83,7 +83,7 @@
 				<text wx-if="{{item.status == 2}}">待支付</text>
 				<text wx-if="{{item.status == 3}}">待发货</text>
 				<text wx-if="{{item.status == 4}}">待收货</text>
-				<text wx-if="{{item.status == 5 && item.user_has_get == 0}}">已完成 帮助津贴已到帐</text>
+				<text wx-if="{{item.status == 5 && item.user_has_get == 0}}">已完成 帮忙津贴已到帐</text>
 				<text wx-if="{{item.status == 5 && item.user_has_get == 1}}">已完成 已拼中</text>
 				<text wx-if="{{item.status == 6}}">已取消</text>
 			</view>
@@ -106,7 +106,7 @@
 			<view class="subtotal" wx-if="{{item.user_has_get == 0 && item.group_status == 2}}">
 				货款原路退还:        
 				<text>￥{{item.goods_price}}</text>
-				帮助津贴已入帐:        
+				帮忙津贴已入帐:        
 				<text>￥{{item.balance}}</text>
 			</view>
 			<!-- 直接购买 -->
@@ -235,7 +235,7 @@
 					<navigator url="/pages/goods/goods-detail/goods-detail?id={{item.goods_id}}" hover-class="none">
 						<text>{{item.goods_name}}</text>
 						<view class="white">最高获得{{item.white_price}}津贴</view>
-						<text>已有{{item.white_number}}人获得帮助津贴</text>
+						<text>已有{{item.white_number}}人获得帮忙津贴</text>
 					</navigator>
 					<view class="price">
 						<text>￥{{item.spell_price}}</text>
