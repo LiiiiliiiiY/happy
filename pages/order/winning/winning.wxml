@@ -21,7 +21,7 @@
 		</view>
 		<view class="right">
 			<view class="right-title">{{ orderInfo.goods_name }}</view>
-			<view class="right-sale">白拿{{ orderInfo.white_price }}元</view>
+			<view class="right-sale">津贴{{ orderInfo.white_price }}元</view>
 			<view class="get">
 				<view class="price">￥{{ orderInfo.goods_price }}</view>
 			</view>

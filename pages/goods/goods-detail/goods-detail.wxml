@@ -4,8 +4,8 @@
 	<view class="text">
 		<view class="text-left">一键拼团</view>
 		<view class="text-right">
-			<text>5人团, 1人拼中, 其余人全额退款+白拿现金</text>
-			<text>即时提现, 最高80%几率白拿现金</text>
+			<text>5人团, 1人拼中, 其余人全额退款+帮助津贴</text>
+			<text>即时提现, 最高80%几率帮助津贴</text>
 		</view>
 	</view>
 </view>
@@ -32,7 +32,7 @@
 <view class="product-infor">
 	<view class="name">
 		<view>{{ detail.goods_name }}</view>
-		<view>最高白拿{{ detail.white_price }}元<image src="/images/detail/d.png" mode="widthFix"></image></view>
+		<view>最高得津贴{{ detail.white_price }}元<image src="/images/detail/d.png" mode="widthFix"></image></view>
 	</view>
 	<view class="num">已拼{{ detail.book_num }}件</view>
 	<view class="track">
@@ -40,7 +40,7 @@
 		<text bindtap="openTrackDialog">偏远地区不发货 ></text>
 	</view>
 	<view class="sign">
-		<text>*拼中者免邮发货，未拼中者获得白拿金</text>
+		<text>*拼中者免邮发货，未拼中者获得帮助津贴</text>
 		<navigator url="/pages/goods/rule/rule" hover-class="none">
 			<text class="sign-text">详细规则</text>
 			<text>></text>

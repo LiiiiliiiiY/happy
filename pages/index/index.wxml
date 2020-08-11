@@ -8,7 +8,7 @@
 	<view class="list">
 		<view class="list-item" wx:for="{{ home }}" wx:key="goods_id" data-id="{{item.goods_id}}" bindtap="checkDetail">
 			<view class="title">
-				<view>参团一次，最高<text>白赚{{ item.white_price }}元！</text></view>
+				<view>参团一次，最高得<text>津贴{{ item.white_price }}元！</text></view>
 				<image src="/images/index/c.png"></image>
 			</view>
 			<view class="content">
@@ -21,7 +21,7 @@
 				</view>
 				<view class="right">
 					<view class="right-title">{{ item.goods_name }}</view>
-					<view class="right-sale">{{ item.white_number }}人白赚现金  {{ item.get_number }}人买到商品</view>
+					<view class="right-sale">{{ item.white_number }}人得帮助津贴  {{ item.get_number }}人买到商品</view>
 					<view class="get">
 						<view class="price">￥{{ item.if_akey == 1 ? item.akey_price : item.spell_price }}</view>
 						<view class="get-btn">
