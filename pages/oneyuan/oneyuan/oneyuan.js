@@ -21,7 +21,6 @@ Page({
             adShow: true,
             shadeShow: true
 		})
-       
     },
    
     /**

@@ -8,14 +8,19 @@
 	<scroll-view wx-if="{{orderList.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
 		<block wx:for="{{orderList}}" wx:key="index">
 			<view class="order-list">
-                <image class="banner" src="/images/yiyuan/1.png" mode="widthFix"></image>
+                <image class="banner" src="{{item.goods_imgs}}" mode="widthFix"></image>
                 <view class="content">
                     <text>{{item.goods_name}}</text>
                     <text>市场价：¥{{item.market_price}}</text>
                     <view class="price">
-                        <view>
-                            x{{item.buy_num}}份
-                        </view>
+						<view class="s">
+							<view>
+								第{{item.loot_id}}期
+							</view>
+							<view>
+								x{{item.buy_num}}份
+							</view>
+						</view>
                         <view wx-if="{{item.status == 1}}" class="colorq">等待开奖</view>
                         <view wx-if="{{item.status == 2}}" class="colora">已中奖</view>
                         <view wx-if="{{item.status == 3}}" class="colorz">未中奖</view>

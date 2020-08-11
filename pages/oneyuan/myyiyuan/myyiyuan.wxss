@@ -88,9 +88,15 @@ page{
     display: flex;
     justify-content: space-between;
 }
-.price view:nth-child(1){
+.price > .s{
+	display: flex;
+}
+.price > .s view{
     font-size:28rpx;
-color:rgba(153,153,153,1);
+	color:rgba(153,153,153,1);
+}
+.price>.s view:nth-child(1){
+	margin-right: 30rpx;	
 }
 .price view:nth-child(2){
     font-size:28rpx;
