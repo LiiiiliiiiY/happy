@@ -11,7 +11,7 @@
 			<image src="/images/mine/30.png" mode="widthFix"/>
 			<view>
 				<text>拼团失败</text>
-				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得帮助津贴</text>
 			</view>
 			<image src="/images/mine/36.png" mode="widthFix"/>
 		</view>
@@ -27,7 +27,7 @@
 			<image src="/images/mine/30.png" mode="widthFix"/>
 			<view>
 				<text>拼团已完成</text>
-				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得白拿金</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得帮助津贴</text>
 			</view>
 			<image src="/images/mine/26.png" mode="widthFix"/>
 		</view>
@@ -35,7 +35,7 @@
 			<image src="/images/mine/30.png" mode="widthFix"/>
 			<view>
 				<text>订单待支付</text>
-				<text>已有754513人未拼中，最高获得白拿金72元</text>
+				<text>已有{{orderInfo.no_lottery_num}}人未拼中，最高获得帮助津贴{{orderInfo.high_bounty}}元</text>
 				<view>请在<text>{{hou}}:{{min}}:{{sec}}</text>内完成支付</view>
 			</view>
 			<image src="/images/mine/32.png" mode="widthFix"/>
@@ -226,7 +226,7 @@
 	<view class="btnBox" wx-if="{{orderInfo.group_type != 1}}">
 		<view class="positon" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 0}}">
 			<text>没拼中商品可获得：</text>
-			<text>1.白拿金</text>
+			<text>1.帮助津贴</text>
 			<text>2.货款原路返回</text>
 			<view class="jt"></view>
 		</view>
