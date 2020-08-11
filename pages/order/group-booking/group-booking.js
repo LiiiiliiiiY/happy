@@ -142,7 +142,7 @@ Page({
 		    order_id: this.data.orderId
 		}, true).then(res => {
 			if (res.group_status == 2) {
-				if (this.data.fromShare) {
+				if (this.data.fromShare && !res.user.some((item) => item.id == wx.getStorageSync('userId'))) {
 					wx.reLaunch({
 						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=1&fromId=' + this.data.fromId
 					})
@@ -152,7 +152,7 @@ Page({
 					})
 				}
 			} else if (res.group_status == 3) {
-				if (this.data.fromShare) {
+				if (this.data.fromShare && !res.user.some((item) => item.id == wx.getStorageSync('userId'))) {
 					wx.reLaunch({
 						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=0&fromId=' + this.data.fromId
 					})

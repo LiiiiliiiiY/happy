@@ -1,10 +1,10 @@
 <mp-navigation-bar background="#ffffff" title="首页" back="{{false}}"></mp-navigation-bar>
 <view class="index-container">
 	<view class="banner">
-		<image class="banner-img" src="https://hihuanlepintuan.cn/images/b10.png" mode="widthFix"></image>
+		<image class="banner-img" src="https://hihuanlepintuan.cn/assets/img/tt.png" mode="widthFix"></image>
 		<div class="check" bindtap="go"></div>
 	</view>
-	<image class="middle" src="https://hihuanlepintuan.cn/images/b11.png" mode="widthFix"></image>
+	<image class="middle" src="https://hihuanlepintuan.cn/assets/img/z3.png" mode="widthFix"></image>
 	<view class="list">
 		<view class="list-item" wx:for="{{ home }}" wx:key="goods_id" data-id="{{item.goods_id}}" bindtap="checkDetail">
 			<view class="title">

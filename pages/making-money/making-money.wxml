@@ -1,6 +1,6 @@
 <mp-navigation-bar color="#000000" background="#FFFFFF" title="欢乐拼团规则" back="{{false}}"></mp-navigation-bar>
 <view class="rule">
-	<image src="https://hihuanlepintuan.cn/assets/img/mm.png" mode="widthFix"></image>
+	<image src="https://hihuanlepintuan.cn/assets/img/z34.png" mode="widthFix"></image>
 	<button class="share" open-type="share"></button>
 	<button class="contact" open-type="contact" bindcontact="handleContact"></button>
 </view>
