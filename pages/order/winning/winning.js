@@ -40,6 +40,7 @@ Page({
 	},
 	getData() {
 		wx.$api.getOrderInfo({
+			user_id: wx.getStorageSync('userId'),
 		    order_id: this.data.orderId
 		}, true).then(res => {
 			let member = []
