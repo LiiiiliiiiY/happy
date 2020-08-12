@@ -1,4 +1,6 @@
 const app = getApp()
+let refresh, timer
+
 Page({
 	data: {
 		fromShare: false,
@@ -10,7 +12,8 @@ Page({
 		memberPreview: [],
 		status: 0,
 		invited: false,
-		backFlag: true
+		backFlag: true,
+		personNumber: 0
 	},
 	onLoad(options) {
 		this.setData({
@@ -172,7 +175,8 @@ Page({
 			}
 		    this.setData({
 		        orderInfo: res,
-				memberPreview: member
+				memberPreview: member,
+				personNumber: parseInt(res.rule_number) - 1
 		    })
 			
 			timer = setInterval(() => {
