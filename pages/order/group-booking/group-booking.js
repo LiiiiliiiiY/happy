@@ -32,6 +32,10 @@ Page({
 			})
 		}
 	},
+	onUnload() {
+		clearInterval(refresh)
+		clearInterval(timer)
+	},
 	openPersonDialog() {
 		this.setData({
 			personShow: true
@@ -171,9 +175,54 @@ Page({
 				memberPreview: member
 		    })
 			
-			setInterval(() => {
+			timer = setInterval(() => {
 			    this.Timer()
 			}, 1000)
+			this.refresh()
+		})
+	},
+	refresh() {
+		refresh = setInterval(() => {
+			this.refreshData()
+		}, 5000)
+	},
+	refreshData() {
+		wx.$api.groupBooking({
+			user_id: this.data.fromShare ? this.data.fromId : wx.getStorageSync('userId'),
+		    order_id: this.data.orderId
+		}).then(res => {
+			if (res.group_status == 2) {
+				clearInterval(refresh)
+				if (this.data.fromShare && !res.user.some((item) => item.id == wx.getStorageSync('userId'))) {
+					wx.reLaunch({
+						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=1&fromId=' + this.data.fromId
+					})
+				} else {
+					wx.reLaunch({
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+					})
+				}
+			} else if (res.group_status == 3) {
+				clearInterval(refresh)
+				if (this.data.fromShare && !res.user.some((item) => item.id == wx.getStorageSync('userId'))) {
+					wx.reLaunch({
+						url: '/pages/order/share-failed/share-failed?id=' + this.data.orderId + '&status=0&fromId=' + this.data.fromId
+					})
+				} else {
+					wx.reLaunch({
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+					})
+				}
+			}
+			let member = []
+			for (let i = 0; i < 5; i++) {
+				member.push(res.user[i] ? res.user[i] : {})
+			}
+		    this.setData({
+		        orderInfo: res,
+				memberPreview: member,
+				personNumber: parseInt(res.rule_number) - 1
+		    })
 		})
 	},
 	onShareAppMessage() {
