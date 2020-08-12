@@ -1,4 +1,5 @@
 var setInterva
+var setInterva_
 Page({
     data: {
         orderId: 0,
@@ -32,13 +33,27 @@ Page({
         })
     },
     onHide(){
-        clearInterval(setInterva)
+        // clearInterval(setInterva)
     },
     onUnload(){
         clearInterval(setInterva)
+        clearInterval(setInterva_)
     },
     onShow() {
-        this.getOrderInfo()
+        this.getOrderInfo().then((res) => {
+			this.setData({
+				percent: res.no_lottery_percent
+			})
+            if (this.data.orderInfo.group_status == 1) {
+                setInterva_ = setInterval(() => {
+                    this.getOrderInfo()
+                },5000)
+                setInterva = setInterval(() => {
+                    this.countDown()
+                },1000)
+                // setInterva = setInterval(this.countDown(), 1000);
+            }
+        })
 		let pages = getCurrentPages()
 		if (pages.length == 1) {
 			this.setData({
@@ -77,6 +92,7 @@ Page({
         if (time <= 0) {
             console.log(time)
             clearInterval(setInterva)
+            clearInterval(setInterva_)
             setTimeout(() => {
                 this.onLoad(this.data.orderId)
                 this.onShow()
@@ -148,20 +164,17 @@ Page({
     },
     //获取订单信息
     getOrderInfo() {
-        wx.$api.getOrderInfo({
-            order_id: this.data.orderId
-        }, true).then(res => {
-            this.setData({
-                orderInfo: res,
-                user: res.user.slice(0,6),
-                chaperson: 15 - res.user.length
+        return new Promise((resolve) => {
+            wx.$api.getOrderInfo({
+                order_id: this.data.orderId
+            }, true).then(res => {
+                resolve(res)
+                this.setData({
+                    orderInfo: res,
+                    user: res.user.slice(0,6),
+                    chaperson: 15 - res.user.length
+                })
             })
-            if (this.data.orderInfo.group_status == 1) {
-                setInterva = setInterval(() => {
-                    this.countDown()
-                },1000)
-                // setInterva = setInterval(this.countDown(), 1000);
-            }
         })
     },
     // 复制
