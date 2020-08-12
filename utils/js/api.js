@@ -63,7 +63,7 @@ const api = {
 	},
 	// 获取订单详情
 	getOrderInfo(data, showError) {
-		return request('/api/order/detail', mergeParam(data), false, showError)
+		return request('/api/order/detail', data, false, showError)
 	},
 	//问题
 	faq(data, showError) {

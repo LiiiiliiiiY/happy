@@ -15,6 +15,7 @@ Page({
         hou: '',
         min: '',
         sec: '',
+        userId_: false,
         lensTypeList: {
             Myopia: "近视",
             Hyperopia: "远视",
@@ -29,7 +30,8 @@ Page({
     },
 	onLoad(options) {
         this.setData({
-            orderId: options.id ? options.id : options
+            orderId: options.id ? options.id : options,
+            userId_: options.fromId ? options.fromId : false
         })
     },
     onHide(){
@@ -166,7 +168,8 @@ Page({
     getOrderInfo() {
         return new Promise((resolve) => {
             wx.$api.getOrderInfo({
-                order_id: this.data.orderId
+                order_id: this.data.orderId,
+                user_id: this.data.userId_ ? this.data.userId_ : wx.getStorageSync('userId')
             }, true).then(res => {
                 resolve(res)
                 this.setData({
