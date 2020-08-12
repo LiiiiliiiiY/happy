@@ -155,7 +155,7 @@ Page({
 					})
 				} else {
 					wx.reLaunch({
-						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId + (this.data.fromShare ? ('&fromId=' + this.data.fromId) : '') 
 					})
 				}
 			} else if (res.group_status == 3) {
@@ -165,7 +165,7 @@ Page({
 					})
 				} else {
 					wx.reLaunch({
-						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId + (this.data.fromShare ? ('&fromId=' + this.data.fromId) : '') 
 					})
 				}
 			}
@@ -203,7 +203,7 @@ Page({
 					})
 				} else {
 					wx.reLaunch({
-						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId + (this.data.fromShare ? ('&fromId=' + this.data.fromId) : '') 
 					})
 				}
 			} else if (res.group_status == 3) {
@@ -214,7 +214,7 @@ Page({
 					})
 				} else {
 					wx.reLaunch({
-						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
+						url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId + (this.data.fromShare ? ('&fromId=' + this.data.fromId) : '') 
 					})
 				}
 			}
