@@ -210,7 +210,6 @@ color:rgba(0,0,0,1);
 }
 .pintuan-detail > .content{
 	display: flex;
-	justify-content: space-around;
 	margin-top: 43rpx;
 }
 .pintuan-detail .person{
