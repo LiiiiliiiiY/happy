@@ -19,7 +19,7 @@
 					<text wx-if="{{item.status == 5 && item.user_has_get == 1}}">已完成 已拼中</text>
 					<text wx-if="{{item.status == 6}}">已取消</text>
 				</view>
-				<navigator class="order-content" url="/pages/mine/my-order-detail/my-order-detail?groupId={{ item.group_id }}&orderId={{ item.order_id }}" hover-class="none">
+				<navigator class="order-content" url="/pages/mine/my-order-detail/my-order-detail?id={{ item.order_id }}" hover-class="none">
 					<image src="{{item.goods_imgs}}" mode="widthFix"/>
 					<view>
 						<view class="first">

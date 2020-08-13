@@ -3,7 +3,6 @@ var setInterva_
 Page({
     data: {
         orderId: 0,
-        groupId: 0,
         orderInfo: {},
         chaperson: 0,
         showquxiao: false,
@@ -16,6 +15,7 @@ Page({
         hou: '',
         min: '',
         sec: '',
+        userId_: false,
         lensTypeList: {
             Myopia: "近视",
             Hyperopia: "远视",
@@ -26,44 +26,42 @@ Page({
             '待发货': 'iconicon2 iconfont',
             '待收货': 'iconicon3 iconfont',
             '已完成': ''
-        },
-        percent: 0,
-        userId_: false
+        }
     },
 	onLoad(options) {
         this.setData({
-            orderId: parseFloat(options.orderId) ? parseFloat(options.orderId) : 0,
-            groupId: parseFloat(options.groupId) ? parseFloat(options.groupId) : 0,
+            orderId: options.id ? options.id : options,
             userId_: options.fromId ? options.fromId : false
         })
-		this.getOrderInfo().then((res) => {
+    },
+    onHide(){
+        // clearInterval(setInterva)
+    },
+    onUnload(){
+        clearInterval(setInterva)
+        clearInterval(setInterva_)
+    },
+    onShow() {
+        this.getOrderInfo().then((res) => {
 			this.setData({
 				percent: res.no_lottery_percent
 			})
-		    if (this.data.orderInfo.group_status == 1) {
-		        setInterva_ = setInterval(() => {
-		            this.getOrderInfo()
-		        },5000)
-		        setInterva = setInterval(() => {
-		            this.countDown()
-		        },1000)
-		        // setInterva = setInterval(this.countDown(), 1000);
-		    }
-		})
+            if (this.data.orderInfo.group_status == 1) {
+                setInterva_ = setInterval(() => {
+                    this.getOrderInfo()
+                },5000)
+                setInterva = setInterval(() => {
+                    this.countDown()
+                },1000)
+                // setInterva = setInterval(this.countDown(), 1000);
+            }
+        })
 		let pages = getCurrentPages()
 		if (pages.length == 1) {
 			this.setData({
 				backFlag: false
 			})
 		}
-    },
-    onHide(){
-        // clearInterval(setInterva)
-        // clearInterval(setInterva_)
-    },
-    onUnload(){
-        clearInterval(setInterva)
-        clearInterval(setInterva_)
     },
 	goHome() {
 		wx.switchTab({
@@ -91,8 +89,10 @@ Page({
           min: that.timeFormat(min),
           sec: that.timeFormat(sec)
         })
+        console.log(time <= 0)
         // 每1000ms刷新一次
         if (time <= 0) {
+            console.log(time)
             clearInterval(setInterva)
             clearInterval(setInterva_)
             setTimeout(() => {
@@ -166,17 +166,16 @@ Page({
     },
     //获取订单信息
     getOrderInfo() {
-        let obj = Object.assign({
-            user_id: wx.getStorageSync('userId')
-        },  this.data.groupId ? {group_id: this.data.groupId} : {order_id: this.data.orderId} )  
         return new Promise((resolve) => {
-            wx.$api.getOrderInfo(obj, true).then(res => {
+            wx.$api.getOrderInfo({
+                order_id: this.data.orderId,
+                user_id: this.data.userId_ ? this.data.userId_ : wx.getStorageSync('userId')
+            }, true).then(res => {
                 resolve(res)
                 this.setData({
                     orderInfo: res,
                     user: res.user.slice(0,6),
-                    chaperson: 15 - res.user.length,
-					groupId: res.group_id
+                    chaperson: 15 - res.user.length
                 })
             })
         })
@@ -195,9 +194,9 @@ Page({
     },
     onShareAppMessage() {
         return {
-			title: '快来一起拼团，抢全网最低……',
+			title: '快来参加欢乐拼团……',
 			imageUrl: this.data.orderInfo.goods_img,
-			path: '/pages/order/group-booking/group-booking?from=friend&groupId=' + this.data.groupId + '&fromId=' + wx.getStorageSync('userId')
+			path: '/pages/order/group-booking/group-booking?from=friend&id=' + this.data.orderId + '&group_id=' + this.data.orderInfo.group_id + '&from_id=' + wx.getStorageSync('userId'),
         }
     },
 	closeAd() {
@@ -223,12 +222,12 @@ Page({
                 paySign: data.paySign,
                 success: (response) => {
                     wx.reLaunch({
-                        url: '/pages/mine/my-order-detail/my-order-detail?orderId=' + this.data.orderId + '&groupId=' + this.data.groupId
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
                     })
                 },
                 fail: (response) => {
                     wx.reLaunch({
-                        url: '/pages/mine/my-order-detail/my-order-detail?orderId=' + this.data.orderId + '&groupId=' + this.data.groupId
+                        url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderId
                     })
                 }
             })

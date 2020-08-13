@@ -89,7 +89,7 @@
 			</view>
 			<view class="order-content">
 				<image src="{{item.goods_imgs}}" mode="widthFix"/>
-				<navigator class="view" url="/pages/mine/my-order-detail/my-order-detail?groupId={{ item.group_id }}&orderId={{ item.order_id }}" hover-class="none">
+				<navigator class="view" url="/pages/mine/my-order-detail/my-order-detail?id={{ item.order_id }}" hover-class="none">
 					<view class="first">
 						<text>{{item.goods_name}}</text>
 						<text>X{{item.goods_num}}</text>

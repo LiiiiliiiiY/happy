@@ -11,7 +11,7 @@
 			<image src="/images/mine/30.png" mode="widthFix"/>
 			<view>
 				<text>拼团失败</text>
-				<text>{{percent}}用户拼团未中，获得帮忙津贴</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得帮忙津贴</text>
 			</view>
 			<image src="/images/mine/36.png" mode="widthFix"/>
 		</view>
@@ -27,7 +27,7 @@
 			<image src="/images/mine/30.png" mode="widthFix"/>
 			<view>
 				<text>拼团已完成</text>
-				<text>{{percent}}用户拼团未中，获得帮忙津贴</text>
+				<text>{{orderInfo.no_lottery_percent}}用户拼团未中，获得帮忙津贴</text>
 			</view>
 			<image src="/images/mine/26.png" mode="widthFix"/>
 		</view>
@@ -117,13 +117,13 @@
 				<text>支付成功后查看拼团详情</text>
 			</view>
 			<view class="btnBox">
-				<navigator wx-if="{{orderInfo.is_pay == 1 && orderInfo.group_status == 1}}" class="view" url="/pages/order/group-booking/group-booking?groupId={{groupId}}" hover-class="none">
+				<navigator wx-if="{{orderInfo.is_pay == 1 && orderInfo.group_status == 1}}" class="view" url="/pages/order/group-booking/group-booking?id={{orderId}}" hover-class="none">
 					拼团详情
 				</navigator>
-				<navigator wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}" class="view" url="/pages/order/winning/winning?groupId={{groupId}}" hover-class="none">
+				<navigator wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2}}" class="view" url="/pages/order/winning/winning?id={{orderId}}" hover-class="none">
 					拼团详情
 				</navigator>
-				<navigator wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}" class="view" url="/pages/order/failed/failed?groupId={{groupId}}" hover-class="none">
+				<navigator wx-if="{{orderInfo.user_has_get == 0 && orderInfo.group_status == 2}}" class="view" url="/pages/order/failed/failed?id={{orderId}}" hover-class="none">
 					拼团详情
 				</navigator>
 				<button class="view yaoqing" wx-if="{{orderInfo.group_status == 1 && orderInfo.is_pay == 1 && orderInfo.diff_num > 0}}" open-type="share">邀请好友拼团</button>
@@ -141,7 +141,7 @@
 					<view wx-if="{{item.is_get == 0 && orderInfo.group_status == 2}}">得{{item.balance}}元</view>
 				</view>
 			</block>
-			<block wx-if="{{user.length < 6}}" wx:for="{{6 - user.length}}" wx:key="index">
+			<block wx-if="{{user.length < 5}}" wx:for="{{5 - user.length}}" wx:key="index">
 				<view class="person">
 					<image src="/images/mine/31.png" mode="widthFix"/>
 				</view>
