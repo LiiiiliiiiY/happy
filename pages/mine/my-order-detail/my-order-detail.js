@@ -33,15 +33,6 @@ Page({
             orderId: options.id ? options.id : options,
             userId_: options.fromId ? options.fromId : false
         })
-    },
-    onHide(){
-        // clearInterval(setInterva)
-    },
-    onUnload(){
-        clearInterval(setInterva)
-        clearInterval(setInterva_)
-    },
-    onShow() {
         this.getOrderInfo().then((res) => {
 			this.setData({
 				percent: res.no_lottery_percent
@@ -53,9 +44,30 @@ Page({
                 setInterva = setInterval(() => {
                     this.countDown()
                 },1000)
-                // setInterva = setInterval(this.countDown(), 1000);
             }
         })
+    },
+    onHide(){
+        // clearInterval(setInterva)
+    },
+    onUnload(){
+        clearInterval(setInterva)
+        clearInterval(setInterva_)
+    },
+    onShow() {
+        // this.getOrderInfo().then((res) => {
+		// 	this.setData({
+		// 		percent: res.no_lottery_percent
+		// 	})
+        //     if (this.data.orderInfo.group_status == 1) {
+        //         setInterva_ = setInterval(() => {
+        //             this.getOrderInfo()
+        //         },5000)
+        //         setInterva = setInterval(() => {
+        //             this.countDown()
+        //         },1000)
+        //     }
+        // })
 		let pages = getCurrentPages()
 		if (pages.length == 1) {
 			this.setData({
