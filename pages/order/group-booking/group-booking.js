@@ -85,7 +85,7 @@ Page({
 		wx.$api.groupBooking({
 			user_id: this.data.fromShare ? this.data.fromId : wx.getStorageSync('userId'),
 		    order_id: this.data.orderId
-		}, true).then(res => {
+		}, true, true).then(res => {
 			if (res.group_status == 1) {
 				wx.navigateTo({
 					url: '/pages/order/confirm-order/confirm-order?type=' + this.data.orderInfo.group_type + '&goods_id=' + this.data.orderInfo.goods_id + '&invite_group_id=' + this.data.orderInfo.group_id 
@@ -147,7 +147,7 @@ Page({
 		wx.$api.groupBooking({
 			user_id: this.data.fromShare ? this.data.fromId : wx.getStorageSync('userId'),
 		    order_id: this.data.orderId
-		}, true).then(res => {
+		}, true, false).then(res => {
 			if (res.group_status == 2) {
 				if (this.data.fromShare && !res.user.some((item) => item.id == wx.getStorageSync('userId'))) {
 					wx.reLaunch({

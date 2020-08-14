@@ -113,6 +113,7 @@ Page({
 	onShareAppMessage() {
 		return {
 			title: this.data.detail.goods_name,
+			imageUrl: this.data.detail.slideshow_imgs[0],
 			path: '/pages/goods/goods-detail/goods-detail?id=' + this.data.id + '&' + (wx.getStorageSync('userId') ? ('father_id=' + wx.getStorageSync('userId')) : '')
 		}
 	},

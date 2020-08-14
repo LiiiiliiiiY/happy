@@ -109,9 +109,8 @@ const api = {
 	trackOrder(data) {
 		return request('/api/home/trackOrder', mergeParam(data), true)
 	},
-	// 拼团中
-	groupBooking(data, showError) {
-		return request('/api/order/detail', data, true, showError)
+	groupBooking(data, loading, showError) {
+		return request('/api/order/detail', data, loading, showError)
 	},
 	// 获取二维码
 	getErcode(data) {

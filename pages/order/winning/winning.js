@@ -26,6 +26,11 @@ Page({
 			url: '/pages/index/index'
 		})
 	},
+	checkDetail() {
+		wx.navigateTo({
+			url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderInfo.order_id
+		})
+	},
 	// 再拼一单
 	oneMore() {
 		wx.navigateTo({
