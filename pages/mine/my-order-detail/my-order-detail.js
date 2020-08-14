@@ -90,8 +90,13 @@ Page({
           sec: that.timeFormat(sec)
         })
         console.log(time <= 0)
+        console.log(time)
+        console.log(this.data.day)
+        console.log(this.data.hou)
+        console.log(this.data.min)
+        console.log(this.data.sec)
         // 每1000ms刷新一次
-        if (time <= 0) {
+        if (time <= 0 || this.data.orderInfo.group_status != 1) {
             console.log(time)
             clearInterval(setInterva)
             clearInterval(setInterva_)

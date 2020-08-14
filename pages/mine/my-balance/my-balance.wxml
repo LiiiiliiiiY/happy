@@ -12,7 +12,7 @@
     </view>
     <view class="second">
         <text>余额明细</text>
-        <scroll-view wx-if="{{list.length > 0}}" class="main" scroll-y="{{true}}" bindscrolltolower="loadMore">
+        <scroll-view wx-if="{{list.length > 0}}" class="scroll-main" scroll-y="{{true}}" bindscrolltolower="loadMore">
             <block wx:for="{{list}}" wx:key="title">
                 <view class="list">
                     <image src="/images/mine/14.png" mode="widthFix"/>
