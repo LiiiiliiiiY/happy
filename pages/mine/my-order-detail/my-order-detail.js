@@ -3,6 +3,7 @@ var setInterva_
 Page({
     data: {
         orderId: 0,
+        groupId: 0,
         orderInfo: {},
         chaperson: 0,
         showquxiao: false,
@@ -191,6 +192,7 @@ Page({
                 resolve(res)
                 this.setData({
                     orderInfo: res,
+                    groupId: res.group_id,
                     user: res.user.slice(0,6),
                     chaperson: 15 - res.user.length
                 })

@@ -5,15 +5,16 @@ Page({
 		sn: ''
     },
     onLoad(options) {
+		console.log(options)
 		this.setData({
-			order_id: options.id
+			order_id: options.id ? options.id : options.groupId
 		})
         this.getExpressInfo()
 	},
     onShow() {
     },
 	getExpressInfo() {
-		console.log(this.data.orderId)
+		console.log(this.data.order_id)
 		wx.$api.trackOrder({order_id: this.data.order_id}, true).then(res => {
 			this.setData({
 				info: res

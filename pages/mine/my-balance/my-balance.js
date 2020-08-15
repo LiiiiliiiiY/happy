@@ -35,7 +35,7 @@ Page({
     getListData(){
         return new Promise((resolve, reject) => {
 			let list = this.data.list
-            wx.$api.myBalance({limit: 7, page: this.data.page}, true).then(res => {
+            wx.$api.myBalance({limit: 10, page: this.data.page}, true).then(res => {
                 list = list.concat(res.list.data)
                 if (res.list.last_page == this.data.page || !res.list.last_page) {
                     this.setData({
