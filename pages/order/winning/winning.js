@@ -28,7 +28,7 @@ Page({
 	},
 	checkDetail() {
 		wx.navigateTo({
-			url: '/pages/mine/my-order-detail/my-order-detail?id=' + this.data.orderInfo.order_id
+			url: '/pages/mine/my-order-detail/my-order-detail?orderId=' + this.data.orderInfo.order_id
 		})
 	},
 	// 再拼一单
