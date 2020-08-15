@@ -8,7 +8,7 @@
             <input type="text" placeholder="0元" bindinput='usernameInput' value='{{price}}'/>
             <text class="all" bindtap="all">全部</text>
         </view>
-        <text class="des">当前奖励金:{{data.all_bounty}}元</text>
+        <text class="des">当前奖励金:{{data.bounty}}元</text>
         <text class="des">当前可转余额的奖励金数为:{{data.bounty_can_out}}元</text>
         <text class="des">奖励金结算周期为T+1，即今日收入的奖励金，次日可转余额及提现</text>
     </view>

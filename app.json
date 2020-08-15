@@ -4,6 +4,7 @@
     },
     "pages": [
         "pages/index/index",
+        "pages/mine/track-order/track-order",
         "pages/oneyuan/oneyuan/oneyuan",
         "pages/oneyuan/detail/detail",
         "pages/oneyuan/myyiyuan/myyiyuan",
@@ -11,7 +12,6 @@
         "pages/mine/withdraw/withdraw",
         "pages/mine/rewardToyue/rewardToyue",
         "pages/mine/my-order/my-order",
-        "pages/mine/track-order/track-order",
         "pages/order/failed/failed",
         "pages/order/winning/winning",
         "pages/order/group-booking/group-booking",

@@ -8,9 +8,9 @@ Page({
 		this.setData({
 			order_id: options.id
 		})
+        this.getExpressInfo()
 	},
     onShow() {
-        this.getExpressInfo()
     },
 	getExpressInfo() {
 		console.log(this.data.orderId)

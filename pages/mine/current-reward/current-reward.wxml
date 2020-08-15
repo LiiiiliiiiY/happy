@@ -3,7 +3,7 @@
 <view class="container">
     <view class="first">
         <text>当前奖励金（元）</text>
-        <text>{{data.all_bounty}}</text>
+        <text>{{data.bounty}}</text>
         <text>昨日奖励金:{{data.bounty_yesterday}}元</text>
         <view>
             <text>可转奖励金:{{data.bounty_can_out}}元</text>
