@@ -5,7 +5,7 @@ Page({
 		sn: ''
     },
     onLoad(options) {
-		console.log(options)
+		console.log("options:" + options)
 		this.setData({
 			order_id: options.id ? options.id : options.groupId
 		})
