@@ -101,7 +101,7 @@ Page({
             clearInterval(setInterva)
             clearInterval(setInterva_)
             setTimeout(() => {
-                this.onLoad(this.data.orderId)
+                this.onLoad({orderId:this.data.orderId, groupId:this.data.groupId})
                 this.onShow()
             }, 1500);
         }
