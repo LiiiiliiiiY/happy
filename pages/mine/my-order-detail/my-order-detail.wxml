@@ -92,7 +92,7 @@
 				<text>快递单号:{{orderInfo.ship_num}}</text>
 			</view>
 		</navigator>
-		<navigator class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2 && !orderInfo.ship_num}}" url="/pages/mine/track-order/track-order?id={{orderId}}&groupId={{groupId}}" hover-class="none">
+		<view class="fh" wx-if="{{orderInfo.user_has_get == 1 && orderInfo.group_status == 2 && !orderInfo.ship_num}}">
 			<image src="/images/mine/25.png" mode="widthFix"/>
 			<view class="content">
 				<view>
@@ -100,7 +100,7 @@
 				</view>
 				<text></text>
 			</view>
-		</navigator>
+		</view>
 		<view class="err" wx-if="{{orderInfo.group_status == 3 && orderInfo.group_type != 1}}">
 			<image src="/images/mine/46.png" mode="widthFix"/>
 			<text>很遗憾，本次拼团失败了</text>
