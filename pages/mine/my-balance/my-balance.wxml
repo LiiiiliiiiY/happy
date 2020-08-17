@@ -6,7 +6,7 @@
             <text>余额（元）</text>
             <text>{{balance}}</text>
         </view>
-        <navigator class="btn" url="/pages/mine/withdraw/withdraw" hover-class="none">
+        <navigator class="btn" url="/pages/mine/withdraw/withdraw?balance={{balance}}" hover-class="none">
             提现
 		</navigator>
     </view>
